@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="utf-8" />
+        <title>Hexo - Github Pages 架設紀錄 | LaLaKo&#39;s Lab</title>
+        <meta name="author" content="LaLaKo" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="C,C++,演算法,影像處理" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>載入過慢請開啟快取 瀏覽器預設為開啟</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>LALAKO&#39;S LAB</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;LALAKO&#39;S LAB</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>Hexo - Github Pages 架設紀錄</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/9
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E7%B6%B2%E7%AB%99/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                網站
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/Hexo/" style="color: #00a596">Hexo</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>簡單紀錄一下架站過程中所使用到的指令<br>本文開發環境是Windows11</p>
+<span id="more"></span>
+<p>真的想看教學不建議看這篇(X<br>這篇目的是作為紀錄，避免自已以後忘記，<br>內容則是濃縮再濃縮，只寫必要的資訊，畢竟網頁我也不熟<br>但在參考連結的部分有在架站過程中所有參考到的資訊<br>相當詳細也有用，真想架好就去看那些吧</p>
+<h1 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h1><!-- toc -->
+
+<ul>
+<li><a href="#%25E5%25BB%25BA%25E7%25AB%258B-Hexo-%25E7%2592%25B0%25E5%25A2%2583">建立 Hexo 環境</a><ul>
+<li><a href="#%25E5%25BB%25BA%25E7%25AB%258B-Github-repo">建立 Github repo</a></li>
+<li><a href="#%25E5%25AE%2589%25E8%25A3%259D%25E7%259B%25B8%25E9%2597%259C%25E8%25BB%259F%25E9%25AB%2594">安裝相關軟體</a></li>
+<li><a href="#%25E5%25BB%25BA%25E7%25AB%258B%25E9%2583%25A8%25E8%2590%25BD%25E6%25A0%25BC">建立部落格</a></li>
+</ul>
+</li>
+<li><a href="#%25E9%2583%25A8%25E7%25BD%25B2%25E8%2587%25B3-GitHub-%25E8%2588%2587%25E6%25B8%25AC%25E8%25A9%25A6">部署至 GitHub 與測試</a><ul>
+<li><a href="#%25E6%25B8%25AC%25E8%25A9%25A6">測試</a></li>
+<li><a href="#%25E9%2583%25A8%25E5%25B1%25AC">部屬</a></li>
+</ul>
+</li>
+<li><a href="#%25E5%25AE%2589%25E8%25A3%259D%25E5%2585%25B6%25E4%25BB%2596%25E5%25A5%2597%25E4%25BB%25B6">安裝其他套件</a><ul>
+<li><a href="#%25E5%25AE%2589%25E8%25A3%259D%25E4%25B8%25BB%25E9%25A1%258C">安裝主題</a></li>
+<li><a href="#%25E5%25AE%2589%25E8%25A3%259D%25E7%259B%25AE%25E9%258C%2584%25E5%25A5%2597%25E4%25BB%25B6">安裝目錄套件</a></li>
+</ul>
+</li>
+<li><a href="#%25E5%258F%2583%25E8%2580%2583%25E9%2580%25A3%25E7%25B5%2590">參考連結</a><ul>
+<li><a href="#Hexo-%25E6%2595%2599%25E5%25AD%25B8">Hexo 教學</a></li>
+<li><a href="#%25E5%2585%25B6%25E4%25BB%2596%25E4%25B8%25BB%25E9%25A1%258C">其他主題</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="建立-Hexo-環境"><a href="#建立-Hexo-環境" class="headerlink" title="建立 Hexo 環境"></a>建立 Hexo 環境</h1><h2 id="建立-Github-repo"><a href="#建立-Github-repo" class="headerlink" title="建立 Github repo"></a>建立 Github repo</h2><p>建立一個repo，名稱必需叫做<code>username.github.io</code>，<code>username</code>是你github的帳號<br>這為github預設的名稱，可以避免很多麻煩<br>建好repo後，去Settings-&gt;Pages將publish site打開其他人才看的到</p>
+<h2 id="安裝相關軟體"><a href="#安裝相關軟體" class="headerlink" title="安裝相關軟體"></a>安裝相關軟體</h2><p>Hexo是依賴Node.js所開發的系統，而Git是在你要上傳至Github時會需要的軟體</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js</a> </li>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a></li>
+</ul>
+<h2 id="建立部落格"><a href="#建立部落格" class="headerlink" title="建立部落格"></a>建立部落格</h2><h3 id="1-安裝-Hexo"><a href="#1-安裝-Hexo" class="headerlink" title="1. 安裝 Hexo"></a>1. 安裝 Hexo</h3><pre><code class="bat">npm install -g hexo-cli
+</code></pre>
+<h3 id="2-初始化部落格"><a href="#2-初始化部落格" class="headerlink" title="2. 初始化部落格"></a>2. 初始化部落格</h3><pre><code class="bat">hexo init blog_name //創建並初始化部落格，blog_name=你的部落格名稱
+cd blog_name        //進入到部落格資料夾中
+npm install         //安裝 Hexo
+npm install hexo-deployer-git --save  //安裝 git 部署套件
+</code></pre>
+<h3 id="3-修改部落格資訊"><a href="#3-修改部落格資訊" class="headerlink" title="3. 修改部落格資訊"></a>3. 修改部落格資訊</h3><p>修改 <code>blog_name\_config.yml</code> 中6~12行的內容</p>
+<pre><code class="bat">title:      部落格名稱
+subtitle:   副標題
+description:網站描述
+keywords:   網站關鍵字(以逗號隔開)，方便 SEO 
+author:     作者名稱
+language:   您所使用的語言(zh-TW)
+timezone:   留空以使用系統時間
+</code></pre>
+<p>以及第16行的url改成自己網站的連結</p>
+<pre><code class="bat">url: https://username.github.io/
+</code></pre>
+<p>接著修改部屬資訊，在文件中找到<code>deploy:</code>的標籤<br>repo是你要部屬的位置，branch是要部屬的目標分支</p>
+<pre><code class="yml">deploy:
+  type: git
+  repo: https://github.com/username/username.github.io.git
+  branch: master
+</code></pre>
+<h1 id="部署至-GitHub-與測試"><a href="#部署至-GitHub-與測試" class="headerlink" title="部署至 GitHub 與測試"></a>部署至 GitHub 與測試</h1><h2 id="測試"><a href="#測試" class="headerlink" title="測試"></a>測試</h2><pre><code class="bat">hexo s  //local端測試，http://localhost:4000/，也可以輸入 hexo server
+</code></pre>
+<h2 id="部屬"><a href="#部屬" class="headerlink" title="部屬"></a>部屬</h2><pre><code class="bat">hexo cl //清除靜態檔案，也可以輸入 hexo clean
+hexo g  //建立靜態檔案，也可以輸入 hexo generate
+hexo d  //部署至 Github Pages，也可以輸入 hexo deploy
+</code></pre>
+<h1 id="安裝其他套件"><a href="#安裝其他套件" class="headerlink" title="安裝其他套件"></a>安裝其他套件</h1><h2 id="安裝主題"><a href="#安裝主題" class="headerlink" title="安裝主題"></a>安裝主題</h2><p>我用的主題是<a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX</a>，還蠻對我胃口的<br>也有一個原因是這套主題很貼心，我要的功能基本上都有了，很好用<br>安裝的部分請看站長的教學-&gt;<a target="_blank" rel="noopener" href="https://argvchs.github.io/2022/05/10/hexo-theme-particlex/">ParticleX 主題使用說明</a><br>網站內也有Giscus，模板也建立好了字要自己去設定好就好了</p>
+<h2 id="安裝目錄套件"><a href="#安裝目錄套件" class="headerlink" title="安裝目錄套件"></a>安裝目錄套件</h2><p>可以使用目錄功能-&gt;<a target="_blank" rel="noopener" href="https://www.npmjs.com/package/hexo-insert-toc">hexo-insert-toc</a></p>
+<h1 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h1><h2 id="Hexo-教學"><a href="#Hexo-教學" class="headerlink" title="Hexo 教學"></a>Hexo 教學</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/">Hexo官方文件</a></li>
+<li><a target="_blank" rel="noopener" href="https://ed521.github.io/2019/07/hexo-install/">[教學] 使用 GitHub Pages + Hexo 來架設個人部落格</a></li>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20190411/932826160/">架設 Hexo+GitHub</a></li>
+<li><a target="_blank" rel="noopener" href="https://giscus.app/zh-TW">Giscus.App</a></li>
+<li><a target="_blank" rel="noopener" href="https://guiblogs.com/hexo30-19/">Hexo 文章分類寫法</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.boshkuo.com/hexo-advanced-supplementary-4/">Hexo 進階補充系列</a></li>
+</ul>
+<h2 id="其他主題"><a href="#其他主題" class="headerlink" title="其他主題"></a>其他主題</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://shoka.lostyu.me/computer-science/note/theme-shoka-doc/">Yume Shoka</a></li>
+<li><a target="_blank" rel="noopener" href="https://argvchs.github.io/2022/05/10/hexo-theme-particlex/">ParticleX</a></li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            Copyright &copy;
+            2022 - 2023 LaLaKo&#39;s Lab
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;LaLaKo
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="paul90539/giscus-comments"
+    data-repo-id="R_kgDOJtVHKA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOJtVHKM4CXFau"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-TW"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+        
+    </body>
+</html>
