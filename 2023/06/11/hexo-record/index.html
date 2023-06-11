@@ -154,7 +154,7 @@
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2023/6/9
+            2023/6/11
         </span>
         
         <span class="category">
@@ -174,7 +174,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/Hexo/" style="color: #00a596">Hexo</a>
+                <a href="/tags/Hexo/" style="color: #ff7d73">Hexo</a>
             </span>
             
         </span>
@@ -226,7 +226,7 @@ npm install         //安裝 Hexo
 npm install hexo-deployer-git --save  //安裝 git 部署套件
 </code></pre>
 <h3 id="3-修改部落格資訊"><a href="#3-修改部落格資訊" class="headerlink" title="3. 修改部落格資訊"></a>3. 修改部落格資訊</h3><p>修改 <code>blog_name\_config.yml</code> 中6~12行的內容</p>
-<pre><code class="bat">title:      部落格名稱
+<pre><code class="yml">title:      部落格名稱
 subtitle:   副標題
 description:網站描述
 keywords:   網站關鍵字(以逗號隔開)，方便 SEO 
@@ -235,7 +235,7 @@ language:   您所使用的語言(zh-TW)
 timezone:   留空以使用系統時間
 </code></pre>
 <p>以及第16行的url改成自己網站的連結</p>
-<pre><code class="bat">url: https://username.github.io/
+<pre><code class="yml">url: https://username.github.io/
 </code></pre>
 <p>接著修改部屬資訊，在文件中找到<code>deploy:</code>的標籤<br>repo是你要部屬的位置，branch是要部屬的目標分支</p>
 <pre><code class="yml">deploy:
