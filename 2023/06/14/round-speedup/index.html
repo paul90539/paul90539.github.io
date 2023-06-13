@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+        <meta charset="utf-8" />
+        <title>math.h的round加速探討 | LaLaKo&#39;s Lab</title>
+        <meta name="author" content="LaLaKo" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="C,C++,演算法,影像處理" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>載入過慢請開啟快取 瀏覽器預設為開啟</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>LALAKO&#39;S LAB</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;LALAKO&#39;S LAB</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>math.h的round加速探討</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/6/14
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E5%8A%A0%E9%80%9F/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                加速
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/C/" style="color: #03a9f4">C</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/math/" style="color: #00a596">math</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/speedup/" style="color: #00bcd4">speedup</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>這裡只探討C的部分，不討論C++的std庫<br>就算兩者有相同的方法，但實作方式可能有所不同，不可一併而論<br>避免期待落空，先說加速後的方法其值域無法完全覆蓋原方法</p>
+<span id="more"></span>
+
+<h1 id="目錄"><a href="#目錄" class="headerlink" title="目錄"></a>目錄</h1><!-- toc -->
+
+<ul>
+<li><a href="#%25E6%25B8%25AC%25E8%25A9%25A6%25E7%2592%25B0%25E5%25A2%2583">測試環境</a></li>
+<li><a href="#%25E5%25AE%25A3%25E5%25B0%258E">宣導</a></li>
+<li><a href="#%25E5%258A%25A0%25E9%2580%259F%25E6%2596%25B9%25E6%25B3%2595">加速方法</a></li>
+<li><a href="#math.h-round%25E7%259A%2584%25E8%25A7%2580%25E5%25AF%259F%25E8%2588%2587%25E7%258C%259C%25E6%2583%25B3">math.h round的觀察與猜想</a></li>
+<li><a href="#%25E6%25B8%25AC%25E8%25A9%25A6%25E7%25B5%2590%25E6%259E%259C">測試結果</a><ul>
+<li><a href="#%25E6%25B8%25AC%25E8%25A9%25A6%25E7%25A8%258B%25E5%25BC%258F%25E7%25A2%25BC">測試程式碼</a></li>
+<li><a href="#%25E6%25B8%25AC%25E8%25A9%25A6%25E7%25B5%2590%25E6%259E%259C">測試結果</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1 id="測試環境"><a href="#測試環境" class="headerlink" title="測試環境"></a>測試環境</h1><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>敘述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OS</td>
+<td>Windows11</td>
+</tr>
+<tr>
+<td>IDE</td>
+<td>Visual Studio 2022</td>
+</tr>
+<tr>
+<td>Lang.</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Opt.</td>
+<td>Release Mode</td>
+</tr>
+</tbody></table>
+<h1 id="宣導"><a href="#宣導" class="headerlink" title="宣導"></a>宣導</h1><p>首先，先宣導一下，<font color="#D00"><strong>不要去質疑math.h效率</strong></font>，<br><code>math.h</code>他是直接去呼叫指令集去做運算的，多數方法都不會比他快<br>但為什麼這篇會說還有可加速的餘地呢<br>因為<code>math.h</code>他所考量的是比較全面的結果<br>而我們的應用通常是不需要那麼廣的<br>因此在剪枝後速度才能快於<code>math.h</code></p>
+<h1 id="加速方法"><a href="#加速方法" class="headerlink" title="加速方法"></a>加速方法</h1><p><code>round</code>就是做四捨五入<br>而多數應用都會是在<code>round</code>做完之後轉成<code>int</code><br>因此我將加速方法限制使用的情境為</p>
+<ul>
+<li>輸入的值域只能在<code>int</code>的範圍，輸入值為浮點數</li>
+<li>輸出的型態限制為<code>int</code></li>
+</ul>
+<p>那就能得到加速手法如下</p>
+<pre><code class="C">#define ROUND_FAST(VAL) (int)(VAL+0.5*((VAL&gt;0)-(VAL&lt;0))) 
+</code></pre>
+<p>簡單來說就是利用浮點數轉型成正整數會無條件捨去小數點的特性<br>當浮點數是正數則加<code>0.5</code>，反之則減<code>0.5</code><br>加<code>0.5</code>就是說如果原本的小數點部分有大於<code>0.5</code>就會進位<br>沒有的話就算加了<code>0.5</code>，在轉型的時候也會被捨去<br>至於判斷要加或減是利用<code>&gt;</code>跟<code>&lt;</code>運算子就能解決<br>這樣在設定的限制條件內，這個加速方法是能正確運作的</p>
+<h1 id="math-h-round的觀察與猜想"><a href="#math-h-round的觀察與猜想" class="headerlink" title="math.h round的觀察與猜想"></a>math.h round的觀察與猜想</h1><p><code>math.h</code>的<code>round</code>他所追求的是輸入與輸出的值域都能維持在<code>double</code>內<br>不利用轉型做四捨五入這是一件非常困難的事<br>因為要真實面對<code>double</code>他<code>IEEE數值格式</code><br>然後再去找規則推導成整數，想想就怕</p>
+<p>這裡我們問問強大線上編譯器-&gt;<a target="_blank" rel="noopener" href="https://godbolt.org/">Compiler Explorer</a><br>看他將<code>round</code>轉成組語會出現什麼</p>
+<ul>
+<li>目標函數</li>
+</ul>
+<pre><code class="C">#include &lt;math.h&gt;
+int my_round(double val) &#123;
+    return round(val);
+&#125;
+</code></pre>
+<ul>
+<li>x64 msvc v19.latest -O2 result</li>
+</ul>
+<pre><code class="asm">val$ = 48
+int my_round(double) PROC          ; my_round, COMDAT
+$LN4:
+        sub     rsp, 40            ; 00000028H
+        call    round ;&lt;-this
+        cvttsd2si eax, xmm0
+        add     rsp, 40            ; 00000028H
+        ret     0
+int my_round(double) ENDP          ; my_round
+</code></pre>
+<ul>
+<li>ARM64 gcc 13.1.0 -O2 result</li>
+</ul>
+<pre><code class="asm">my_round(double):
+        fcvtas  w0, d0 ;&lt;-this
+        ret
+</code></pre>
+<p>可以看到<code>msvc</code>跟<code>arm</code>兩個都沒辦法用簡單指令集去完成<code>round</code><br>這個浮點數運算，是真的不簡單</p>
+<h1 id="測試結果"><a href="#測試結果" class="headerlink" title="測試結果"></a>測試結果</h1><p>跑個一百萬次測試時間差異<br>統計時間用<code>windows</code>內建的方法<br>測試的值域範圍不會超過<code>int</code></p>
+<h2 id="測試程式碼"><a href="#測試程式碼" class="headerlink" title="測試程式碼"></a>測試程式碼</h2><pre><code class="C">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+#include &lt;windows.h&gt; // for timer
+
+// ROUND加速方法
+#define ROUND_FAST(VAL) (int)(VAL+0.5*((VAL&gt;0)-(VAL&lt;0))) 
+
+#define ARRAY_SIZE 1000000   // 測試量
+double data[ARRAY_SIZE];    // 量太大時需要放全域,不然stack會爆
+int result_fast[ARRAY_SIZE];// 我的計算結果
+int result_math[ARRAY_SIZE];// math.h的計算結果
+
+// ROUND加速方法計算
+void fast_round_test( double* arr, int* result, int nums ) &#123;
+    for(int i = 0; i &lt; nums; i++) &#123;
+        result[i] = ROUND_FAST(arr[i]);
+    &#125;
+&#125;
+
+// math.h的方法計算
+void math_round_test( double* arr, int* result, int nums ) &#123;
+    for(int i = 0; i &lt; nums; i++) &#123;
+        result[i] = lround(arr[i]); // lround回傳值是long，用round可能更久
+    &#125;
+&#125;
+
+int main( void ) &#123;
+
+    LARGE_INTEGER time_freq=&#123;0&#125;;
+    LARGE_INTEGER time_start=&#123;0&#125;, time_end=&#123;0&#125;;
+    QueryPerformanceFrequency(&amp;time_freq);
+    double time_freq_inv = 1000.0 / (double)time_freq.QuadPart;
+    double time_slot[2] = &#123; 0.0, 0.0 &#125;;
+
+    // 生成正負浮點數測試數據
+    for(int i = 0; i &lt; ARRAY_SIZE; i++) data[i] = ((double)i - ARRAY_SIZE * 0.5) * 0.01;
+
+    // 計算fast round時間
+    QueryPerformanceCounter(&amp;time_start);
+    fast_round_test( data, result_fast, ARRAY_SIZE );
+    QueryPerformanceCounter(&amp;time_end);
+    time_slot[0] = (time_end.QuadPart - time_start.QuadPart) * time_freq_inv;
+
+    // 計算math.h round時間
+    QueryPerformanceCounter(&amp;time_start);
+    math_round_test( data, result_math, ARRAY_SIZE );
+    QueryPerformanceCounter(&amp;time_end);
+    time_slot[1] = (time_end.QuadPart - time_start.QuadPart) * time_freq_inv;
+
+    // 計算結果差值
+    double diff = 0.0;
+    for(int ie = 0; ie &lt; ARRAY_SIZE; ie++) diff += fabs(result_math[ie] - result_fast[ie]);
+
+    printf(&quot;  fast round time: %lf ms\n&quot;, time_slot[0]);
+    printf(&quot;origin round time: %lf ms\n&quot;, time_slot[1]);
+    printf(&quot;  diff count: %lf\n&quot;, diff);
+    printf(&quot;   per error: %.4lf%%\n&quot;, (diff / ARRAY_SIZE)*100.0);
+
+    return 0;
+&#125;
+</code></pre>
+<h2 id="測試結果-1"><a href="#測試結果-1" class="headerlink" title="測試結果"></a>測試結果</h2><pre><code class="json">  fast round time: 3.747400 ms
+origin round time: 17.948000 ms
+  diff count: 0.000000
+   per error: 0.0000%
+</code></pre>
+<p>快個<code>4.8</code>倍左右，不錯吧<br>但如果今天用的是高階處理器，這都是小時間啦(X<br>跑了一百萬次也用不到<code>0.2</code>秒，說實在真的很快，有省跟沒省是差不多的<br>但如果用的是低階的，這絕對是一個值得參考的方法</p>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            Copyright &copy;
+            2022 - 2023 LaLaKo&#39;s Lab
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;LaLaKo
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="paul90539/giscus-comments"
+    data-repo-id="R_kgDOJtVHKA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOJtVHKM4CXFau"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-TW"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+        
+    </body>
+</html>
