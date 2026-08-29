@@ -9,18 +9,18 @@
         <meta name="keywords" content="C,C++,演算法,影像處理,演算法加速,數學" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
         <link rel="icon" href="/images/favicon.png" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <link rel="stylesheet" href="/css/fonts.min.css" />
 <script> const mixins = {}; </script>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <link
     rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css"
 />
 <script src="/js/lib/highlight.js"></script>
 
@@ -81,6 +81,11 @@
             <span>&ensp;Tags</span>
         </a>
         
+        <a href="/calendar">
+            <i class="fa-solid fa-calendar-days fa-fw"></i>
+            <span>&ensp;Calendar</span>
+        </a>
+        
     </div>
     <div id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
@@ -132,6 +137,15 @@
                             <i class="fa-solid fa-tags fa-fw"></i>
                         </div>
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <a href="/calendar">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-calendar-days fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Calendar</div>
                     </div>
                 </a>
                 
