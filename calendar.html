@@ -20,6 +20,7 @@
       --google-blue-glow: rgba(66, 133, 244, 0.35);
       --secondary-accent: #ffa502;
       --highlight-blue: #2ed573;
+      --sale-border-color: #ff3b30;
       
       --text-main: #f1f3f4;
       --text-muted: #9aa0a6;
@@ -96,7 +97,7 @@
     .gcal-month-dropdown {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       font-family: var(--font-heading);
       font-size: 1.35rem;
       font-weight: 800;
@@ -105,9 +106,15 @@
       user-select: none;
     }
 
-    .gcal-month-dropdown svg {
+    .ver-tag {
+      font-size: 0.7rem;
+      background: #252a34;
+      border: 1px solid var(--border-color);
       color: var(--text-muted);
-      transition: transform 0.2s ease;
+      padding: 1px 6px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-weight: 700;
     }
 
     .gcal-right-group {
@@ -180,6 +187,38 @@
       box-shadow: 0 0 10px var(--google-blue-glow);
     }
 
+    /* Legend / Hint Bar */
+    .legend-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .legend-box-sale {
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--sale-border-color);
+      border-radius: 3px;
+      background: rgba(255, 59, 48, 0.2);
+    }
+
+    .legend-box-event {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      background: #b7e1cd;
+    }
+
     /* Platform & Filter Bar */
     .filter-bar {
       display: flex;
@@ -224,9 +263,10 @@
     }
 
     .filter-chip.active-sale {
-      background: var(--secondary-accent);
-      color: #000;
-      border-color: var(--secondary-accent);
+      background: rgba(255, 59, 48, 0.2);
+      color: #ff6b6b;
+      border-color: var(--sale-border-color);
+      font-weight: 700;
     }
 
     /* Search & Action Box */
@@ -403,21 +443,27 @@
       box-shadow: 0 0 8px var(--google-blue-glow);
     }
 
-    /* Single-Line Google Calendar Event Chip */
+    /* 
+      Single-Line Event Chip
+      - No ellipsis (...), text clips cleanly to fit maximum characters
+      - Distinct red/coral border to indicate Ticket Sale Events
+    */
     .gcal-event-chip {
       height: 18px;
       line-height: 18px;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 0 4px;
+      letter-spacing: -0.2px;
+      padding: 0 3px;
       border-radius: 3px;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
+      text-overflow: clip; /* Clean cut-off without wasting 3-4 chars on '...' */
       cursor: pointer;
       display: block;
-      margin-bottom: 1px;
-      transition: transform 0.1s ease, filter 0.1s ease;
+      margin-bottom: 2px;
+      border: 1.5px solid transparent;
+      transition: transform 0.1s ease;
     }
 
     .gcal-event-chip:hover {
@@ -425,20 +471,10 @@
       filter: brightness(1.1);
     }
 
-    .gcal-event-chip.kind-sale {
-      background: #ff6b6b !important;
-      color: #ffffff !important;
-    }
-
-    /* More Indicator (•••) */
-    .gcal-more-dots {
-      font-size: 9px;
-      font-weight: 800;
-      color: var(--text-muted);
-      text-align: center;
-      line-height: 12px;
-      padding: 1px 0;
-      letter-spacing: 1px;
+    /* Sale Event: Indicated with thick red border instead of emoji */
+    .gcal-event-chip.is-sale-event {
+      border: 2px solid var(--sale-border-color) !important;
+      box-shadow: 0 0 4px rgba(255, 59, 48, 0.4);
     }
 
     /* =========================================================
@@ -475,16 +511,6 @@
       font-size: 1.05rem;
       font-weight: 800;
       color: #ffffff;
-    }
-
-    .agenda-month-badge {
-      background: rgba(66, 133, 244, 0.15);
-      color: #8ab4f8;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-family: var(--font-mono);
-      font-weight: 700;
     }
 
     .agenda-day-card {
@@ -550,6 +576,10 @@
       gap: 4px;
     }
 
+    .agenda-event-item.is-sale-item {
+      border-left-color: var(--sale-border-color) !important;
+    }
+
     .agenda-event-top {
       display: flex;
       align-items: center;
@@ -574,14 +604,6 @@
       padding: 8px 10px;
       border-bottom: 1px solid var(--border-subtle);
       text-align: left;
-    }
-
-    .tour-card {
-      background: #18191e;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      margin-bottom: 10px;
     }
 
     /* Modal / Bottom Sheet */
@@ -709,6 +731,7 @@
         </button>
         <div class="gcal-month-dropdown" id="monthDropdownTitle">
           <span id="gcalMainMonthTitle">2026年 8月</span>
+          <span class="ver-tag">v1.1.2</span>
         </div>
       </div>
       <div class="gcal-right-group">
@@ -724,6 +747,16 @@
     <!-- Google Calendar Horizontal Month Pills Bar -->
     <div class="gcal-month-pills-bar" id="monthPillsBar"></div>
 
+    <!-- Legend Bar: Border color indicates sale -->
+    <div class="legend-bar">
+      <span class="legend-item">
+        <span class="legend-box-event"></span> 演出活動
+      </span>
+      <span class="legend-item">
+        <span class="legend-box-sale"></span> 紅框：售票開賣
+      </span>
+    </div>
+
     <!-- Platform Filter Bar -->
     <div class="filter-bar" id="platformFilterBar">
       <button class="filter-chip active" data-source="all">🌟 全部 (425)</button>
@@ -734,7 +767,7 @@
       <button class="filter-chip" data-source="ticketplus">🔵 遠大</button>
       <button class="filter-chip" data-source="ibon">🌸 ibon</button>
       <button class="filter-chip" data-source="custom">🟡 自訂</button>
-      <button class="filter-chip" id="saleFilterBtn" data-kind="sale">🔥 僅看開賣</button>
+      <button class="filter-chip" id="saleFilterBtn" data-kind="sale">紅框：僅看開賣</button>
     </div>
 
     <!-- Search Box -->
@@ -11947,7 +11980,7 @@
       });
     }
 
-    /* 2. Render Google Calendar Month Grid (Matching S__32866309.jpg) */
+    /* 2. Render Google Calendar Month Grid (No '...', clean text clip, border-color sale indicator) */
     function renderMonthGrid() {
       const year = currentCalDate.getFullYear();
       const month = currentCalDate.getMonth();
@@ -11998,29 +12031,22 @@
         });
 
         let chipsHtml = '';
-        const maxChips = 4;
-        const displayList = allDayEvents.slice(0, maxChips);
-
-        displayList.forEach(e => {
+        allDayEvents.forEach(e => {
           const isSale = e._isSale;
-          const bg = isSale ? '#ff6b6b' : (e.chip_bg || '#fce588');
-          const color = isSale ? '#ffffff' : (e.chip_text || '#1f1f1f');
-          const prefix = isSale ? '🔥 ' : '';
-          const chipTitle = prefix + e.name;
+          const bg = e.chip_bg || '#fce588';
+          const color = e.chip_text || '#1f1f1f';
+          const chipTitle = e.name; // Pure name, no flame icon
+          const saleClass = isSale ? 'is-sale-event' : '';
 
           chipsHtml += `
-            <div class="gcal-event-chip ${isSale ? 'kind-sale' : ''}" 
+            <div class="gcal-event-chip ${saleClass}" 
                  style="background: ${bg}; color: ${color};" 
-                 title="${e.name}"
+                 title="${e.name} (${isSale ? '售票開賣' : '演出'})"
                  onclick="event.stopPropagation(); openModal(${e.id})">
               ${chipTitle}
             </div>
           `;
         });
-
-        if (allDayEvents.length > maxChips) {
-          chipsHtml += `<div class="gcal-more-dots">•••</div>`;
-        }
 
         cell.innerHTML = `
           <div class="gcal-date-header">
@@ -12087,10 +12113,10 @@
           dayList.forEach(e => {
             const isSale = e.sale_date === dKey;
             eventsHtml += `
-              <div class="agenda-event-item" style="border-left-color: ${e.source_color};" onclick="openModal(${e.id})">
+              <div class="agenda-event-item ${isSale ? 'is-sale-item' : ''}" style="border-left-color: ${isSale ? 'var(--sale-border-color)' : e.source_color};" onclick="openModal(${e.id})">
                 <div class="agenda-event-top">
                   <span style="font-size:0.75rem; color:${e.source_color}; font-weight:700;">${e.source_icon} ${e.source_name}</span>
-                  <span style="font-size:0.75rem; font-family:var(--font-mono); color:var(--text-muted);">${isSale ? '🔥 開賣: ' + e.sale_time : '🕒 演出: ' + (e.time_str || e.time)}</span>
+                  <span style="font-size:0.75rem; font-family:var(--font-mono); color:${isSale ? 'var(--sale-border-color)' : 'var(--text-muted)'};">${isSale ? '售票開賣: ' + e.sale_time : '演出時間: ' + (e.time_str || e.time)}</span>
                 </div>
                 <div class="agenda-event-title">${e.name}</div>
               </div>
@@ -12178,7 +12204,8 @@
         item.style.background = '#14161d';
         item.style.padding = '10px';
         item.style.borderRadius = '6px';
-        item.style.borderLeft = `4px solid ${isSale ? '#ff6b6b' : e.source_color}`;
+        item.style.border = isSale ? '2px solid var(--sale-border-color)' : `1px solid var(--border-color)`;
+        item.style.borderLeft = `5px solid ${isSale ? 'var(--sale-border-color)' : e.source_color}`;
         item.style.display = 'flex';
         item.style.justifyContent = 'space-between';
         item.style.alignItems = 'center';
@@ -12186,8 +12213,8 @@
 
         item.innerHTML = `
           <div>
-            <div style="font-size:0.75rem; color:${isSale ? '#ff6b6b' : e.source_color}; font-weight:700;">
-              ${isSale ? '🔥 售票開賣: ' + (e.sale_time_str || e.sale_time) : e.source_icon + ' ' + e.source_name + ' • 演出: ' + (e.time_str || e.time)}
+            <div style="font-size:0.75rem; color:${isSale ? 'var(--sale-border-color)' : e.source_color}; font-weight:700;">
+              ${isSale ? '🔴 售票開賣: ' + (e.sale_time_str || e.sale_time) : e.source_icon + ' ' + e.source_name + ' • 演出: ' + (e.time_str || e.time)}
             </div>
             <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;">${e.name}</div>
           </div>
