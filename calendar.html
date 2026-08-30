@@ -9,22 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #121418;
-      --cal-bg: #1e1f24;
-      --card-bg: #1a1d24;
-      --border-color: #2e323b;
-      --border-subtle: #232730;
+      --bg-color: #0d0f14;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --border-subtle: #21262d;
       
       --primary-accent: #ff4757;
+      --primary-glow: rgba(255, 71, 87, 0.25);
       --google-blue: #4285f4;
       --google-blue-glow: rgba(66, 133, 244, 0.35);
       --secondary-accent: #ffa502;
       --highlight-blue: #2ed573;
-      --sale-border-color: #ff3b30;
+      --sale-border-color: #ff5252;
       
-      --text-main: #f1f3f4;
-      --text-muted: #9aa0a6;
-      --text-sub: #bdc1c6;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --text-sub: #c9d1d9;
       
       --font-heading: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif;
       --font-body: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -33,8 +33,8 @@
       --radius-sm: 4px;
       --radius-md: 8px;
       --radius-lg: 14px;
-      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
       --transition: all 0.18s ease;
     }
 
@@ -54,61 +54,419 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .app-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 12px 10px 80px;
+    /* Global Mode Switcher Banner */
+    .mode-switch-bar {
+      background: #161b22;
+      border-bottom: 1px solid var(--border-color);
+      padding: 6px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
     }
 
-    /* Top Google Calendar Navigation Header */
+    .mode-switch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #21262d;
+      border: 1px solid var(--border-color);
+      color: #58a6ff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mode-switch-btn:hover {
+      background: #30363d;
+      color: #fff;
+    }
+
+    /* =========================================================
+       A. DESKTOP LAYOUT (Cyberpunk Timetable Suite)
+    ========================================================= */
+    #desktopLayout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 20px 16px 80px;
+    }
+
+    .hero-header {
+      background: linear-gradient(135deg, rgba(22, 27, 34, 0.95), rgba(13, 15, 20, 0.98));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-accent), var(--secondary-accent));
+    }
+
+    .tour-tag-wrapper {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .badge-tour {
+      background: var(--primary-accent);
+      color: #ffffff;
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    .badge-ver {
+      background: #21262d;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      margin-left: auto;
+    }
+
+    .main-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 3.2vw, 2.2rem);
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 0.92rem;
+      color: var(--secondary-accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    /* Desktop Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .stat-card.highlight {
+      border-color: rgba(255, 71, 87, 0.3);
+      background: rgba(255, 71, 87, 0.05);
+    }
+
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .stat-card.highlight .stat-num {
+      color: var(--primary-accent);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Desktop Controls */
+    .desktop-nav-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+
+    .desktop-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: #11151c;
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .desktop-tab:hover {
+      background: #1c222c;
+      color: #fff;
+    }
+
+    .desktop-tab.active {
+      background: var(--primary-accent);
+      color: #ffffff;
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .desktop-toolbar {
+      background: #12161f;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-wrap-desktop {
+      position: relative;
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .search-wrap-desktop input {
+      width: 100%;
+      background: #090c10;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 8px 32px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .desktop-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      background: #1c222c;
+      color: var(--text-sub);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn:hover {
+      background: #28303d;
+      color: #fff;
+    }
+
+    .view-toggle-desktop {
+      display: inline-flex;
+      background: #090c10;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .view-btn-d {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .view-btn-d.active {
+      background: var(--card-bg);
+      color: #fff;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Desktop Month Calendar Grid */
+    .cal-desktop-wrapper {
+      background: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .cal-desktop-nav {
+      background: #161b22;
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .cal-desktop-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      background: #11151c;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .cal-weekday-col {
+      padding: 8px;
+      color: var(--text-muted);
+    }
+
+    .cal-weekday-col.sun { color: #ff5e6c; }
+    .cal-weekday-col.sat { color: #4285f4; }
+
+    .cal-desktop-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      background: var(--border-subtle);
+      gap: 1px;
+    }
+
+    .cal-d-cell {
+      background: #0f131a;
+      min-height: 110px;
+      padding: 6px 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: background 0.15s ease;
+    }
+
+    .cal-d-cell.is-today {
+      background: #16202e;
+    }
+
+    .cal-d-cell.other-month {
+      background: #0a0d12;
+      opacity: 0.35;
+    }
+
+    .cal-d-date {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cal-d-cell.is-today .cal-d-date span:first-child {
+      background: var(--primary-accent);
+      color: #fff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    .cal-d-item {
+      background: rgba(22, 27, 34, 0.95);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--primary-accent);
+      border-radius: 4px;
+      padding: 4px 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: var(--transition);
+    }
+
+    .cal-d-item:hover {
+      background: #21262d;
+      transform: translateY(-1px);
+    }
+
+    .cal-d-item.sale {
+      border-left-color: var(--secondary-accent) !important;
+      background: rgba(255, 165, 2, 0.08);
+    }
+
+    /* =========================================================
+       B. MOBILE LAYOUT (Google Calendar Mobile Replica)
+    ========================================================= */
+    #mobileLayout {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 10px 8px 70px;
+    }
+
     .gcal-top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 12px;
-      padding: 4px 2px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .gcal-left-group {
       display: flex;
       align-items: center;
-      gap: 12px;
-    }
-
-    .gcal-menu-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-main);
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-    }
-
-    .gcal-menu-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .gcal-month-dropdown {
-      display: flex;
-      align-items: center;
       gap: 8px;
+    }
+
+    .gcal-month-title {
       font-family: var(--font-heading);
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #ffffff;
-      cursor: pointer;
-      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .ver-tag {
       font-size: 0.65rem;
-      background: #252a34;
+      background: #21262d;
       border: 1px solid var(--border-color);
       color: var(--text-muted);
       padding: 1px 6px;
@@ -117,42 +475,28 @@
       font-weight: 700;
     }
 
-    .gcal-right-group {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     .gcal-btn-circle {
       background: transparent;
       border: 1px solid var(--border-color);
       color: var(--text-main);
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
       font-family: var(--font-mono);
       cursor: pointer;
-      transition: var(--transition);
     }
 
-    .gcal-btn-circle:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--google-blue);
-      color: var(--google-blue);
-    }
-
-    /* Google Calendar Horizontal Month Pills */
     .gcal-month-pills-bar {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
@@ -162,203 +506,100 @@
     }
 
     .gcal-month-pill {
-      background: #1a1d24;
+      background: #161b22;
       border: 1px solid var(--border-color);
       border-radius: 999px;
       color: var(--text-sub);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 4px 12px;
       cursor: pointer;
       white-space: nowrap;
-      transition: var(--transition);
       flex-shrink: 0;
-    }
-
-    .gcal-month-pill:hover {
-      background: #282d38;
-      color: #fff;
     }
 
     .gcal-month-pill.active {
       background: var(--google-blue);
       color: #ffffff;
       border-color: var(--google-blue);
-      box-shadow: 0 0 10px var(--google-blue-glow);
+      box-shadow: 0 0 8px var(--google-blue-glow);
     }
 
-    /* Legend / Hint Bar */
     .legend-bar {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-size: 0.76rem;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      flex-wrap: wrap;
-    }
-
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .legend-box-sale {
-      width: 14px;
-      height: 14px;
-      border: 2px solid var(--sale-border-color);
-      border-radius: 3px;
-      background: rgba(255, 59, 48, 0.2);
+      width: 12px;
+      height: 12px;
+      border: 1.5px solid var(--sale-border-color);
+      border-radius: 2px;
+      background: rgba(255, 82, 82, 0.2);
     }
 
     .legend-box-event {
-      width: 14px;
-      height: 14px;
-      border-radius: 3px;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
       background: #b7e1cd;
     }
 
-    /* Platform & Filter Bar */
-    .filter-bar {
+    .filter-bar-mobile {
       display: flex;
-      gap: 6px;
+      gap: 5px;
       overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
       scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
     }
 
-    .filter-bar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .filter-chip {
+    .filter-chip-m {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      padding: 5px 11px;
-      background: #181b22;
+      padding: 4px 9px;
+      background: #161b22;
       border: 1px solid var(--border-color);
       border-radius: 999px;
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
-      transition: var(--transition);
       flex-shrink: 0;
     }
 
-    .filter-chip:hover {
-      color: #fff;
-      border-color: #555c68;
-    }
-
-    .filter-chip.active {
+    .filter-chip-m.active {
       background: var(--primary-accent);
       color: #fff;
       border-color: var(--primary-accent);
     }
 
-    .filter-chip.active-sale {
-      background: rgba(255, 59, 48, 0.2);
-      color: #ff6b6b;
-      border-color: var(--sale-border-color);
-      font-weight: 700;
+    .search-box-m {
+      margin-bottom: 10px;
     }
 
-    /* Search & Action Box */
-    .search-box-row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .search-input-wrap {
-      position: relative;
-      flex: 1;
-    }
-
-    .search-input-wrap input {
+    .search-box-m input {
       width: 100%;
-      background: #1a1d24;
+      background: #161b22;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 8px 32px 8px 32px;
+      padding: 7px 12px;
       color: #fff;
-      font-size: 0.85rem;
-      font-family: inherit;
+      font-size: 0.8rem;
       outline: none;
     }
 
-    .search-input-wrap input:focus {
-      border-color: var(--google-blue);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 9px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .clear-search-btn {
-      position: absolute;
-      right: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-
-    .view-toggle {
-      display: inline-flex;
-      background: #1a1d24;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 2px;
-      gap: 2px;
-      flex-shrink: 0;
-    }
-
-    .view-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      transition: var(--transition);
-      white-space: nowrap;
-    }
-
-    .view-btn.active {
-      background: #2b313d;
-      color: #fff;
-    }
-
-    /* =========================================================
-       GOOGLE CALENDAR MOBILE MONTH GRID (Accurate Replica)
-    ========================================================= */
+    /* Mobile Month Grid */
     .gcal-month-wrapper {
-      background: var(--cal-bg);
+      background: #1e1f24;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
     }
 
     .gcal-weekdays-row {
@@ -367,12 +608,12 @@
       background: #18191d;
       border-bottom: 1px solid var(--border-color);
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
     }
 
     .gcal-weekday-item {
-      padding: 6px 2px;
+      padding: 5px 2px;
       color: var(--text-muted);
     }
 
@@ -388,45 +629,39 @@
 
     .gcal-day-cell {
       background: #18191e;
-      min-height: 95px;
-      padding: 4px 2px 2px;
+      min-height: 90px;
+      padding: 3px 2px 2px;
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 1.5px;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: background 0.12s ease;
-    }
-
-    .gcal-day-cell:hover {
-      background: #22252c;
     }
 
     .gcal-day-cell.other-month {
       background: #121316;
-      opacity: 0.4;
+      opacity: 0.35;
     }
 
     .gcal-day-cell.is-today {
       background: #1c222e;
     }
 
-    /* Day Number Header */
     .gcal-date-header {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
     }
 
     .gcal-date-number {
       font-family: var(--font-heading);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--text-sub);
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -440,14 +675,9 @@
       background: var(--google-blue);
       color: #ffffff !important;
       font-weight: 900;
-      box-shadow: 0 0 8px var(--google-blue-glow);
+      box-shadow: 0 0 6px var(--google-blue-glow);
     }
 
-    /* 
-      Single-Line Event Chip
-      - No ellipsis (...), text clips cleanly to fit maximum characters
-      - Distinct red/coral border to indicate Ticket Sale Events
-    */
     .gcal-event-chip {
       height: 16px;
       line-height: 16px;
@@ -458,142 +688,19 @@
       border-radius: 2px;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: clip; /* Clean cut-off without wasting 3-4 chars on '...' */
+      text-overflow: clip;
       cursor: pointer;
       display: block;
       margin-bottom: 1.5px;
       border: 1px solid transparent;
-      transition: transform 0.1s ease;
     }
 
-    .gcal-event-chip:hover {
-      transform: scale(1.02);
-      filter: brightness(1.1);
-    }
-
-    /* Sale Event: Indicated with soft 1.2px red/coral border */
     .gcal-event-chip.is-sale-event {
       border: 1.2px solid rgba(255, 82, 82, 0.9) !important;
       box-shadow: inset 0 0 0 0.5px rgba(255, 82, 82, 0.4);
     }
 
-    /* =========================================================
-       Schedule / Agenda View
-    ========================================================= */
-    .agenda-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .agenda-month-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .agenda-month-header {
-      background: #1a1d24;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--google-blue);
-      border-radius: var(--radius-sm);
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .agenda-month-title {
-      font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: #ffffff;
-    }
-
-    .agenda-day-card {
-      background: #18191e;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 10px;
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 10px;
-    }
-
-    .agenda-day-card.is-today {
-      border-color: rgba(66, 133, 244, 0.5);
-      background: rgba(66, 133, 244, 0.04);
-    }
-
-    .agenda-date-side {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      border-right: 1px solid var(--border-subtle);
-      padding-right: 8px;
-    }
-
-    .agenda-date-num {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: #ffffff;
-      line-height: 1;
-    }
-
-    .agenda-weekday-pill {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 4px;
-      border-radius: 4px;
-      margin-top: 3px;
-      text-align: center;
-    }
-
-    .agenda-weekday-pill.sat { color: #4285f4; }
-    .agenda-weekday-pill.sun { color: #ff5e6c; }
-    .agenda-weekday-pill.weekday { color: #9aa0a6; }
-
-    .agenda-events-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .agenda-event-item {
-      background: #1f232c;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--google-blue);
-      border-radius: var(--radius-sm);
-      padding: 8px 10px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .agenda-event-item.is-sale-item {
-      border-left-color: var(--sale-border-color) !important;
-    }
-
-    .agenda-event-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .agenda-event-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    /* Table & Cards View */
+    /* Common Agenda / Table / Modal */
     .timetable {
       width: 100%;
       border-collapse: collapse;
@@ -606,7 +713,6 @@
       text-align: left;
     }
 
-    /* Modal / Bottom Sheet */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -721,66 +827,159 @@
   </style>
 </head>
 <body>
-  <div class="app-container">
-    
-    <!-- Top Google Calendar Bar -->
+  
+  <!-- Global Top Bar: Manual Mode Switcher -->
+  <header class="mode-switch-bar">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-weight:700; color:#ffffff;">🎫 Event Timetable</span>
+      <span style="color:var(--text-muted);">|</span>
+      <span id="currentModeLabel" style="color:var(--text-muted);">📱 手機版視圖</span>
+    </div>
+    <button class="mode-switch-btn" id="toggleModeBtn">
+      <span>💻 切換至電腦版</span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       A. DESKTOP VIEW CONTAINER
+  ========================================================= -->
+  <div id="desktopLayout" style="display:none;">
+    <header class="hero-header">
+      <div class="tour-tag-wrapper">
+        <span class="badge badge-tour">TICKET TIMETABLE</span>
+        <span class="badge" style="background:rgba(255,165,2,0.15); color:var(--secondary-accent); border:1px solid rgba(255,165,2,0.3);">全平台演唱會追蹤</span>
+        <span class="badge badge-ver">v1.1.4</span>
+      </div>
+      <h1 class="main-title">全平台演唱會活動與售票行程表</h1>
+      <p class="subtitle">KKTIX / 拓元 / 寬宏 / 年代 / 遠大 / ibon / 自訂活動 智慧彙整</p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">423</div>
+          <div class="stat-label">總收錄活動</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7</div>
+          <div class="stat-label">售票平台</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="dStatUpcoming">0</div>
+          <div class="stat-label">近期開賣 (30天內)</div>
+        </div>
+        <div class="stat-card highlight">
+          <div class="stat-num" id="dStatNew">0</div>
+          <div class="stat-label">近 3 天新上架</div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="desktop-nav-bar" id="dPlatformBar">
+      <button class="desktop-tab active" data-source="all">🌟 全部活動</button>
+      <button class="desktop-tab" data-source="kktix">🟢 KKTIX</button>
+      <button class="desktop-tab" data-source="tixcraft">🟣 拓元</button>
+      <button class="desktop-tab" data-source="kham">🟠 寬宏</button>
+      <button class="desktop-tab" data-source="eraticket">🟤 年代</button>
+      <button class="desktop-tab" data-source="ticketplus">🔵 遠大</button>
+      <button class="desktop-tab" data-source="ibon">🌸 ibon</button>
+      <button class="desktop-tab" data-source="custom">🟡 自訂</button>
+    </nav>
+
+    <div class="desktop-toolbar">
+      <div class="search-wrap-desktop">
+        <input type="text" id="dSearchInput" placeholder="搜尋活動、歌手、會場...">
+      </div>
+      <div class="desktop-actions">
+        <a href="/" class="btn">🏠 首頁</a>
+        <button class="btn" id="dExportCsvBtn">💾 匯出 CSV</button>
+        <div class="view-toggle-desktop">
+          <button class="view-btn-d active" id="dViewCalBtn">📅 大月曆</button>
+          <button class="view-btn-d" id="dViewTableBtn">📋 表格</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Month Calendar -->
+    <div id="dCalContainer" class="cal-desktop-wrapper">
+      <div class="cal-desktop-nav">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <button class="btn" id="dPrevMonthBtn">◀</button>
+          <h2 id="dCalMonthTitle" style="font-size:1.15rem; font-weight:800; color:#fff;">2026年 8月</h2>
+          <button class="btn" id="dNextMonthBtn">▶</button>
+        </div>
+        <div id="dMonthPills" style="display:flex; gap:6px;"></div>
+      </div>
+      <div class="cal-desktop-weekdays">
+        <div class="cal-weekday-col sun">星期日</div>
+        <div class="cal-weekday-col">星期一</div>
+        <div class="cal-weekday-col">星期二</div>
+        <div class="cal-weekday-col">星期三</div>
+        <div class="cal-weekday-col">星期四</div>
+        <div class="cal-weekday-col">星期五</div>
+        <div class="cal-weekday-col sat">星期六</div>
+      </div>
+      <div class="cal-desktop-grid" id="dCalDaysGrid"></div>
+    </div>
+
+    <!-- Desktop Table View -->
+    <div id="dTableContainer" style="display:none; background:#0d1117; border:1px solid var(--border-color); border-radius:var(--radius-md); overflow-x:auto;">
+      <table class="timetable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>平台</th>
+            <th>活動名稱</th>
+            <th>演出日期</th>
+            <th>星期</th>
+            <th>售票開賣時間</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="dTimetableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       B. MOBILE VIEW CONTAINER (Google Calendar Mobile)
+  ========================================================= -->
+  <div id="mobileLayout" style="display:none;">
     <div class="gcal-top-bar">
       <div class="gcal-left-group">
-        <button class="gcal-menu-btn" id="gcalHomeBtn" title="返回首頁" onclick="window.location.href='/'">
-          🏠
-        </button>
-        <div class="gcal-month-dropdown" id="monthDropdownTitle">
-          <span id="gcalMainMonthTitle">2026年 8月</span>
-          <span class="ver-tag">v1.1.3</span>
+        <a href="/" style="text-decoration:none; font-size:1.2rem;">🏠</a>
+        <div class="gcal-month-title">
+          <span id="mMainMonthTitle">2026年 8月</span>
+          <span class="ver-tag">v1.1.4</span>
         </div>
       </div>
-      <div class="gcal-right-group">
-        <button class="gcal-btn-circle" id="jumpTodayBtn" title="跳至本月">今</button>
-        <div class="view-toggle">
-          <button class="view-btn active" id="calendarViewBtn">月</button>
-          <button class="view-btn" id="agendaViewBtn">行程</button>
-          <button class="view-btn" id="tableViewBtn">表</button>
-        </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <button class="gcal-btn-circle" id="mJumpTodayBtn">今</button>
       </div>
     </div>
 
-    <!-- Google Calendar Horizontal Month Pills Bar -->
-    <div class="gcal-month-pills-bar" id="monthPillsBar"></div>
+    <div class="gcal-month-pills-bar" id="mMonthPillsBar"></div>
 
-    <!-- Legend Bar: Border color indicates sale -->
     <div class="legend-bar">
-      <span class="legend-item">
-        <span class="legend-box-event"></span> 演出活動
-      </span>
-      <span class="legend-item">
-        <span class="legend-box-sale"></span> 紅框：售票開賣
-      </span>
+      <span style="display:inline-flex; align-items:center; gap:4px;"><span class="legend-box-event"></span> 演出</span>
+      <span style="display:inline-flex; align-items:center; gap:4px;"><span class="legend-box-sale"></span> 紅框：開賣</span>
     </div>
 
-    <!-- Platform Filter Bar -->
-    <div class="filter-bar" id="platformFilterBar">
-      <button class="filter-chip active" data-source="all">🌟 全部 (425)</button>
-      <button class="filter-chip" data-source="kktix">🟢 KKTIX</button>
-      <button class="filter-chip" data-source="tixcraft">🟣 拓元</button>
-      <button class="filter-chip" data-source="kham">🟠 寬宏</button>
-      <button class="filter-chip" data-source="eraticket">🟤 年代</button>
-      <button class="filter-chip" data-source="ticketplus">🔵 遠大</button>
-      <button class="filter-chip" data-source="ibon">🌸 ibon</button>
-      <button class="filter-chip" data-source="custom">🟡 自訂</button>
-      <button class="filter-chip" id="saleFilterBtn" data-kind="sale">紅框：僅看開賣</button>
+    <div class="filter-bar-mobile" id="mPlatformFilterBar">
+      <button class="filter-chip-m active" data-source="all">全部 (423)</button>
+      <button class="filter-chip-m" data-source="kktix">🟢 KKTIX</button>
+      <button class="filter-chip-m" data-source="tixcraft">🟣 拓元</button>
+      <button class="filter-chip-m" data-source="kham">🟠 寬宏</button>
+      <button class="filter-chip-m" data-source="eraticket">🟤 年代</button>
+      <button class="filter-chip-m" data-source="ticketplus">🔵 遠大</button>
+      <button class="filter-chip-m" data-source="ibon">🌸 ibon</button>
+      <button class="filter-chip-m" data-source="custom">🟡 自訂</button>
     </div>
 
-    <!-- Search Box -->
-    <div class="search-box-row">
-      <div class="search-input-wrap">
-        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="搜尋活動、歌手、會場..." autocomplete="off">
-        <button id="clearSearchBtn" class="clear-search-btn" style="display:none;">✕</button>
-      </div>
+    <div class="search-box-m">
+      <input type="text" id="mSearchInput" placeholder="🔍 搜尋活動、歌手、會場...">
     </div>
 
-    <!-- 1. Google Calendar Mobile Month Grid (Default) -->
-    <div class="gcal-month-wrapper" id="monthViewWrapper">
+    <!-- Mobile Month Grid -->
+    <div class="gcal-month-wrapper">
       <div class="gcal-weekdays-row">
         <div class="gcal-weekday-item sun">日</div>
         <div class="gcal-weekday-item">一</div>
@@ -790,61 +989,23 @@
         <div class="gcal-weekday-item">五</div>
         <div class="gcal-weekday-item sat">六</div>
       </div>
-      <div class="gcal-days-grid" id="gcalDaysGrid"></div>
+      <div class="gcal-days-grid" id="mDaysGrid"></div>
     </div>
-
-    <!-- 2. Agenda / Schedule View -->
-    <div class="agenda-container" id="agendaViewWrapper" style="display:none;">
-      <div id="agendaTimeline"></div>
-    </div>
-
-    <!-- 3. Table View -->
-    <div class="table-container" id="tableViewWrapper" style="display:none; background:#18191e; border:1px solid var(--border-color); border-radius:var(--radius-md); overflow-x:auto;">
-      <table class="timetable" id="mainTimetable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>平台</th>
-            <th>活動名稱</th>
-            <th>演出日期</th>
-            <th>售票開賣</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody id="timetableBody"></tbody>
-      </table>
-    </div>
-
   </div>
 
-  <!-- Event Detail Modal / Bottom Sheet -->
+  <!-- Event Modal -->
   <div class="modal-overlay" id="eventModal">
     <div class="modal-card">
       <div class="modal-header">
         <h2 id="modalTitle">活動詳情</h2>
         <button class="btn-close" id="modalCloseBtn">✕</button>
       </div>
-      <div class="modal-body" id="modalBodyContent">
-        <div class="modal-row">
-          <span class="modal-label">售票平台：</span>
-          <span class="modal-val" id="modalPlatform"></span>
-        </div>
-        <div class="modal-row">
-          <span class="modal-label">演出時間：</span>
-          <span class="modal-val" id="modalEventTime"></span>
-        </div>
-        <div class="modal-row">
-          <span class="modal-label">售票開賣：</span>
-          <span class="modal-val" id="modalSaleTime"></span>
-        </div>
-        <div class="modal-row">
-          <span class="modal-label">首次發現：</span>
-          <span class="modal-val" id="modalPubTime"></span>
-        </div>
-        <div class="modal-row">
-          <span class="modal-label">活動網址：</span>
-          <span class="modal-val" id="modalUrl"></span>
-        </div>
+      <div class="modal-body">
+        <div class="modal-row"><span class="modal-label">售票平台：</span><span class="modal-val" id="modalPlatform"></span></div>
+        <div class="modal-row"><span class="modal-label">演出時間：</span><span class="modal-val" id="modalEventTime"></span></div>
+        <div class="modal-row"><span class="modal-label">售票開賣：</span><span class="modal-val" id="modalSaleTime"></span></div>
+        <div class="modal-row"><span class="modal-label">首次發現：</span><span class="modal-val" id="modalPubTime"></span></div>
+        <div class="modal-row"><span class="modal-label">活動網址：</span><span class="modal-val" id="modalUrl"></span></div>
         <div class="modal-actions">
           <button class="btn-action" id="modalCopyBtn">複製資訊</button>
           <a href="#" class="btn-action primary" id="modalGoBtn" target="_blank">前往購票</a>
@@ -853,7 +1014,7 @@
     </div>
   </div>
 
-  <!-- Day Multiple Events Sheet -->
+  <!-- Day Sheet Modal -->
   <div class="modal-overlay" id="daySheetModal">
     <div class="modal-card">
       <div class="modal-header">
@@ -866,6 +1027,32 @@
 
   <script>
     const RAW_EVENTS = [
+  {
+    "id": 365,
+    "name": "【單買門票】XG世界巡迴演唱會 THE CORE 台北站 XG WORLD TOUR: THE CORE IN TAIPEI",
+    "time": "2026-05-03 00:00:00",
+    "date": "2026-05-03",
+    "year": "2026",
+    "month": "2026-05",
+    "day": "03",
+    "time_str": "00:00",
+    "weekday": "日",
+    "is_weekend": true,
+    "sale_time": "2026-04-28 22:00:00",
+    "sale_date": "2026-04-28",
+    "sale_month": "2026-04",
+    "sale_day": "28",
+    "sale_time_str": "22:00",
+    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P196NO67",
+    "published_time": "2026-04-24 07:05:31",
+    "pub_date": "2026-04-24",
+    "source_key": "kham",
+    "source_name": "寬宏",
+    "source_icon": "🟠",
+    "source_color": "#e67e22",
+    "chip_bg": "#f8c291",
+    "chip_text": "#3d1a04"
+  },
   {
     "id": 1,
     "name": "Evolov3 II Ranacimeto",
@@ -943,6 +1130,32 @@
     "source_color": "#2ecc71",
     "chip_bg": "#b7e1cd",
     "chip_text": "#0d2b15"
+  },
+  {
+    "id": 354,
+    "name": "【加開席次】Official髭男dism 2026 亞洲巡迴演唱會-台北站 OFFICIAL HIGE DANDISM ASIA TOUR 2026 - in TAIPEI",
+    "time": "2026-08-28 00:00:00",
+    "date": "2026-08-28",
+    "year": "2026",
+    "month": "2026-08",
+    "day": "28",
+    "time_str": "00:00",
+    "weekday": "五",
+    "is_weekend": false,
+    "sale_time": "2026-08-28 12:00:00",
+    "sale_date": "2026-08-28",
+    "sale_month": "2026-08",
+    "sale_day": "28",
+    "sale_time_str": "12:00",
+    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P1EWBRGI",
+    "published_time": "2026-08-28 07:01:31",
+    "pub_date": "2026-08-28",
+    "source_key": "kham",
+    "source_name": "寬宏",
+    "source_icon": "🟠",
+    "source_color": "#e67e22",
+    "chip_bg": "#f8c291",
+    "chip_text": "#3d1a04"
   },
   {
     "id": 3,
@@ -1127,85 +1340,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 300,
-    "name": "我們搖滾——無妄合作社十週年演唱會 (【高雄場】我們搖滾——無妄合作社十週年演唱會)",
-    "time": "2026-08-29 20:00:00",
-    "date": "2026-08-29",
-    "year": "2026",
-    "month": "2026-08",
-    "day": "29",
-    "time_str": "20:00",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "2026-07-13 20:00:00",
-    "sale_date": "2026-07-13",
-    "sale_month": "2026-07",
-    "sale_day": "13",
-    "sale_time_str": "20:00",
-    "link": "https://ticketplus.com.tw/activity/27556b3a4728bc77d96892108a15ab73",
-    "published_time": "2026-07-11 07:04:03",
-    "pub_date": "2026-07-11",
-    "source_key": "ticketplus",
-    "source_name": "遠大",
-    "source_icon": "🔵",
-    "source_color": "#3498db",
-    "chip_bg": "#c2e7ff",
-    "chip_text": "#042d3d"
-  },
-  {
-    "id": 352,
-    "name": "2026本色祭Summer Splash",
-    "time": "2026-08-29 00:00:00",
-    "date": "2026-08-29",
-    "year": "2026",
-    "month": "2026-08",
-    "day": "29",
-    "time_str": "00:00",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "2026-07-18 11:00:00",
-    "sale_date": "2026-07-18",
-    "sale_month": "2026-07",
-    "sale_day": "18",
-    "sale_time_str": "11:00",
-    "link": "https://tixcraft.com/activity/detail/26_splash",
-    "published_time": "2026-07-09 07:05:33",
-    "pub_date": "2026-07-09",
-    "source_key": "tixcraft",
-    "source_name": "拓元",
-    "source_icon": "🟣",
-    "source_color": "#9b59b6",
-    "chip_bg": "#d1a8e2",
-    "chip_text": "#2e0d3f"
-  },
-  {
-    "id": 353,
-    "name": "回聲樂團：靈魂的回聲專輯首演",
-    "time": "2026-08-29 00:00:00",
-    "date": "2026-08-29",
-    "year": "2026",
-    "month": "2026-08",
-    "day": "29",
-    "time_str": "00:00",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "2026-06-09 12:00:00",
-    "sale_date": "2026-06-09",
-    "sale_month": "2026-06",
-    "sale_day": "09",
-    "sale_time_str": "12:00",
-    "link": "https://tixcraft.com/activity/detail/26_echo",
-    "published_time": "2026-06-06 07:05:24",
-    "pub_date": "2026-06-06",
-    "source_key": "tixcraft",
-    "source_name": "拓元",
-    "source_icon": "🟣",
-    "source_color": "#9b59b6",
-    "chip_bg": "#d1a8e2",
-    "chip_text": "#2e0d3f"
-  },
-  {
-    "id": 390,
+    "id": 388,
     "name": "2026東海岸大地藝術節月光．海音樂會－澎湃的海",
     "time": "2026-08-29 17:00:00",
     "date": "2026-08-29",
@@ -1231,7 +1366,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 403,
+    "id": 401,
     "name": "YUA Birthday Fan Meeting 三上悠亞生日粉絲見面會",
     "time": "2026-08-29 14:00:00",
     "date": "2026-08-29",
@@ -1257,7 +1392,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 405,
+    "id": 403,
     "name": "2026 XLOV ASIA TOUR ＜Serving—X＞ IN TAIPEI",
     "time": "2026-08-29 18:00:00",
     "date": "2026-08-29",
@@ -1283,7 +1418,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 412,
+    "id": 410,
     "name": "2026 TRENDY TAIPEI 潮臺北—JAM JAM ASIA 亞洲音樂節",
     "time": "2026-08-29 11:30:00",
     "date": "2026-08-29",
@@ -1569,7 +1704,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 268,
+    "id": 269,
     "name": "OFFICIAL HIGE DANDISM 台北演唱會官方週邊商品 預約取貨 (OFFICIAL HIGE DANDISM 台北演唱會官方週邊商品 預約取貨 8/30場次)",
     "time": "2026-08-30 11:00:00",
     "date": "2026-08-30",
@@ -1595,7 +1730,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 272,
+    "id": 273,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei (《向流星許願的我們》Keep Wishing | Wishing Upon the Shooting Stars FAN MEETING in Taipei)",
     "time": "2026-08-30 16:30:00",
     "date": "2026-08-30",
@@ -1621,7 +1756,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 273,
+    "id": 274,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei・福利加購",
     "time": "2026-08-30 13:00:00",
     "date": "2026-08-30",
@@ -1647,7 +1782,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 297,
+    "id": 298,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei・SOUND CHECK加購",
     "time": "2026-08-30 15:30:00",
     "date": "2026-08-30",
@@ -1673,33 +1808,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 356,
-    "name": "【加開席次】Official髭男dism 2026 亞洲巡迴演唱會-台北站 OFFICIAL HIGE DANDISM ASIA TOUR 2026 - in TAIPEI",
-    "time": "2026-08-30 18:00:00",
-    "date": "2026-08-30",
-    "year": "2026",
-    "month": "2026-08",
-    "day": "30",
-    "time_str": "18:00",
-    "weekday": "日",
-    "is_weekend": true,
-    "sale_time": "2026-08-28 12:00:00",
-    "sale_date": "2026-08-28",
-    "sale_month": "2026-08",
-    "sale_day": "28",
-    "sale_time_str": "12:00",
-    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P1EWBRGI",
-    "published_time": "2026-08-28 07:01:31",
-    "pub_date": "2026-08-28",
-    "source_key": "kham",
-    "source_name": "寬宏",
-    "source_icon": "🟠",
-    "source_color": "#e67e22",
-    "chip_bg": "#f8c291",
-    "chip_text": "#3d1a04"
-  },
-  {
-    "id": 363,
+    "id": 361,
     "name": "【單買門票】Everybody YA-HO 雅好 FAN LIVE",
     "time": "2026-08-30 17:00:00",
     "date": "2026-08-30",
@@ -1725,7 +1834,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 368,
+    "id": 366,
     "name": "Official髭男dism 2026 亞洲巡迴演唱會-台北站 OFFICIAL HIGE DANDISM ASIA TOUR 2026 - in TAIPEI",
     "time": "2026-08-30 18:00:00",
     "date": "2026-08-30",
@@ -1751,7 +1860,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 371,
+    "id": 369,
     "name": "【翁倩玉 陽光般的60週年演唱會-時間之歌】",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
@@ -1829,7 +1938,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 262,
+    "id": 263,
     "name": "范安婷：城市裡的那些夢",
     "time": "2026-09-04 19:30:00",
     "date": "2026-09-04",
@@ -2193,7 +2302,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 263,
+    "id": 264,
     "name": "羊米人YUMMY MAN【飛天摩托車】演唱會",
     "time": "2026-09-05 19:30:00",
     "date": "2026-09-05",
@@ -2219,7 +2328,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 274,
+    "id": 275,
     "name": "NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
@@ -2245,7 +2354,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 275,
+    "id": 276,
     "name": "NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI (NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI（加場）)",
     "time": "2026-09-05 13:30:00",
     "date": "2026-09-05",
@@ -2272,32 +2381,6 @@
   },
   {
     "id": 348,
-    "name": "Atree夏樂祭｜《限量雙篇章套票》From Dawn to Dusk Pass",
-    "time": "2026-09-05 00:00:00",
-    "date": "2026-09-05",
-    "year": "2026",
-    "month": "2026-09",
-    "day": "05",
-    "time_str": "00:00",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "2026-07-17 12:00:00",
-    "sale_date": "2026-07-17",
-    "sale_month": "2026-07",
-    "sale_day": "17",
-    "sale_time_str": "12:00",
-    "link": "https://tixcraft.com/activity/detail/26_dawndusk",
-    "published_time": "2026-07-15 07:05:51",
-    "pub_date": "2026-07-15",
-    "source_key": "tixcraft",
-    "source_name": "拓元",
-    "source_icon": "🟣",
-    "source_color": "#9b59b6",
-    "chip_bg": "#d1a8e2",
-    "chip_text": "#2e0d3f"
-  },
-  {
-    "id": 349,
     "name": "Atree夏樂祭 Ⅱ：薄暮時分 THE DUSK：AFTERGLOW",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
@@ -2315,6 +2398,32 @@
     "link": "https://tixcraft.com/activity/detail/26_thedusk",
     "published_time": "2026-07-15 07:05:51",
     "pub_date": "2026-07-15",
+    "source_key": "tixcraft",
+    "source_name": "拓元",
+    "source_icon": "🟣",
+    "source_color": "#9b59b6",
+    "chip_bg": "#d1a8e2",
+    "chip_text": "#2e0d3f"
+  },
+  {
+    "id": 349,
+    "name": "ITZY 3RD WORLD TOUR ＜TUNNEL VISION＞ in TAIPEI",
+    "time": "2026-09-05 00:00:00",
+    "date": "2026-09-05",
+    "year": "2026",
+    "month": "2026-09",
+    "day": "05",
+    "time_str": "00:00",
+    "weekday": "六",
+    "is_weekend": true,
+    "sale_time": "2026-07-06 09:00:00",
+    "sale_date": "2026-07-06",
+    "sale_month": "2026-07",
+    "sale_day": "06",
+    "sale_time_str": "09:00",
+    "link": "https://tixcraft.com/activity/detail/26_itzytpe",
+    "published_time": "2026-06-29 07:05:29",
+    "pub_date": "2026-06-29",
     "source_key": "tixcraft",
     "source_name": "拓元",
     "source_icon": "🟣",
@@ -2350,7 +2459,7 @@
   },
   {
     "id": 351,
-    "name": "ITZY 3RD WORLD TOUR ＜TUNNEL VISION＞ in TAIPEI",
+    "name": "Atree夏樂祭｜《限量雙篇章套票》From Dawn to Dusk Pass",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2359,14 +2468,14 @@
     "time_str": "00:00",
     "weekday": "六",
     "is_weekend": true,
-    "sale_time": "2026-07-06 09:00:00",
-    "sale_date": "2026-07-06",
+    "sale_time": "2026-07-17 12:00:00",
+    "sale_date": "2026-07-17",
     "sale_month": "2026-07",
-    "sale_day": "06",
-    "sale_time_str": "09:00",
-    "link": "https://tixcraft.com/activity/detail/26_itzytpe",
-    "published_time": "2026-06-29 07:05:29",
-    "pub_date": "2026-06-29",
+    "sale_day": "17",
+    "sale_time_str": "12:00",
+    "link": "https://tixcraft.com/activity/detail/26_dawndusk",
+    "published_time": "2026-07-15 07:05:51",
+    "pub_date": "2026-07-15",
     "source_key": "tixcraft",
     "source_name": "拓元",
     "source_icon": "🟣",
@@ -2375,7 +2484,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 372,
+    "id": 370,
     "name": "w-inds. LIVE TOUR 2026 “GOLDEN SINGLES”(福利)",
     "time": "2026-09-05 17:00:00",
     "date": "2026-09-05",
@@ -2401,7 +2510,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 373,
+    "id": 371,
     "name": "w-inds. LIVE TOUR 2026 “GOLDEN SINGLES”",
     "time": "2026-09-05 17:00:00",
     "date": "2026-09-05",
@@ -2427,7 +2536,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 401,
+    "id": 399,
     "name": "U－KNOW PROJECT 26：SCENE＃1 in Taipei",
     "time": "2026-09-05 18:00:00",
     "date": "2026-09-05",
@@ -2453,7 +2562,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 410,
+    "id": 408,
     "name": "幽靈書店Ghost Bookstore / 4 Steps ‘Fore the Spiral 首度台北專場",
     "time": "2026-09-05 19:30:00",
     "date": "2026-09-05",
@@ -2661,7 +2770,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 288,
+    "id": 289,
     "name": "Dionela – The Promise Tour Live in Taipei",
     "time": "2026-09-06 19:30:00",
     "date": "2026-09-06",
@@ -2687,7 +2796,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 374,
+    "id": 372,
     "name": "KOTOKO LIVE TOUR 2026”The Bible2” in TAIPEI",
     "time": "2026-09-06 18:00:00",
     "date": "2026-09-06",
@@ -2713,7 +2822,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 394,
+    "id": 392,
     "name": "Enemies With Benefits 1st Fan meeting in Taipei",
     "time": "2026-09-06 15:30:00",
     "date": "2026-09-06",
@@ -2765,7 +2874,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 357,
+    "id": 355,
     "name": "2026玖壹壹南北貳路音樂節",
     "time": "2026-09-07 00:00:00",
     "date": "2026-09-07",
@@ -2869,7 +2978,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 270,
+    "id": 271,
     "name": "UNIDOTS/mizuki瑞葵 LIVE 2026 in TAIPEI",
     "time": "2026-09-11 20:00:00",
     "date": "2026-09-11",
@@ -2921,7 +3030,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 391,
+    "id": 389,
     "name": "日本夢幻數搖水中Spica  2026年專場",
     "time": "2026-09-11 20:00:00",
     "date": "2026-09-11",
@@ -3155,7 +3264,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 383,
+    "id": 381,
     "name": "2026 蔡琴 不要告別 巡迴演唱會〔台北返場〕",
     "time": "2026-09-12 19:30:00",
     "date": "2026-09-12",
@@ -3181,7 +3290,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 387,
+    "id": 385,
     "name": "2026 FTISLAND TOUR 0 — XIX — III ‘FaTe’ in KAOHSIUNG",
     "time": "2026-09-12 17:00:00",
     "date": "2026-09-12",
@@ -3233,7 +3342,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 389,
+    "id": 387,
     "name": "2026 ONF FANMEETING 〔Door To TAIPEI〕",
     "time": "2026-09-13 13:00:00",
     "date": "2026-09-13",
@@ -3259,7 +3368,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 413,
+    "id": 411,
     "name": "ヨルシカ LIVE TOUR 2026「一人称」@千葉",
     "time": "2026-09-15 12:00",
     "date": "2026-09-15",
@@ -3389,7 +3498,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 414,
+    "id": 412,
     "name": "ヨルシカ LIVE TOUR 2026「一人称」@千葉",
     "time": "2026-09-16 12:00",
     "date": "2026-09-16",
@@ -3493,7 +3602,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 284,
+    "id": 285,
     "name": "呂杰達x鄭翔予x鍾建暉《酒醒吧！新生代》",
     "time": "2026-09-17 19:30:00",
     "date": "2026-09-17",
@@ -3597,7 +3706,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 296,
+    "id": 297,
     "name": "再次相認 Remembering Each Other－巴賴Balai 久違的台北女巫專演",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
@@ -3623,7 +3732,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 365,
+    "id": 363,
     "name": "蕭煌奇2026〈BRAVO〉演唱會 台北小巨蛋",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
@@ -3649,7 +3758,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 393,
+    "id": 391,
     "name": "歐陸暗黑奇女子Molly Nilsson Live in Taipei 2026",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
@@ -3909,7 +4018,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 281,
+    "id": 282,
     "name": "房潔恩James fong 《雲朵觀察家》ft.杏仁茶Victoria",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
@@ -4091,7 +4200,33 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 395,
+    "id": 360,
+    "name": "【10/25場次】MUSIC EXPO LIVE 2026 in TAIPEI",
+    "time": "2026-09-19 00:00:00",
+    "date": "2026-09-19",
+    "year": "2026",
+    "month": "2026-09",
+    "day": "19",
+    "time_str": "00:00",
+    "weekday": "六",
+    "is_weekend": true,
+    "sale_time": "2026-07-28 12:00:00",
+    "sale_date": "2026-07-28",
+    "sale_month": "2026-07",
+    "sale_day": "28",
+    "sale_time_str": "12:00",
+    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P1CXXK2O",
+    "published_time": "2026-07-23 07:05:30",
+    "pub_date": "2026-07-23",
+    "source_key": "kham",
+    "source_name": "寬宏",
+    "source_icon": "🟠",
+    "source_color": "#e67e22",
+    "chip_bg": "#f8c291",
+    "chip_text": "#3d1a04"
+  },
+  {
+    "id": 393,
     "name": "FayeAtom 1st fan meeting in Kaohsiung",
     "time": "2026-09-19 15:30:00",
     "date": "2026-09-19",
@@ -4117,7 +4252,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 411,
+    "id": 409,
     "name": "2026 N.Flying LIVE ‘＆CON5：into REM’ IN TAIPEI",
     "time": "2026-09-19 17:00:00",
     "date": "2026-09-19",
@@ -4273,7 +4408,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 366,
+    "id": 364,
     "name": "【BAND-MAID WORLD TOUR 2026 in Taipei】",
     "time": "2026-09-20 18:00:00",
     "date": "2026-09-20",
@@ -4507,7 +4642,33 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 298,
+    "id": 262,
+    "name": "我們搖滾——無妄合作社十週年演唱會 (【台中場】我們搖滾——無妄合作社十週年演唱會)",
+    "time": "2026-09-25 19:30:00",
+    "date": "2026-09-25",
+    "year": "2026",
+    "month": "2026-09",
+    "day": "25",
+    "time_str": "19:30",
+    "weekday": "五",
+    "is_weekend": false,
+    "sale_time": "2026-09-01 20:00:00",
+    "sale_date": "2026-09-01",
+    "sale_month": "2026-09",
+    "sale_day": "01",
+    "sale_time_str": "20:00",
+    "link": "https://ticketplus.com.tw/activity/27556b3a4728bc77d96892108a15ab73",
+    "published_time": "2026-07-11 07:04:03",
+    "pub_date": "2026-07-11",
+    "source_key": "ticketplus",
+    "source_name": "遠大",
+    "source_icon": "🔵",
+    "source_color": "#3498db",
+    "chip_bg": "#c2e7ff",
+    "chip_text": "#042d3d"
+  },
+  {
+    "id": 299,
     "name": "2026臺北爵士音樂節 感爵夜現場 Jazz Right Here｜李芳旭三重奏",
     "time": "2026-09-25 19:30:00",
     "date": "2026-09-25",
@@ -4533,7 +4694,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 404,
+    "id": 402,
     "name": "2026 ByeonWooSeok Asia Fanmeeting Tour ＜The Secret Library＞ in Taipei",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
@@ -4767,7 +4928,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 282,
+    "id": 283,
     "name": "Ilid Kaolo 以莉高露－專輯發行前的暖身操 (【09/26】Ilid Kaolo 以莉高露－專輯發行前的暖身操)",
     "time": "2026-09-26 19:30:00",
     "date": "2026-09-26",
@@ -4820,32 +4981,6 @@
   },
   {
     "id": 334,
-    "name": "【Mastercard專區】LANY：soft world tour",
-    "time": "2026-09-26 00:00:00",
-    "date": "2026-09-26",
-    "year": "2026",
-    "month": "2026-09",
-    "day": "26",
-    "time_str": "00:00",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "",
-    "sale_date": "",
-    "sale_month": "",
-    "sale_day": "",
-    "sale_time_str": "",
-    "link": "https://tixcraft.com/activity/detail/26_lany_c",
-    "published_time": "2026-03-18 07:04:52",
-    "pub_date": "2026-03-18",
-    "source_key": "tixcraft",
-    "source_name": "拓元",
-    "source_icon": "🟣",
-    "source_color": "#9b59b6",
-    "chip_bg": "#d1a8e2",
-    "chip_text": "#2e0d3f"
-  },
-  {
-    "id": 335,
     "name": "【NIEL 無畏FEARLESS SHOWCASE IN TAIPEI】",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
@@ -4871,7 +5006,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 336,
+    "id": 335,
     "name": "【VIP Upgrade/升級VIP】LANY：soft world tour",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
@@ -4897,7 +5032,33 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 375,
+    "id": 336,
+    "name": "【Mastercard專區】LANY：soft world tour",
+    "time": "2026-09-26 00:00:00",
+    "date": "2026-09-26",
+    "year": "2026",
+    "month": "2026-09",
+    "day": "26",
+    "time_str": "00:00",
+    "weekday": "六",
+    "is_weekend": true,
+    "sale_time": "",
+    "sale_date": "",
+    "sale_month": "",
+    "sale_day": "",
+    "sale_time_str": "",
+    "link": "https://tixcraft.com/activity/detail/26_lany_c",
+    "published_time": "2026-03-18 07:04:52",
+    "pub_date": "2026-03-18",
+    "source_key": "tixcraft",
+    "source_name": "拓元",
+    "source_icon": "🟣",
+    "source_color": "#9b59b6",
+    "chip_bg": "#d1a8e2",
+    "chip_text": "#2e0d3f"
+  },
+  {
+    "id": 373,
     "name": "鑽石舞台之夜",
     "time": "2026-09-26 18:00:00",
     "date": "2026-09-26",
@@ -5079,7 +5240,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 376,
+    "id": 374,
     "name": "鑽石舞台之夜",
     "time": "2026-09-27 16:00:00",
     "date": "2026-09-27",
@@ -5261,7 +5422,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 269,
+    "id": 270,
     "name": "PREP Live In Taipei",
     "time": "2026-10-02 19:30:00",
     "date": "2026-10-02",
@@ -5287,7 +5448,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 388,
+    "id": 386,
     "name": "江美琪《傷心唱出來就沒事了》演唱會 2‧0 台北站",
     "time": "2026-10-02 19:30:00",
     "date": "2026-10-02",
@@ -5573,7 +5734,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 285,
+    "id": 286,
     "name": "2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會 (【1：1自拍】2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會)",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
@@ -5599,7 +5760,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 286,
+    "id": 287,
     "name": "2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會 (【1：1簽名會】2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會)",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
@@ -5625,7 +5786,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 359,
+    "id": 357,
     "name": "國泰世華銀行 彭佳慧《數著時間的日子》巡迴演唱會",
     "time": "2026-10-03 19:30:00",
     "date": "2026-10-03",
@@ -5651,7 +5812,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 396,
+    "id": 394,
     "name": "2026 GR嘉年華",
     "time": "2026-10-03 10:30:00",
     "date": "2026-10-03",
@@ -5833,7 +5994,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 360,
+    "id": 358,
     "name": "2026吉卜力動畫音樂原唱歌手交響演唱會",
     "time": "2026-10-04 18:00:00",
     "date": "2026-10-04",
@@ -5885,7 +6046,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 277,
+    "id": 278,
     "name": "李東軒AUSTIN LEE《FOREVER 我們・不變》十週年演唱會",
     "time": "2026-10-08 19:30:00",
     "date": "2026-10-08",
@@ -5911,7 +6072,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 283,
+    "id": 284,
     "name": "Ilid Kaolo 以莉高露－專輯發行前的暖身操 (【10/08】Ilid Kaolo 以莉高露－專輯發行前的暖身操)",
     "time": "2026-10-08 19:30:00",
     "date": "2026-10-08",
@@ -5937,7 +6098,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 406,
+    "id": 404,
     "name": "2026 第23屆 Taipei Toy Festival 台北國際玩具創作大展─套票",
     "time": "2026-10-08 10:00:00",
     "date": "2026-10-08",
@@ -5963,7 +6124,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 407,
+    "id": 405,
     "name": "2026 第23屆 Taipei Toy Festival 台北國際玩具創作大展",
     "time": "2026-10-08 10:00:00",
     "date": "2026-10-08",
@@ -6119,7 +6280,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 266,
+    "id": 267,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/09場次）)",
     "time": "2026-10-09 18:00:00",
     "date": "2026-10-09",
@@ -6327,7 +6488,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 264,
+    "id": 265,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/10場次）)",
     "time": "2026-10-10 18:00:00",
     "date": "2026-10-10",
@@ -6353,7 +6514,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 276,
+    "id": 277,
     "name": "PERSONA LIVE TOUR 2026 - Resonance - 台北公演",
     "time": "2026-10-10 17:00:00",
     "date": "2026-10-10",
@@ -6379,7 +6540,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 290,
+    "id": 291,
     "name": "Crossing Road《一起過馬路》年度專場",
     "time": "2026-10-10 19:30:00",
     "date": "2026-10-10",
@@ -6457,7 +6618,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 392,
+    "id": 390,
     "name": "2026 秋Out 音樂節",
     "time": "2026-10-10 13:00:00",
     "date": "2026-10-10",
@@ -6639,7 +6800,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 265,
+    "id": 266,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/11場次）)",
     "time": "2026-10-11 18:00:00",
     "date": "2026-10-11",
@@ -6691,7 +6852,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 271,
+    "id": 272,
     "name": "Amenra Live in Taipei",
     "time": "2026-10-16 19:30:00",
     "date": "2026-10-16",
@@ -6717,7 +6878,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 299,
+    "id": 300,
     "name": "THE SPELLBOUNDxBOOM BOOM SATELLITES TAIPEI LIVE 2026",
     "time": "2026-10-16 20:00:00",
     "date": "2026-10-16",
@@ -7003,7 +7164,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 289,
+    "id": 290,
     "name": "sulysalt \"opposite\" album release show #2",
     "time": "2026-10-17 19:30:00",
     "date": "2026-10-17",
@@ -7029,33 +7190,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 367,
-    "name": "【單買門票】XG世界巡迴演唱會 THE CORE 台北站 XG WORLD TOUR: THE CORE IN TAIPEI",
-    "time": "2026-10-17 19:30:00",
-    "date": "2026-10-17",
-    "year": "2026",
-    "month": "2026-10",
-    "day": "17",
-    "time_str": "19:30",
-    "weekday": "六",
-    "is_weekend": true,
-    "sale_time": "2026-04-28 22:00:00",
-    "sale_date": "2026-04-28",
-    "sale_month": "2026-04",
-    "sale_day": "28",
-    "sale_time_str": "22:00",
-    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P196NO67",
-    "published_time": "2026-04-24 07:05:31",
-    "pub_date": "2026-04-24",
-    "source_key": "kham",
-    "source_name": "寬宏",
-    "source_icon": "🟠",
-    "source_color": "#e67e22",
-    "chip_bg": "#f8c291",
-    "chip_text": "#3d1a04"
-  },
-  {
-    "id": 377,
+    "id": 375,
     "name": "永遠的巨星 謝雷 2026演唱會",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
@@ -7367,7 +7502,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 398,
+    "id": 396,
     "name": "2026 BANG YONGGUK WORLD TOUR「HAEBANG」in Taipei",
     "time": "2026-10-18 18:30:00",
     "date": "2026-10-18",
@@ -7393,7 +7528,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 399,
+    "id": 397,
     "name": "2026 tripleS World Tour ＜ANDLESS＞ in Taipei",
     "time": "2026-10-18 19:00:00",
     "date": "2026-10-18",
@@ -7497,7 +7632,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 397,
+    "id": 395,
     "name": "山岡晃 Akira Yamaoka『迷霧迴響』2026限定專場．台北",
     "time": "2026-10-23 19:30:00",
     "date": "2026-10-23",
@@ -7523,7 +7658,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 400,
+    "id": 398,
     "name": "LenaMiu Love Meets You Fan Meeting in Taipei",
     "time": "2026-10-23 16:30:00",
     "date": "2026-10-23",
@@ -7913,7 +8048,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 361,
+    "id": 359,
     "name": "【10/24場次】MUSIC EXPO LIVE 2026 in TAIPEI",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
@@ -7939,7 +8074,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 364,
+    "id": 362,
     "name": "【單買門票】Shizuka Kudo 2026 \"Dynamic\" CONCERT in TAIPEI",
     "time": "2026-10-24 19:30:00",
     "date": "2026-10-24",
@@ -7965,7 +8100,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 378,
+    "id": 376,
     "name": "Novelbright 限量VIP Upgrade 升級加購",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
@@ -7991,7 +8126,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 379,
+    "id": 377,
     "name": "Novelbright ASIA TOUR 2026 ~PYRAMID~ IN TAIPEI",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
@@ -8017,7 +8152,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 415,
+    "id": 413,
     "name": "YOASOBI ASIA TOUR 2026@大阪",
     "time": "2026-10-24 12:00",
     "date": "2026-10-24",
@@ -8277,33 +8412,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 362,
-    "name": "【10/25場次】MUSIC EXPO LIVE 2026 in TAIPEI",
-    "time": "2026-10-25 18:00:00",
-    "date": "2026-10-25",
-    "year": "2026",
-    "month": "2026-10",
-    "day": "25",
-    "time_str": "18:00",
-    "weekday": "日",
-    "is_weekend": true,
-    "sale_time": "2026-07-28 12:00:00",
-    "sale_date": "2026-07-28",
-    "sale_month": "2026-07",
-    "sale_day": "28",
-    "sale_time_str": "12:00",
-    "link": "https://kham.com.tw/Application/UTK02/UTK0201_.aspx?PRODUCT_ID=P1CXXK2O",
-    "published_time": "2026-07-23 07:05:30",
-    "pub_date": "2026-07-23",
-    "source_key": "kham",
-    "source_name": "寬宏",
-    "source_icon": "🟠",
-    "source_color": "#e67e22",
-    "chip_bg": "#f8c291",
-    "chip_text": "#3d1a04"
-  },
-  {
-    "id": 416,
+    "id": 414,
     "name": "YOASOBI ASIA TOUR 2026@大阪",
     "time": "2026-10-25 12:00",
     "date": "2026-10-25",
@@ -8693,7 +8802,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 292,
+    "id": 293,
     "name": "2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI (2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI（第一場次）)",
     "time": "2026-10-31 13:00:00",
     "date": "2026-10-31",
@@ -8719,7 +8828,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 293,
+    "id": 294,
     "name": "2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI (2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI（第二場次）)",
     "time": "2026-10-31 18:00:00",
     "date": "2026-10-31",
@@ -8745,7 +8854,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 384,
+    "id": 382,
     "name": "《暗喻幻想》Metaphor：ReFantazio 交響音樂會",
     "time": "2026-10-31 19:30:00",
     "date": "2026-10-31",
@@ -8849,7 +8958,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 380,
+    "id": 378,
     "name": "「2026年國際沈文程日-小琉球情歌演唱會」",
     "time": "2026-11-01 15:00:00",
     "date": "2026-11-01",
@@ -8875,7 +8984,7 @@
     "chip_text": "#381404"
   },
   {
-    "id": 385,
+    "id": 383,
     "name": "UNDERTALE：The Determination Symphony",
     "time": "2026-11-01 15:00:00",
     "date": "2026-11-01",
@@ -8901,7 +9010,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 381,
+    "id": 379,
     "name": "Jason Mraz ASIA TOUR 2026 IN TAIPEI",
     "time": "2026-11-02 19:30:00",
     "date": "2026-11-02",
@@ -9109,7 +9218,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 294,
+    "id": 295,
     "name": "2026 FNC BAND KINGDOM IN TAIPEI (2026 FNC BAND KINGDOM IN TAIPEI（11/7場次）)",
     "time": "2026-11-07 14:30:00",
     "date": "2026-11-07",
@@ -9161,7 +9270,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 358,
+    "id": 356,
     "name": "2026 小宇 宋念宇《不，完美的人》演唱會",
     "time": "2026-11-07 19:30:00",
     "date": "2026-11-07",
@@ -9187,7 +9296,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 386,
+    "id": 384,
     "name": "Pami in Taipei 2026",
     "time": "2026-11-07 20:00:00",
     "date": "2026-11-07",
@@ -9213,7 +9322,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 417,
+    "id": 415,
     "name": "YOASOBI ASIA TOUR 2026@愛知",
     "time": "2026-11-07 12:00",
     "date": "2026-11-07",
@@ -9239,7 +9348,7 @@
     "chip_text": "#1f1f1f"
   },
   {
-    "id": 295,
+    "id": 296,
     "name": "2026 FNC BAND KINGDOM IN TAIPEI (2026 FNC BAND KINGDOM IN TAIPEI（11/8場次）)",
     "time": "2026-11-08 14:30:00",
     "date": "2026-11-08",
@@ -9265,7 +9374,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 418,
+    "id": 416,
     "name": "YOASOBI ASIA TOUR 2026@愛知",
     "time": "2026-11-08 12:00",
     "date": "2026-11-08",
@@ -9551,7 +9660,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 278,
+    "id": 279,
     "name": "風間俊介 KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇- (【第一部】風間俊介KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇-)",
     "time": "2026-11-14 13:00:00",
     "date": "2026-11-14",
@@ -9577,7 +9686,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 279,
+    "id": 280,
     "name": "風間俊介 KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇- (【第二部】風間俊介KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇-)",
     "time": "2026-11-14 17:00:00",
     "date": "2026-11-14",
@@ -9655,7 +9764,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 419,
+    "id": 417,
     "name": "YOASOBI ASIA TOUR 2026@北海道",
     "time": "2026-11-14 12:00",
     "date": "2026-11-14",
@@ -9759,7 +9868,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 408,
+    "id": 406,
     "name": "2026 KANA–BOON「CRITICAL HIT PARADE in TAIPEI」",
     "time": "2026-11-15 18:00:00",
     "date": "2026-11-15",
@@ -9785,7 +9894,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 420,
+    "id": 418,
     "name": "YOASOBI ASIA TOUR 2026@北海道",
     "time": "2026-11-15 12:00",
     "date": "2026-11-15",
@@ -9811,7 +9920,7 @@
     "chip_text": "#1f1f1f"
   },
   {
-    "id": 425,
+    "id": 423,
     "name": "HIT PARADE in TAIPEI",
     "time": "2026-11-15 18:00:00",
     "date": "2026-11-15",
@@ -10045,7 +10154,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 280,
+    "id": 281,
     "name": "UVERworld LIVE TOUR 2026 in TAIPEI",
     "time": "2026-11-21 19:00:00",
     "date": "2026-11-21",
@@ -10331,7 +10440,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 287,
+    "id": 288,
     "name": "skipskipbenben＆ 蔡元彰《到處存在場所 到 不存在的我》",
     "time": "2026-11-27 19:30:00",
     "date": "2026-11-27",
@@ -10513,7 +10622,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 291,
+    "id": 292,
     "name": "魏妙如 X 謝紫若 《三千兩百公里》",
     "time": "2026-11-28 19:30:00",
     "date": "2026-11-28",
@@ -10617,7 +10726,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 421,
+    "id": 419,
     "name": "YOASOBI ASIA TOUR 2026@福岡",
     "time": "2026-11-28 12:00",
     "date": "2026-11-28",
@@ -10695,7 +10804,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 267,
+    "id": 268,
     "name": "Chevon pre.Yoshinani 〜Nomadic Edition〜 in Taipei",
     "time": "2026-11-29 18:00:00",
     "date": "2026-11-29",
@@ -10721,7 +10830,7 @@
     "chip_text": "#042d3d"
   },
   {
-    "id": 422,
+    "id": 420,
     "name": "YOASOBI ASIA TOUR 2026@福岡",
     "time": "2026-11-29 12:00",
     "date": "2026-11-29",
@@ -10903,7 +11012,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 409,
+    "id": 407,
     "name": "時速36公里首度海外公演 “市民薄明” Tour 追加 台北站",
     "time": "2026-12-05 19:30:00",
     "date": "2026-12-05",
@@ -10929,7 +11038,7 @@
     "chip_text": "#3d0413"
   },
   {
-    "id": 423,
+    "id": 421,
     "name": "YOASOBI ASIA TOUR 2026@東京",
     "time": "2026-12-05 12:00",
     "date": "2026-12-05",
@@ -10955,7 +11064,7 @@
     "chip_text": "#1f1f1f"
   },
   {
-    "id": 424,
+    "id": 422,
     "name": "YOASOBI ASIA TOUR 2026@東京",
     "time": "2026-12-06 12:00",
     "date": "2026-12-06",
@@ -11163,7 +11272,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 402,
+    "id": 400,
     "name": "魔獸世界 World of Warcraft：20 Years of Music",
     "time": "2026-12-12 14:30:00",
     "date": "2026-12-12",
@@ -11371,7 +11480,7 @@
     "chip_text": "#0d2b15"
   },
   {
-    "id": 382,
+    "id": 380,
     "name": "2026蔡義德【聲聲不息】演唱會",
     "time": "2026-12-26 18:00:00",
     "date": "2026-12-26",
@@ -11605,7 +11714,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 354,
+    "id": 352,
     "name": "【2/27場次】BIGBANG 2026-2027 WORLD TOUR〈 XX：COSMOS 〉IN KAOHSIUNG",
     "time": "2027-02-13 00:00:00",
     "date": "2027-02-13",
@@ -11631,7 +11740,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 355,
+    "id": 353,
     "name": "【2/28場次】BIGBANG 2026-2027 WORLD TOUR〈 XX：COSMOS 〉IN KAOHSIUNG",
     "time": "2027-02-13 00:00:00",
     "date": "2027-02-13",
@@ -11865,7 +11974,7 @@
     "chip_text": "#2e0d3f"
   },
   {
-    "id": 369,
+    "id": 367,
     "name": "【演出取消Cancellation】WILD WILD 2026 1ST FAN LIVE in Taipei : AFTER HOURS",
     "time": "N/A",
     "date": "",
@@ -11891,7 +12000,7 @@
     "chip_text": "#3d1a04"
   },
   {
-    "id": 370,
+    "id": 368,
     "name": "【演出取消Cancellation】VOICE UP presents Little Glee Monster Taipei Special Live 2026",
     "time": "N/A",
     "date": "",
@@ -11917,24 +12026,58 @@
     "chip_text": "#3d1a04"
   }
 ];
+    let currentMode = 'auto'; // 'mobile' or 'desktop'
     let currentSource = 'all';
-    let onlySale = false;
     let searchKeyword = '';
-    let currentView = 'calendar'; // 'calendar', 'agenda', 'table'
     let currentCalDate = new Date();
-
-    // Default to current month or first future event
     const todayStr = new Date().toISOString().split('T')[0];
+
+    // Find first relevant date
     const future = RAW_EVENTS.find(e => (e.date >= todayStr || e.sale_date >= todayStr));
     if (future && future.date) {
       currentCalDate = new Date(future.date);
     }
 
+    // Auto-detect mode & load preference
+    function initLayoutMode() {
+      const savedMode = localStorage.getItem('user_calendar_mode');
+      if (savedMode === 'mobile' || savedMode === 'desktop') {
+        currentMode = savedMode;
+      } else {
+        currentMode = window.innerWidth <= 768 ? 'mobile' : 'desktop';
+      }
+      applyLayoutMode();
+    }
+
+    function applyLayoutMode() {
+      const dLayout = document.getElementById('desktopLayout');
+      const mLayout = document.getElementById('mobileLayout');
+      const modeLabel = document.getElementById('currentModeLabel');
+      const toggleBtn = document.getElementById('toggleModeBtn');
+
+      if (currentMode === 'mobile') {
+        dLayout.style.display = 'none';
+        mLayout.style.display = 'block';
+        modeLabel.textContent = '📱 手機版視圖';
+        toggleBtn.innerHTML = '<span>💻 切換至電腦版</span>';
+      } else {
+        dLayout.style.display = 'block';
+        mLayout.style.display = 'none';
+        modeLabel.textContent = '💻 電腦版視圖';
+        toggleBtn.innerHTML = '<span>📱 切換至手機版</span>';
+      }
+      renderAll();
+    }
+
+    document.getElementById('toggleModeBtn').addEventListener('click', () => {
+      currentMode = (currentMode === 'mobile') ? 'desktop' : 'mobile';
+      localStorage.setItem('user_calendar_mode', currentMode);
+      applyLayoutMode();
+    });
+
     function getFilteredEvents() {
       return RAW_EVENTS.filter(e => {
         if (currentSource !== 'all' && e.source_key !== currentSource) return false;
-        if (onlySale && !e.sale_date) return false;
-
         if (searchKeyword) {
           const kw = searchKeyword.toLowerCase();
           const matchName = (e.name || '').toLowerCase().includes(kw);
@@ -11946,72 +12089,54 @@
       });
     }
 
-    /* 1. Render Google Calendar Month Pills */
-    function renderMonthPills() {
+    /* ================= Render Mobile View ================= */
+    function renderMobile() {
       const year = currentCalDate.getFullYear();
       const month = currentCalDate.getMonth();
+      document.getElementById('mMainMonthTitle').textContent = `${year}年 ${month + 1}月`;
+
+      // Month Pills
+      const monthSet = new Set();
+      RAW_EVENTS.forEach(e => { if (e.month) monthSet.add(e.month); if (e.sale_month) monthSet.add(e.sale_month); });
+      const sortedMonths = Array.from(monthSet).sort();
       const currentMonthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
 
-      const monthSet = new Set();
-      RAW_EVENTS.forEach(e => {
-        if (e.month) monthSet.add(e.month);
-        if (e.sale_month) monthSet.add(e.sale_month);
-      });
-      const sortedMonths = Array.from(monthSet).sort();
-
-      const pillsBar = document.getElementById('monthPillsBar');
+      const pillsBar = document.getElementById('mMonthPillsBar');
       pillsBar.innerHTML = '';
-
       sortedMonths.forEach(m => {
         const btn = document.createElement('button');
-        const isCurrent = m === currentMonthKey;
-        btn.className = `gcal-month-pill ${isCurrent ? 'active' : ''}`;
+        btn.className = `gcal-month-pill ${m === currentMonthKey ? 'active' : ''}`;
         const [y, mo] = m.split('-');
-        btn.textContent = `${parseInt(mo)}月`;
-        if (y !== String(new Date().getFullYear())) {
-          btn.textContent = `${y}/${parseInt(mo)}月`;
-        }
-
+        btn.textContent = (y === String(new Date().getFullYear())) ? `${parseInt(mo)}月` : `${y}/${parseInt(mo)}月`;
         btn.addEventListener('click', () => {
           currentCalDate = new Date(parseInt(y), parseInt(mo) - 1, 1);
-          renderViews();
+          renderAll();
         });
         pillsBar.appendChild(btn);
       });
-    }
 
-    /* 2. Render Google Calendar Month Grid (No '...', clean text clip, border-color sale indicator) */
-    function renderMonthGrid() {
-      const year = currentCalDate.getFullYear();
-      const month = currentCalDate.getMonth();
-      const monthStr = `${year}年 ${month + 1}月`;
-      document.getElementById('gcalMainMonthTitle').textContent = monthStr;
-
+      // Days Grid
       const filtered = getFilteredEvents();
-      const daysGrid = document.getElementById('gcalDaysGrid');
+      const daysGrid = document.getElementById('mDaysGrid');
       daysGrid.innerHTML = '';
 
-      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
-      const prevMonthDays = new Date(year, month, 0).getDate();
+      const prevDays = new Date(year, month, 0).getDate();
 
-      // Prev month filler
-      for (let i = firstDayOfMonth - 1; i >= 0; i--) {
-        const dayNum = prevMonthDays - i;
+      for (let i = firstDay - 1; i >= 0; i--) {
         const cell = document.createElement('div');
         cell.className = 'gcal-day-cell other-month';
-        cell.innerHTML = `<div class="gcal-date-header"><span class="gcal-date-number">${dayNum}</span></div>`;
+        cell.innerHTML = `<div class="gcal-date-header"><span class="gcal-date-number">${prevDays - i}</span></div>`;
         daysGrid.appendChild(cell);
       }
 
-      // Current month days
       for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const dayOfWeek = new Date(year, month, day).getDay();
 
         const showEvents = filtered.filter(e => e.date === dateStr);
         const saleEvents = filtered.filter(e => e.sale_date === dateStr);
-
         const allDayEvents = [];
         saleEvents.forEach(e => allDayEvents.push({ ...e, _isSale: true }));
         showEvents.forEach(e => allDayEvents.push({ ...e, _isSale: false }));
@@ -12023,11 +12148,8 @@
         if (dayOfWeek === 6) cellClass += ' is-sat';
         cell.className = cellClass;
 
-        // Day click opens Day Sheet
-        cell.addEventListener('click', (ev) => {
-          if (allDayEvents.length > 0) {
-            openDaySheet(dateStr, allDayEvents);
-          }
+        cell.addEventListener('click', () => {
+          if (allDayEvents.length > 0) openDaySheet(dateStr, allDayEvents);
         });
 
         let chipsHtml = '';
@@ -12035,33 +12157,22 @@
           const isSale = e._isSale;
           const bg = e.chip_bg || '#fce588';
           const color = e.chip_text || '#1f1f1f';
-          const chipTitle = e.name; // Pure name, no flame icon
-          const saleClass = isSale ? 'is-sale-event' : '';
-
           chipsHtml += `
-            <div class="gcal-event-chip ${saleClass}" 
+            <div class="gcal-event-chip ${isSale ? 'is-sale-event' : ''}" 
                  style="background: ${bg}; color: ${color};" 
-                 title="${e.name} (${isSale ? '售票開賣' : '演出'})"
                  onclick="event.stopPropagation(); openModal(${e.id})">
-              ${chipTitle}
+              ${e.name}
             </div>
           `;
         });
 
-        cell.innerHTML = `
-          <div class="gcal-date-header">
-            <span class="gcal-date-number">${day}</span>
-          </div>
-          ${chipsHtml}
-        `;
-
+        cell.innerHTML = `<div class="gcal-date-header"><span class="gcal-date-number">${day}</span></div>${chipsHtml}`;
         daysGrid.appendChild(cell);
       }
 
-      // Next month filler
-      const totalCells = firstDayOfMonth + daysInMonth;
-      const remaining = (7 - (totalCells % 7)) % 7;
-      for (let i = 1; i <= remaining; i++) {
+      const total = firstDay + daysInMonth;
+      const remain = (7 - (total % 7)) % 7;
+      for (let i = 1; i <= remain; i++) {
         const cell = document.createElement('div');
         cell.className = 'gcal-day-cell other-month';
         cell.innerHTML = `<div class="gcal-date-header"><span class="gcal-date-number">${i}</span></div>`;
@@ -12069,79 +12180,105 @@
       }
     }
 
-    /* 3. Render Agenda View */
-    function renderAgenda() {
-      const filtered = getFilteredEvents();
-      const container = document.getElementById('agendaTimeline');
-      container.innerHTML = '';
+    /* ================= Render Desktop View ================= */
+    function renderDesktop() {
+      const year = currentCalDate.getFullYear();
+      const month = currentCalDate.getMonth();
+      document.getElementById('dCalMonthTitle').textContent = `${year}年 ${month + 1}月`;
 
-      if (filtered.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:40px; color:var(--text-muted);">無符合條件之活動</div>`;
-        return;
+      // Stats
+      const now = new Date();
+      let upcoming = 0, newT = 0;
+      RAW_EVENTS.forEach(e => {
+        if (e.sale_date) {
+          const sd = new Date(e.sale_date);
+          if (sd >= now && sd <= new Date(now.getTime() + 30 * 86400000)) upcoming++;
+        }
+        if (e.pub_date && new Date(e.pub_date) >= new Date(now.getTime() - 3 * 86400000)) newT++;
+      });
+      document.getElementById('dStatUpcoming').textContent = upcoming;
+      document.getElementById('dStatNew').textContent = newT;
+
+      // Month Pills
+      const monthSet = new Set();
+      RAW_EVENTS.forEach(e => { if (e.month) monthSet.add(e.month); if (e.sale_month) monthSet.add(e.sale_month); });
+      const sortedMonths = Array.from(monthSet).sort();
+      const currentMonthKey = `${year}-${String(month + 1).padStart(2, '0')}`;
+
+      const pContainer = document.getElementById('dMonthPills');
+      pContainer.innerHTML = '';
+      sortedMonths.forEach(m => {
+        const btn = document.createElement('button');
+        btn.className = `btn ${m === currentMonthKey ? 'btn-primary' : ''}`;
+        btn.style.padding = '3px 8px';
+        btn.style.fontSize = '0.75rem';
+        btn.textContent = m;
+        btn.addEventListener('click', () => {
+          const [y, mo] = m.split('-');
+          currentCalDate = new Date(parseInt(y), parseInt(mo) - 1, 1);
+          renderAll();
+        });
+        pContainer.appendChild(btn);
+      });
+
+      // Grid
+      const filtered = getFilteredEvents();
+      const grid = document.getElementById('dCalDaysGrid');
+      grid.innerHTML = '';
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const prevDays = new Date(year, month, 0).getDate();
+
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-d-cell other-month';
+        cell.innerHTML = `<div class="cal-d-date"><span>${prevDays - i}</span></div>`;
+        grid.appendChild(cell);
       }
 
-      const monthGroups = {};
-      filtered.forEach(e => {
-        const dKey = e.date || e.sale_date || '未定日期';
-        const mKey = dKey.substring(0, 7);
-        if (!monthGroups[mKey]) monthGroups[mKey] = {};
-        if (!monthGroups[mKey][dKey]) monthGroups[mKey][dKey] = [];
-        monthGroups[mKey][dKey].push(e);
-      });
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const showEvents = filtered.filter(e => e.date === dateStr);
+        const saleEvents = filtered.filter(e => e.sale_date === dateStr);
 
-      Object.keys(monthGroups).sort().forEach(mKey => {
-        const mGroup = document.createElement('div');
-        mGroup.className = 'agenda-month-group';
-        const [y, mo] = mKey.split('-');
-        
-        mGroup.innerHTML = `
-          <div class="agenda-month-header">
-            <div class="agenda-month-title">🗓️ ${y}年 ${parseInt(mo)}月</div>
-          </div>
-        `;
+        const cell = document.createElement('div');
+        cell.className = `cal-d-cell ${dateStr === todayStr ? 'is-today' : ''}`;
 
-        Object.keys(monthGroups[mKey]).sort().forEach(dKey => {
-          const dayList = monthGroups[mKey][dKey];
-          const sample = dayList[0];
-          const isToday = dKey === todayStr;
-          const dayNum = dKey.split('-')[2] || '•';
-
-          const card = document.createElement('div');
-          card.className = `agenda-day-card ${isToday ? 'is-today' : ''}`;
-
-          let eventsHtml = '';
-          dayList.forEach(e => {
-            const isSale = e.sale_date === dKey;
-            eventsHtml += `
-              <div class="agenda-event-item ${isSale ? 'is-sale-item' : ''}" style="border-left-color: ${isSale ? 'var(--sale-border-color)' : e.source_color};" onclick="openModal(${e.id})">
-                <div class="agenda-event-top">
-                  <span style="font-size:0.75rem; color:${e.source_color}; font-weight:700;">${e.source_icon} ${e.source_name}</span>
-                  <span style="font-size:0.75rem; font-family:var(--font-mono); color:${isSale ? 'var(--sale-border-color)' : 'var(--text-muted)'};">${isSale ? '售票開賣: ' + e.sale_time : '演出時間: ' + (e.time_str || e.time)}</span>
-                </div>
-                <div class="agenda-event-title">${e.name}</div>
-              </div>
-            `;
-          });
-
-          card.innerHTML = `
-            <div class="agenda-date-side">
-              <span class="agenda-date-num">${dayNum}</span>
-              <span class="agenda-weekday-pill ${sample.is_weekend ? 'sat' : 'weekday'}">週${sample.weekday}</span>
+        let itemsHtml = '';
+        saleEvents.forEach(e => {
+          itemsHtml += `
+            <div class="cal-d-item sale" onclick="openModal(${e.id})">
+              <span style="color:var(--secondary-accent); font-weight:700; font-size:0.7rem;">🔥 開賣 ${e.sale_time_str || ''}</span>
+              <strong style="color:#fff;">${e.name}</strong>
             </div>
-            <div class="agenda-events-list">${eventsHtml}</div>
           `;
-          mGroup.appendChild(card);
         });
-        container.appendChild(mGroup);
-      });
-    }
+        showEvents.forEach(e => {
+          itemsHtml += `
+            <div class="cal-d-item" style="border-left-color:${e.source_color};" onclick="openModal(${e.id})">
+              <span style="color:${e.source_color}; font-weight:700; font-size:0.7rem;">${e.source_icon} ${e.source_name} ${e.time_str || ''}</span>
+              <strong style="color:#fff;">${e.name}</strong>
+            </div>
+          `;
+        });
 
-    /* 4. Render Table View */
-    function renderTable() {
-      const filtered = getFilteredEvents();
-      const tbody = document.getElementById('timetableBody');
+        cell.innerHTML = `<div class="cal-d-date"><span>${day}</span></div>${itemsHtml}`;
+        grid.appendChild(cell);
+      }
+
+      const total = firstDay + daysInMonth;
+      const remain = (7 - (total % 7)) % 7;
+      for (let i = 1; i <= remain; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-d-cell other-month';
+        cell.innerHTML = `<div class="cal-d-date"><span>${i}</span></div>`;
+        grid.appendChild(cell);
+      }
+
+      // Desktop Table
+      const tbody = document.getElementById('dTimetableBody');
       tbody.innerHTML = '';
-
       filtered.forEach((e, i) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
@@ -12149,29 +12286,19 @@
           <td style="color:${e.source_color}; font-weight:700;">${e.source_icon} ${e.source_name}</td>
           <td style="font-weight:700; color:#fff; cursor:pointer;" onclick="openModal(${e.id})">${e.name}</td>
           <td style="color:var(--highlight-blue); font-family:var(--font-mono);">${e.date} ${e.time_str}</td>
+          <td>${e.weekday}</td>
           <td style="color:var(--secondary-accent); font-family:var(--font-mono);">${e.sale_time || '-'}</td>
-          <td><a href="${e.link || '#'}" target="_blank" class="btn-action" style="padding:2px 8px; font-size:0.72rem;">購票</a></td>
+          <td><a href="${e.link || '#'}" target="_blank" class="btn" style="padding:2px 8px; font-size:0.72rem;">購票</a></td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    function renderViews() {
-      renderMonthPills();
-
-      document.getElementById('monthViewWrapper').style.display = 'none';
-      document.getElementById('agendaViewWrapper').style.display = 'none';
-      document.getElementById('tableViewWrapper').style.display = 'none';
-
-      if (currentView === 'calendar') {
-        document.getElementById('monthViewWrapper').style.display = 'block';
-        renderMonthGrid();
-      } else if (currentView === 'agenda') {
-        document.getElementById('agendaViewWrapper').style.display = 'flex';
-        renderAgenda();
-      } else if (currentView === 'table') {
-        document.getElementById('tableViewWrapper').style.display = 'block';
-        renderTable();
+    function renderAll() {
+      if (currentMode === 'mobile') {
+        renderMobile();
+      } else {
+        renderDesktop();
       }
     }
 
@@ -12181,15 +12308,13 @@
       const e = RAW_EVENTS.find(item => item.id === id);
       if (!e) return;
       selectedEvent = e;
-
       document.getElementById('modalTitle').textContent = e.name;
       document.getElementById('modalPlatform').textContent = `${e.source_icon} ${e.source_name}`;
       document.getElementById('modalEventTime').textContent = e.time || '未定';
       document.getElementById('modalSaleTime').textContent = e.sale_time || '尚未公佈';
       document.getElementById('modalPubTime').textContent = e.published_time || 'N/A';
-      document.getElementById('modalUrl').innerHTML = `<a href="${e.link}" target="_blank" style="color: var(--secondary-accent); word-break: break-all;">${e.link}</a>`;
+      document.getElementById('modalUrl').innerHTML = `<a href="${e.link}" target="_blank" style="color:var(--secondary-accent); word-break:break-all;">${e.link}</a>`;
       document.getElementById('modalGoBtn').href = e.link || '#';
-
       document.getElementById('eventModal').classList.add('open');
     }
 
@@ -12204,7 +12329,7 @@
         item.style.background = '#14161d';
         item.style.padding = '10px';
         item.style.borderRadius = '6px';
-        item.style.border = isSale ? '2px solid var(--sale-border-color)' : `1px solid var(--border-color)`;
+        item.style.border = isSale ? '1.5px solid var(--sale-border-color)' : `1px solid var(--border-color)`;
         item.style.borderLeft = `5px solid ${isSale ? 'var(--sale-border-color)' : e.source_color}`;
         item.style.display = 'flex';
         item.style.justifyContent = 'space-between';
@@ -12226,7 +12351,7 @@
       document.getElementById('daySheetModal').classList.add('open');
     }
 
-    // Event listeners
+    // Listeners
     document.getElementById('modalCloseBtn').addEventListener('click', () => document.getElementById('eventModal').classList.remove('open'));
     document.getElementById('daySheetCloseBtn').addEventListener('click', () => document.getElementById('daySheetModal').classList.remove('open'));
     document.getElementById('eventModal').addEventListener('click', (e) => { if (e.target.id === 'eventModal') document.getElementById('eventModal').classList.remove('open'); });
@@ -12239,64 +12364,83 @@
       }
     });
 
-    // Jump to current month
-    document.getElementById('jumpTodayBtn').addEventListener('click', () => {
+    // Mobile jump today
+    document.getElementById('mJumpTodayBtn').addEventListener('click', () => {
       currentCalDate = new Date();
-      renderViews();
+      renderAll();
     });
 
-    // View toggles
-    document.getElementById('calendarViewBtn').addEventListener('click', () => {
-      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('calendarViewBtn').classList.add('active');
-      currentView = 'calendar';
-      renderViews();
+    // Desktop month buttons
+    document.getElementById('dPrevMonthBtn').addEventListener('click', () => {
+      currentCalDate.setMonth(currentCalDate.getMonth() - 1);
+      renderAll();
     });
-    document.getElementById('agendaViewBtn').addEventListener('click', () => {
-      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('agendaViewBtn').classList.add('active');
-      currentView = 'agenda';
-      renderViews();
-    });
-    document.getElementById('tableViewBtn').addEventListener('click', () => {
-      document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('tableViewBtn').classList.add('active');
-      currentView = 'table';
-      renderViews();
+    document.getElementById('dNextMonthBtn').addEventListener('click', () => {
+      currentCalDate.setMonth(currentCalDate.getMonth() + 1);
+      renderAll();
     });
 
-    // Platform filters
-    document.querySelectorAll('#platformFilterBar .filter-chip').forEach(chip => {
+    // Desktop view toggle
+    document.getElementById('dViewCalBtn').addEventListener('click', () => {
+      document.getElementById('dViewCalBtn').classList.add('active');
+      document.getElementById('dViewTableBtn').classList.remove('active');
+      document.getElementById('dCalContainer').style.display = 'block';
+      document.getElementById('dTableContainer').style.display = 'none';
+    });
+    document.getElementById('dViewTableBtn').addEventListener('click', () => {
+      document.getElementById('dViewTableBtn').classList.add('active');
+      document.getElementById('dViewCalBtn').classList.remove('active');
+      document.getElementById('dCalContainer').style.display = 'none';
+      document.getElementById('dTableContainer').style.display = 'block';
+    });
+
+    // Search filters
+    document.getElementById('mSearchInput').addEventListener('input', (e) => {
+      searchKeyword = e.target.value.trim();
+      renderAll();
+    });
+    document.getElementById('dSearchInput').addEventListener('input', (e) => {
+      searchKeyword = e.target.value.trim();
+      renderAll();
+    });
+
+    // Platform tabs
+    document.querySelectorAll('#mPlatformFilterBar .filter-chip-m').forEach(chip => {
       chip.addEventListener('click', () => {
-        if (chip.id === 'saleFilterBtn') {
-          onlySale = !onlySale;
-          chip.classList.toggle('active-sale', onlySale);
-        } else {
-          document.querySelectorAll('#platformFilterBar .filter-chip:not(#saleFilterBtn)').forEach(c => c.classList.remove('active'));
-          chip.classList.add('active');
-          currentSource = chip.getAttribute('data-source');
-        }
-        renderViews();
+        document.querySelectorAll('#mPlatformFilterBar .filter-chip-m').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        currentSource = chip.getAttribute('data-source');
+        renderAll();
+      });
+    });
+    document.querySelectorAll('#dPlatformBar .desktop-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('#dPlatformBar .desktop-tab').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        currentSource = tab.getAttribute('data-source');
+        renderAll();
       });
     });
 
-    // Search
-    const searchInput = document.getElementById('searchInput');
-    const clearBtn = document.getElementById('clearSearchBtn');
-    searchInput.addEventListener('input', () => {
-      searchKeyword = searchInput.value.trim();
-      clearBtn.style.display = searchKeyword ? 'block' : 'none';
-      renderViews();
-    });
-    clearBtn.addEventListener('click', () => {
-      searchInput.value = '';
-      searchKeyword = '';
-      clearBtn.style.display = 'none';
-      renderViews();
+    // CSV Export
+    document.getElementById('dExportCsvBtn').addEventListener('click', () => {
+      const filtered = getFilteredEvents();
+      let csvContent = 'data:text/csv;charset=utf-8,\uFEFF';
+      csvContent += '名稱,演出時間,開賣時間,平台,連結,上架時間\n';
+      filtered.forEach(e => {
+        csvContent += `"${(e.name||'').replace(/"/g, '""')}","${e.time}","${e.sale_time}","${e.source_name}","${e.link}","${e.published_time}"\n`;
+      });
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', 'events_timetable.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     });
 
     // Init
-    renderViews();
+    initLayoutMode();
   </script>
 </body>
 </html>
