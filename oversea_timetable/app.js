@@ -2195,6 +2195,9 @@ function setupEventListeners() {
   if (calendarBtn) calendarBtn.addEventListener('click', () => setView('calendar'));
   if (mapBtn) mapBtn.addEventListener('click', () => setView('map'));
 
+  // Ensure calendar is active on load
+  setView('calendar');
+
   // Map toolbar controls
   const togglePrefCluster = document.getElementById('togglePrefCluster');
   if (togglePrefCluster) {
