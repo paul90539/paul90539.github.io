@@ -1882,6 +1882,9 @@ function renderCalendar(items) {
  */
 function updateUI() {
   const filtered = getFilteredAndSortedShows();
+  if (currentLayoutMode === 'mobile') {
+    renderMobile();
+  }
   const matchedCountEl = document.getElementById('matchedCount');
   if (matchedCountEl) matchedCountEl.textContent = filtered.length;
 
@@ -2141,6 +2144,382 @@ function exportICS() {
   URL.revokeObjectURL(url);
 }
 
+/* =========================================================
+   Mobile View Controller (Google Calendar Mobile Replica)
+========================================================= */
+let currentLayoutMode = 'mobile';
+let mSelectedDate = null;
+let mSubView = 'calendar'; // 'calendar' or 'list'
+
+function getArtistTheme(artistId) {
+  const tour = (toursData || []).find(t => t.id === artistId) || (DEFAULT_TOURS || []).find(t => t.id === artistId);
+  if (tour) {
+    return {
+      color: tour.color || '#6c5ce7',
+      icon: tour.icon || '🎤',
+      name: tour.name || artistId
+    };
+  }
+  return { color: '#6c5ce7', icon: '🎤', name: artistId };
+}
+
+function renderMobile() {
+  const filtered = getFilteredAndSortedShows();
+
+  // 1. Month Header & Navigator
+  const monthTitle = document.getElementById('mMonthTitle');
+  if (monthTitle) {
+    monthTitle.textContent = `${calendarYear}年 ${calendarMonth}月`;
+  }
+
+  const resultsCount = document.getElementById('mResultsCount');
+  if (resultsCount) {
+    resultsCount.textContent = `共 ${filtered.length} 場`;
+  }
+
+  const totalBadge = document.getElementById('mTotalShowsBadge');
+  if (totalBadge) {
+    totalBadge.textContent = `${toursData.length}組歌手・${allShowsList.length}場`;
+  }
+
+  // 2. Month Pills Bar
+  const monthPillsBar = document.getElementById('mMonthPillsBar');
+  if (monthPillsBar) {
+    const monthSet = new Set();
+    allShowsList.forEach(s => {
+      if (s.year && s.month) {
+        monthSet.add(`${s.year}-${String(s.month).padStart(2, '0')}`);
+      }
+    });
+    const sortedMonths = Array.from(monthSet).sort();
+    const currentMonthKey = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}`;
+
+    monthPillsBar.innerHTML = '';
+    sortedMonths.forEach(m => {
+      const [y, mo] = m.split('-');
+      const btn = document.createElement('button');
+      btn.className = `m-month-pill ${m === currentMonthKey ? 'active' : ''}`;
+      btn.textContent = (y === '2026') ? `${parseInt(mo, 10)}月` : `${y}/${parseInt(mo, 10)}月`;
+      btn.addEventListener('click', () => {
+        calendarYear = parseInt(y, 10);
+        calendarMonth = parseInt(mo, 10);
+        mSelectedDate = null;
+        renderMobile();
+        updateUI();
+      });
+      monthPillsBar.appendChild(btn);
+    });
+  }
+
+  // 3. Artist Filter Chips Bar
+  const artistChipsBar = document.getElementById('mArtistChipsBar');
+  if (artistChipsBar) {
+    artistChipsBar.innerHTML = '';
+
+    // "All" chip
+    const allChip = document.createElement('button');
+    allChip.className = `m-artist-chip ${activeArtistFilter === 'all' ? 'active' : ''}`;
+    allChip.innerHTML = `<span>🌟 全部</span> <small style="opacity:0.85;">(${allShowsList.length})</small>`;
+    allChip.addEventListener('click', () => {
+      activeArtistFilter = 'all';
+      renderArtistNavTabs();
+      renderMobile();
+      updateUI();
+    });
+    artistChipsBar.appendChild(allChip);
+
+    // Each Artist chip
+    toursData.forEach(tour => {
+      const count = allShowsList.filter(s => s.artistId === tour.id).length;
+      const chip = document.createElement('button');
+      chip.className = `m-artist-chip ${activeArtistFilter === tour.id ? 'active' : ''}`;
+      chip.innerHTML = `<span>${tour.icon || '🎤'} ${tour.name}</span> <small style="opacity:0.85;">(${count})</small>`;
+      chip.addEventListener('click', () => {
+        activeArtistFilter = tour.id;
+        renderArtistNavTabs();
+        renderMobile();
+        updateUI();
+      });
+      artistChipsBar.appendChild(chip);
+    });
+  }
+
+  // 4. Sub-view switching (Calendar vs Agenda List)
+  const calContainer = document.getElementById('mCalendarContainer');
+  const listContainer = document.getElementById('mAgendaListContainer');
+  const viewCalBtn = document.getElementById('mViewCalBtn');
+  const viewListBtn = document.getElementById('mViewListBtn');
+
+  if (viewCalBtn) viewCalBtn.classList.toggle('active', mSubView === 'calendar');
+  if (viewListBtn) viewListBtn.classList.toggle('active', mSubView === 'list');
+
+  if (mSubView === 'calendar') {
+    if (calContainer) calContainer.style.display = 'block';
+    if (listContainer) listContainer.style.display = 'none';
+    renderMobileCalendarGrid(filtered);
+  } else {
+    if (calContainer) calContainer.style.display = 'none';
+    if (listContainer) listContainer.style.display = 'block';
+    renderMobileAgendaList(filtered);
+  }
+}
+
+function renderMobileCalendarGrid(filtered) {
+  const grid = document.getElementById('mDaysGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const firstDay = new Date(calendarYear, calendarMonth - 1, 1).getDay();
+  const daysInMonth = new Date(calendarYear, calendarMonth, 0).getDate();
+  const prevDays = new Date(calendarYear, calendarMonth - 1, 0).getDate();
+
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+
+  // Previous month filler days
+  for (let i = firstDay - 1; i >= 0; i--) {
+    const cell = document.createElement('div');
+    cell.className = 'm-day-cell other-month';
+    cell.innerHTML = `<div class="m-date-header"><span class="m-date-number">${prevDays - i}</span></div>`;
+    grid.appendChild(cell);
+  }
+
+  // Shows in this month
+  const currentMonthShows = filtered.filter(s => s.year === calendarYear && s.month === calendarMonth);
+
+  // If no selected date, default to the first date with shows in this month
+  if (!mSelectedDate && currentMonthShows.length > 0) {
+    mSelectedDate = currentMonthShows[0].dateIso;
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateIso = `${calendarYear}-${String(calendarMonth).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const dayOfWeek = new Date(calendarYear, calendarMonth - 1, day).getDay();
+    const dayShows = filtered.filter(s => s.dateIso === dateIso);
+
+    const cell = document.createElement('div');
+    let cellClass = 'm-day-cell';
+    if (dateIso === todayStr) cellClass += ' is-today';
+    if (dayOfWeek === 0) cellClass += ' is-sun';
+    if (dayOfWeek === 6) cellClass += ' is-sat';
+    if (mSelectedDate === dateIso) cellClass += ' is-selected';
+    cell.className = cellClass;
+
+    let chipsHtml = '';
+    dayShows.forEach(s => {
+      const theme = getArtistTheme(s.artistId);
+      chipsHtml += `
+        <div class="m-event-chip" style="background:${theme.color}; color:#fff;" onclick="event.stopPropagation(); openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
+          ${theme.icon} ${s.venue}
+        </div>
+      `;
+    });
+
+    cell.innerHTML = `<div class="m-date-header"><span class="m-date-number">${day}</span></div>${chipsHtml}`;
+    cell.addEventListener('click', () => {
+      mSelectedDate = dateIso;
+      const allCells = grid.querySelectorAll('.m-day-cell');
+      allCells.forEach(c => c.classList.remove('is-selected'));
+      cell.classList.add('is-selected');
+      renderMobileDayAgenda(dateIso, dayShows);
+    });
+
+    grid.appendChild(cell);
+  }
+
+  // Trailing filler days
+  const total = firstDay + daysInMonth;
+  const remain = (7 - (total % 7)) % 7;
+  for (let i = 1; i <= remain; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'm-day-cell other-month';
+    cell.innerHTML = `<div class="m-date-header"><span class="m-date-number">${i}</span></div>`;
+    grid.appendChild(cell);
+  }
+
+  // Render Day Agenda for selected date
+  const selectedDayShows = filtered.filter(s => s.dateIso === mSelectedDate);
+  renderMobileDayAgenda(mSelectedDate, selectedDayShows);
+}
+
+function renderMobileDayAgenda(dateIso, shows) {
+  const titleEl = document.getElementById('mDayAgendaTitle');
+  const badgeEl = document.getElementById('mDayAgendaBadge');
+  const listEl = document.getElementById('mDayAgendaList');
+  if (!listEl) return;
+
+  if (dateIso) {
+    const d = new Date(dateIso);
+    const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+    if (titleEl) titleEl.textContent = `${dateIso.replace(/-/g, '.')} (${dayNames[d.getDay()]}) 行程`;
+  } else {
+    if (titleEl) titleEl.textContent = `本月巡迴演出行程`;
+  }
+
+  if (badgeEl) badgeEl.textContent = `${(shows || []).length} 場公演`;
+
+  if (!shows || shows.length === 0) {
+    listEl.innerHTML = `
+      <div style="text-align:center; padding:24px 10px; color:var(--text-muted); font-size:0.85rem;">
+        <div style="font-size:1.8rem; margin-bottom:8px;">☕</div>
+        <div>該日無巡迴行程</div>
+        <div style="font-size:0.75rem; margin-top:4px; opacity:0.8;">點擊上方月曆中有標記的日期查看巡迴詳情</div>
+      </div>
+    `;
+    return;
+  }
+
+  let html = '';
+  shows.forEach(s => {
+    const theme = getArtistTheme(s.artistId);
+    const calUrl = generateGoogleCalendarUrl(s);
+    const mapUrl = generateMapUrl(s);
+    html += `
+      <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
+        <div class="m-show-header">
+          <span class="m-artist-badge" style="background:${theme.color}; color:#fff;">
+            ${theme.icon} ${s.artistName}
+          </span>
+          <span class="m-show-date">${s.dateFormatted} (${s.dayOfWeek})</span>
+        </div>
+        <div class="m-show-tour-name">${s.tourTitle}</div>
+        <div class="m-show-venue">📍 ${s.prefecture}・${s.venue}</div>
+        <div class="m-show-meta">
+          <span>⏰ 進場 OPEN ${s.openTime || '--:--'} / 開演 START ${s.startTime || '--:--'}</span>
+        </div>
+        <div class="m-show-actions" onclick="event.stopPropagation();">
+          <a href="${calUrl}" target="_blank" rel="noopener noreferrer" class="m-action-btn primary">
+            📅 加入行事曆
+          </a>
+          <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="m-action-btn">
+            🗺️ Google 地圖
+          </a>
+        </div>
+      </div>
+    `;
+  });
+
+  listEl.innerHTML = html;
+}
+
+function renderMobileAgendaList(filtered) {
+  const streamEl = document.getElementById('mAgendaStream');
+  if (!streamEl) return;
+
+  if (filtered.length === 0) {
+    streamEl.innerHTML = `
+      <div style="text-align:center; padding:30px; color:var(--text-muted);">
+        沒有找到符合條件的巡迴演出
+      </div>
+    `;
+    return;
+  }
+
+  // Group shows by year-month
+  const groups = {};
+  filtered.forEach(s => {
+    const key = `${s.year}年 ${s.month}月`;
+    if (!groups[key]) groups[key] = [];
+    groups[key].push(s);
+  });
+
+  let html = '';
+  Object.keys(groups).forEach(key => {
+    html += `<div class="m-agenda-group-title">📅 ${key} (${groups[key].length} 場)</div>`;
+    groups[key].forEach(s => {
+      const theme = getArtistTheme(s.artistId);
+      const calUrl = generateGoogleCalendarUrl(s);
+      const mapUrl = generateMapUrl(s);
+      html += `
+        <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
+          <div class="m-show-header">
+            <span class="m-artist-badge" style="background:${theme.color}; color:#fff;">
+              ${theme.icon} ${s.artistName}
+            </span>
+            <span class="m-show-date">${s.dateFormatted} (${s.dayOfWeek})</span>
+          </div>
+          <div class="m-show-tour-name">${s.tourTitle}</div>
+          <div class="m-show-venue">📍 ${s.prefecture}・${s.venue}</div>
+          <div class="m-show-meta">
+            <span>⏰ OPEN ${s.openTime || '--:--'} / START ${s.startTime || '--:--'}</span>
+          </div>
+          <div class="m-show-actions" onclick="event.stopPropagation();">
+            <a href="${calUrl}" target="_blank" rel="noopener noreferrer" class="m-action-btn primary">
+              📅 加入行事曆
+            </a>
+            <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="m-action-btn">
+              🗺️ Google 地圖
+            </a>
+          </div>
+        </div>
+      `;
+    });
+  });
+
+  streamEl.innerHTML = html;
+}
+
+function setLayoutMode(mode) {
+  currentLayoutMode = mode;
+  try {
+    localStorage.setItem('oversea_timetable_layout_mode', mode);
+  } catch (e) {}
+
+  const desktopEl = document.getElementById('desktopLayout');
+  const mobileEl = document.getElementById('mobileLayout');
+  const labelEl = document.getElementById('currentModeLabel');
+  const btnEl = document.getElementById('toggleModeBtn');
+
+  if (mode === 'mobile') {
+    if (desktopEl) desktopEl.style.display = 'none';
+    if (mobileEl) mobileEl.style.display = 'block';
+    if (labelEl) labelEl.textContent = '📱 手機版視圖';
+    if (btnEl) btnEl.innerHTML = '<span>💻 切換至電腦版</span>';
+    renderMobile();
+  } else {
+    if (desktopEl) desktopEl.style.display = 'block';
+    if (mobileEl) mobileEl.style.display = 'none';
+    if (labelEl) labelEl.textContent = '💻 電腦版視圖';
+    if (btnEl) btnEl.innerHTML = '<span>📱 切換至手機版</span>';
+    updateUI();
+  }
+}
+
+function toggleLayoutMode() {
+  setLayoutMode(currentLayoutMode === 'mobile' ? 'desktop' : 'mobile');
+}
+
+function initLayoutMode() {
+  let mode = null;
+  try {
+    mode = localStorage.getItem('oversea_timetable_layout_mode');
+  } catch (e) {}
+
+  if (mode === 'mobile' || mode === 'desktop') {
+    setLayoutMode(mode);
+  } else {
+    if (window.innerWidth <= 768) {
+      setLayoutMode('mobile');
+    } else {
+      setLayoutMode('desktop');
+    }
+  }
+}
+
+function setView(view) {
+  currentView = view;
+  const tableBtn = document.getElementById('tableViewBtn');
+  const cardBtn = document.getElementById('cardViewBtn');
+  const calendarBtn = document.getElementById('calendarViewBtn');
+  const mapBtn = document.getElementById('mapViewBtn');
+
+  if (tableBtn) tableBtn.classList.toggle('active', view === 'table');
+  if (cardBtn) cardBtn.classList.toggle('active', view === 'card');
+  if (calendarBtn) calendarBtn.classList.toggle('active', view === 'calendar');
+  if (mapBtn) mapBtn.classList.toggle('active', view === 'map');
+  updateUI();
+}
+
 /**
  * Setup Event Listeners
  */
@@ -2181,22 +2560,10 @@ function setupEventListeners() {
   const calendarBtn = document.getElementById('calendarViewBtn');
   const mapBtn = document.getElementById('mapViewBtn');
 
-  function setView(view) {
-    currentView = view;
-    if (tableBtn) tableBtn.classList.toggle('active', view === 'table');
-    if (cardBtn) cardBtn.classList.toggle('active', view === 'card');
-    if (calendarBtn) calendarBtn.classList.toggle('active', view === 'calendar');
-    if (mapBtn) mapBtn.classList.toggle('active', view === 'map');
-    updateUI();
-  }
-
   if (tableBtn) tableBtn.addEventListener('click', () => setView('table'));
   if (cardBtn) cardBtn.addEventListener('click', () => setView('card'));
   if (calendarBtn) calendarBtn.addEventListener('click', () => setView('calendar'));
   if (mapBtn) mapBtn.addEventListener('click', () => setView('map'));
-
-  // Ensure calendar is active on load
-  setView('calendar');
 
   // Map toolbar controls
   const togglePrefCluster = document.getElementById('togglePrefCluster');
@@ -2542,6 +2909,96 @@ function setupEventListeners() {
       if (modal) modal.classList.remove('open');
     });
   }
+
+  // Mode Switcher Toggle
+  const toggleModeBtn = document.getElementById('toggleModeBtn');
+  if (toggleModeBtn) {
+    toggleModeBtn.addEventListener('click', toggleLayoutMode);
+  }
+
+  // Mobile Month Controls
+  const mPrevMonthBtn = document.getElementById('mPrevMonthBtn');
+  const mNextMonthBtn = document.getElementById('mNextMonthBtn');
+  const mTodayBtn = document.getElementById('mTodayBtn');
+
+  if (mPrevMonthBtn) {
+    mPrevMonthBtn.addEventListener('click', () => {
+      calendarMonth -= 1;
+      if (calendarMonth < 1) {
+        calendarMonth = 12;
+        calendarYear -= 1;
+      }
+      mSelectedDate = null;
+      renderMobile();
+      updateUI();
+    });
+  }
+
+  if (mNextMonthBtn) {
+    mNextMonthBtn.addEventListener('click', () => {
+      calendarMonth += 1;
+      if (calendarMonth > 12) {
+        calendarMonth = 1;
+        calendarYear += 1;
+      }
+      mSelectedDate = null;
+      renderMobile();
+      updateUI();
+    });
+  }
+
+  if (mTodayBtn) {
+    mTodayBtn.addEventListener('click', () => {
+      calendarYear = 2026;
+      calendarMonth = 10;
+      mSelectedDate = null;
+      renderMobile();
+      updateUI();
+    });
+  }
+
+  // Mobile Search Controls
+  const mSearchInput = document.getElementById('mSearchInput');
+  const mClearSearchBtn = document.getElementById('mClearSearchBtn');
+
+  if (mSearchInput) {
+    mSearchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.trim();
+      if (mClearSearchBtn) mClearSearchBtn.style.display = currentSearch ? 'block' : 'none';
+      if (searchInput) searchInput.value = currentSearch;
+      renderMobile();
+      updateUI();
+    });
+  }
+
+  if (mClearSearchBtn) {
+    mClearSearchBtn.addEventListener('click', () => {
+      if (mSearchInput) mSearchInput.value = '';
+      if (searchInput) searchInput.value = '';
+      currentSearch = '';
+      mClearSearchBtn.style.display = 'none';
+      renderMobile();
+      updateUI();
+    });
+  }
+
+  // Mobile Sub-View Toggles
+  const mViewCalBtn = document.getElementById('mViewCalBtn');
+  const mViewListBtn = document.getElementById('mViewListBtn');
+
+  if (mViewCalBtn) {
+    mViewCalBtn.addEventListener('click', () => {
+      mSubView = 'calendar';
+      renderMobile();
+    });
+  }
+
+  if (mViewListBtn) {
+    mViewListBtn.addEventListener('click', () => {
+      mSubView = 'list';
+      renderMobile();
+    });
+  }
 }
 
 /**
@@ -2636,7 +3093,8 @@ function init() {
   updateStats();
   setupEventListeners();
   initMapTimeline();
-  updateUI();
+  setView('calendar');
+  initLayoutMode();
 }
 
 // Start application when DOM is ready

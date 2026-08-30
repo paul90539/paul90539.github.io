@@ -7,13 +7,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260831_3">
+  <link rel="stylesheet" href="styles.css?v=20260831_mobile">
   <!-- Local Leaflet Map Assets -->
   <link rel="stylesheet" href="leaflet/leaflet.css">
   <script src="leaflet/leaflet.js"></script>
 </head>
 <body>
-  <div class="app-container">
+  <!-- Global Top Bar: Manual Mode Switcher -->
+  <header class="mode-switch-bar">
+    <div style="display:flex; align-items:center; gap:8px; font-size:0.88rem; flex-wrap:wrap;">
+      <a href="/" style="color:var(--text-muted); text-decoration:none;">🏠 首頁</a>
+      <span style="color:var(--border-color);">|</span>
+      <a href="/calendar" style="color:#60a5fa; text-decoration:none; font-weight:600;">🎫 台灣活動日曆</a>
+      <span style="color:var(--border-color);">|</span>
+      <span style="font-weight:700; color:#c084fc;">✈️ 海外巡迴 (Oversea)</span>
+      <span style="color:var(--border-color);">|</span>
+      <span id="currentModeLabel" style="color:var(--text-muted); font-weight:600;">📱 手機版視圖</span>
+    </div>
+    <button class="mode-switch-btn" id="toggleModeBtn">
+      <span>💻 切換至電腦版</span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       A. DESKTOP VIEW CONTAINER
+  ========================================================= -->
+  <div id="desktopLayout" class="app-container">
     <!-- Top Navigation Bar -->
     <nav style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding:12px 18px; background:rgba(15, 23, 42, 0.75); backdrop-filter:blur(10px); border-radius:12px; margin-bottom:16px; border:1px solid rgba(255,255,255,0.08);">
       <div style="display:flex; align-items:center; gap:10px;">
@@ -392,9 +411,92 @@
 
     <!-- Footer -->
     <footer class="app-footer">
-      <p>SCANDAL FINAL TOUR 2026-2027 Timetable Schedule Table</p>
+      <p>日本與海外演唱會巡迴行程表 (Oversea Timetable)</p>
       <p class="sub-text">點擊「加入日曆」可直接新增至 Google 行事曆；亦可點擊會場名稱直接在地圖中搜尋。</p>
     </footer>
+  </div>
+
+  <!-- =========================================================
+       B. MOBILE VIEW CONTAINER (Google Calendar Mobile Replica)
+  ========================================================= -->
+  <div id="mobileLayout" style="display:none;">
+    <!-- Top Month Bar -->
+    <div class="m-top-bar">
+      <div class="m-left-group">
+        <h1 class="m-month-title" id="mMonthTitle">2026年 10月</h1>
+        <span class="m-badge-ver" id="mTotalShowsBadge">12組歌手・215場</span>
+      </div>
+      <div class="m-right-group">
+        <button class="m-btn-circle" id="mTodayBtn" title="跳至本月/首場">今</button>
+        <button class="m-btn-circle" id="mPrevMonthBtn" title="上個月">‹</button>
+        <button class="m-btn-circle" id="mNextMonthBtn" title="下個月">›</button>
+      </div>
+    </div>
+
+    <!-- Quick Month Selector Pills -->
+    <div class="m-month-pills-bar" id="mMonthPillsBar">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Mobile Search Bar -->
+    <div class="m-search-wrapper">
+      <svg class="m-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="mSearchInput" class="m-search-input" placeholder="搜尋歌手、都道府縣、會場 (例: Roselia, 東京, Zepp)..." autocomplete="off">
+      <button id="mClearSearchBtn" class="m-search-clear" style="display:none;">✕</button>
+    </div>
+
+    <!-- Mobile Artist Filter Carousel -->
+    <div class="m-artist-chips-bar" id="mArtistChipsBar">
+      <!-- Rendered by JS -->
+    </div>
+
+    <!-- Mobile Sub-View Toggle (月曆視圖 / 巡迴列表) -->
+    <div class="m-view-mode-bar">
+      <div class="m-view-mode-toggle">
+        <button class="m-toggle-btn active" id="mViewCalBtn">📅 月曆視圖</button>
+        <button class="m-toggle-btn" id="mViewListBtn">📜 巡迴列表</button>
+      </div>
+      <span class="m-results-count" id="mResultsCount">共 215 場</span>
+    </div>
+
+    <!-- Month Calendar Container -->
+    <div id="mCalendarContainer">
+      <div class="m-month-wrapper">
+        <div class="m-weekdays-row">
+          <div class="m-weekday-item sun">日</div>
+          <div class="m-weekday-item">月</div>
+          <div class="m-weekday-item">火</div>
+          <div class="m-weekday-item">水</div>
+          <div class="m-weekday-item">木</div>
+          <div class="m-weekday-item">金</div>
+          <div class="m-weekday-item sat">土</div>
+        </div>
+        <div class="m-days-grid" id="mDaysGrid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Day Agenda Section -->
+      <div class="m-day-agenda-section" id="mDayAgendaSection">
+        <div class="m-day-agenda-header">
+          <div style="display:flex; align-items:center; gap:6px;">
+            <span style="font-size:1rem;">📌</span>
+            <span class="m-day-agenda-title" id="mDayAgendaTitle">選取日期行程</span>
+          </div>
+          <span class="m-day-agenda-badge" id="mDayAgendaBadge">0 場公演</span>
+        </div>
+        <div class="m-day-agenda-list" id="mDayAgendaList">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Agenda List Stream Container (when in list mode) -->
+    <div id="mAgendaListContainer" style="display:none;">
+      <div class="m-agenda-stream" id="mAgendaStream">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
   </div>
 
   <!-- Custom Text & URL Parser Modal (with AGY AI Integration) -->
@@ -518,6 +620,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=20260831_3"></script>
+  <script src="app.js?v=20260831_mobile"></script>
 </body>
 </html>

@@ -2616,3 +2616,490 @@ body {
     padding: 10px 12px;
   }
 }
+
+/* =========================================================
+   Mode Switcher Bar (Manual Mobile / Desktop Toggle)
+========================================================= */
+.mode-switch-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(13, 17, 23, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.mode-switch-btn {
+  background: #21262d;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.mode-switch-btn:hover {
+  background: #30363d;
+  border-color: #8b949e;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   Mobile View (Google Calendar Mobile Replica)
+========================================================= */
+#mobileLayout {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px 10px 80px;
+}
+
+.m-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.m-left-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.m-month-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.m-badge-ver {
+  font-size: 0.68rem;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #c084fc;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.m-right-group {
+  display: flex;
+  gap: 6px;
+}
+
+.m-btn-circle {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.m-btn-circle:hover {
+  background: #21262d;
+  border-color: #8b949e;
+}
+
+.m-month-pills-bar,
+.m-artist-chips-bar {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.m-month-pills-bar::-webkit-scrollbar,
+.m-artist-chips-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.m-month-pill,
+.m-artist-chip {
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--text-sub);
+  padding: 4px 12px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.m-month-pill:hover,
+.m-artist-chip:hover {
+  background: #21262d;
+  color: #fff;
+}
+
+.m-month-pill.active,
+.m-artist-chip.active {
+  background: #6c5ce7;
+  border-color: #6c5ce7;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.4);
+}
+
+.m-search-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.m-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.m-search-input {
+  width: 100%;
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px 32px 8px 34px;
+  color: #fff;
+  font-size: 0.84rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.m-search-input:focus {
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.25);
+}
+
+.m-search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.m-view-mode-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.m-view-mode-toggle {
+  display: flex;
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 2px;
+}
+
+.m-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.m-toggle-btn.active {
+  background: #21262d;
+  color: #fff;
+}
+
+.m-results-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Mobile Month Calendar Grid */
+.m-month-wrapper {
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.m-weekdays-row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  background: #0d1117;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 6px 0;
+}
+
+.m-weekday-item {
+  color: var(--text-muted);
+}
+
+.m-weekday-item.sun { color: #ff4757; }
+.m-weekday-item.sat { color: #1e90ff; }
+
+.m-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  background: var(--border-subtle);
+  gap: 1px;
+}
+
+.m-day-cell {
+  background: #161b22;
+  min-height: 86px;
+  padding: 3px 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.m-day-cell:hover, .m-day-cell:active {
+  background: #1c222c;
+}
+
+.m-day-cell.other-month {
+  background: #0d1015;
+  opacity: 0.35;
+}
+
+.m-day-cell.is-selected {
+  background: rgba(108, 92, 231, 0.16);
+  outline: 2px solid #6c5ce7;
+  z-index: 2;
+}
+
+.m-date-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.m-date-number {
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.m-day-cell.is-sun .m-date-number { color: #ff6b81; }
+.m-day-cell.is-sat .m-date-number { color: #70a1ff; }
+
+.m-day-cell.is-today .m-date-number {
+  background: #6c5ce7;
+  color: #ffffff !important;
+  font-weight: 900;
+  box-shadow: 0 0 6px rgba(108, 92, 231, 0.5);
+}
+
+.m-event-chip {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 1px 3px;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  line-height: 1.3;
+  margin-bottom: 1px;
+  display: block;
+}
+
+/* Mobile Day Agenda Section */
+.m-day-agenda-section {
+  background: #161b22;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.m-day-agenda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.m-day-agenda-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.m-day-agenda-badge {
+  font-size: 0.72rem;
+  background: rgba(108, 92, 231, 0.2);
+  color: #a29bfe;
+  border: 1px solid rgba(108, 92, 231, 0.4);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.m-show-card {
+  background: #0d1117;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.m-show-card:hover {
+  border-color: #6c5ce7;
+  transform: translateY(-1px);
+}
+
+.m-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.m-artist-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.m-show-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.m-show-tour-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.m-show-venue {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  margin-bottom: 6px;
+}
+
+.m-show-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-bottom: 10px;
+}
+
+.m-show-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.m-action-btn {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  background: #21262d;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.m-action-btn:hover {
+  background: #30363d;
+}
+
+.m-action-btn.primary {
+  background: #6c5ce7;
+  border-color: #6c5ce7;
+  color: #fff;
+}
+
+.m-action-btn.primary:hover {
+  background: #5b4cc4;
+}
+
+/* Mobile Agenda Stream View */
+.m-agenda-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.m-agenda-group-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #a29bfe;
+  padding: 4px 8px;
+  background: rgba(108, 92, 231, 0.12);
+  border-left: 3px solid #6c5ce7;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
