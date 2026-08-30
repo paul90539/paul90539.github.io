@@ -1181,7 +1181,7 @@ let activeRegionFilter = 'all';
 let activeTagFilter = null;
 let currentSort = 'date-asc';
 let currentSearch = '';
-let currentView = 'table'; // 'table', 'card', or 'calendar'
+let currentView = 'calendar'; // Default to calendar view
 let calendarYear = 2026;
 let calendarMonth = 10;
 
