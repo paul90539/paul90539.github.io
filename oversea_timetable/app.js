@@ -2219,7 +2219,7 @@ function renderMobile() {
     // "All" chip
     const allChip = document.createElement('button');
     allChip.className = `m-artist-chip ${activeArtistFilter === 'all' ? 'active' : ''}`;
-    allChip.innerHTML = `<span>🌟 全部</span> <small style="opacity:0.85;">(${allShowsList.length})</small>`;
+    allChip.innerHTML = `<span>全部</span> <small style="opacity:0.85;">(${allShowsList.length})</small>`;
     allChip.addEventListener('click', () => {
       activeArtistFilter = 'all';
       renderArtistNavTabs();
@@ -2233,7 +2233,7 @@ function renderMobile() {
       const count = allShowsList.filter(s => s.artistId === tour.id).length;
       const chip = document.createElement('button');
       chip.className = `m-artist-chip ${activeArtistFilter === tour.id ? 'active' : ''}`;
-      chip.innerHTML = `<span>${tour.icon || '🎤'} ${tour.name}</span> <small style="opacity:0.85;">(${count})</small>`;
+      chip.innerHTML = `<span>${tour.name}</span> <small style="opacity:0.85;">(${count})</small>`;
       chip.addEventListener('click', () => {
         activeArtistFilter = tour.id;
         renderArtistNavTabs();
@@ -2309,8 +2309,8 @@ function renderMobileCalendarGrid(filtered) {
     dayShows.forEach(s => {
       const theme = getArtistTheme(s.artistId);
       chipsHtml += `
-        <div class="m-event-chip" style="background:${theme.color}; color:#fff;" onclick="event.stopPropagation(); openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
-          ${theme.icon} ${s.venue}
+        <div class="m-event-chip" style="background:${theme.color}; color:#fff;" onclick="event.stopPropagation(); openShowDetailModal(allShowsList.find(x => x.globalId === ${s.globalId}))">
+          ${s.artistName}
         </div>
       `;
     });
@@ -2375,10 +2375,10 @@ function renderMobileDayAgenda(dateIso, shows) {
     const calUrl = generateGoogleCalendarUrl(s);
     const mapUrl = generateMapUrl(s);
     html += `
-      <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
+      <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.globalId === ${s.globalId}))">
         <div class="m-show-header">
           <span class="m-artist-badge" style="background:${theme.color}; color:#fff;">
-            ${theme.icon} ${s.artistName}
+            ${s.artistName}
           </span>
           <span class="m-show-date">${s.dateFormatted} (${s.dayOfWeek})</span>
         </div>
@@ -2431,10 +2431,10 @@ function renderMobileAgendaList(filtered) {
       const calUrl = generateGoogleCalendarUrl(s);
       const mapUrl = generateMapUrl(s);
       html += `
-        <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.id === ${s.id}))">
+        <div class="m-show-card" onclick="openShowDetailModal(allShowsList.find(x => x.globalId === ${s.globalId}))">
           <div class="m-show-header">
             <span class="m-artist-badge" style="background:${theme.color}; color:#fff;">
-              ${theme.icon} ${s.artistName}
+              ${s.artistName}
             </span>
             <span class="m-show-date">${s.dateFormatted} (${s.dayOfWeek})</span>
           </div>
