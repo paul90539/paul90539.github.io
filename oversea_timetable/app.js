@@ -3097,5 +3097,9 @@ function init() {
   initLayoutMode();
 }
 
-// Start application when DOM is ready
-document.addEventListener('DOMContentLoaded', init);
+// Start application safely whether DOM is ready or already loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

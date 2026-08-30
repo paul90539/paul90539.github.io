@@ -2657,6 +2657,15 @@ body {
 /* =========================================================
    Mobile View (Google Calendar Mobile Replica)
 ========================================================= */
+@media (max-width: 768px) {
+  #desktopLayout { display: none; }
+  #mobileLayout { display: block; }
+}
+@media (min-width: 769px) {
+  #desktopLayout { display: block; }
+  #mobileLayout { display: none; }
+}
+
 #mobileLayout {
   max-width: 600px;
   margin: 0 auto;
