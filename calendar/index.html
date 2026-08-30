@@ -369,7 +369,7 @@
 
     .cal-d-cell {
       background: #0f131a;
-      min-height: 110px;
+      min-height: 115px;
       padding: 6px 4px;
       display: flex;
       flex-direction: column;
@@ -700,7 +700,7 @@
       box-shadow: inset 0 0 0 0.5px rgba(255, 82, 82, 0.4);
     }
 
-    /* Common Agenda / Table / Modal */
+    /* Common Table / Modal */
     .timetable {
       width: 100%;
       border-collapse: collapse;
@@ -737,7 +737,7 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       max-height: 85vh;
       overflow-y: auto;
       box-shadow: var(--shadow-lg);
@@ -778,7 +778,7 @@
 
     .modal-label {
       color: var(--text-muted);
-      min-width: 80px;
+      min-width: 85px;
       font-weight: 600;
     }
 
@@ -848,7 +848,7 @@
       <div class="tour-tag-wrapper">
         <span class="badge badge-tour">TICKET TIMETABLE</span>
         <span class="badge" style="background:rgba(255,165,2,0.15); color:var(--secondary-accent); border:1px solid rgba(255,165,2,0.3);">全平台演唱會追蹤</span>
-        <span class="badge badge-ver">v1.1.4</span>
+        <span class="badge badge-ver">v1.2.0</span>
       </div>
       <h1 class="main-title">全平台演唱會活動與售票行程表</h1>
       <p class="subtitle">KKTIX / 拓元 / 寬宏 / 年代 / 遠大 / ibon / 自訂活動 智慧彙整</p>
@@ -886,7 +886,7 @@
 
     <div class="desktop-toolbar">
       <div class="search-wrap-desktop">
-        <input type="text" id="dSearchInput" placeholder="搜尋活動、歌手、會場...">
+        <input type="text" id="dSearchInput" placeholder="🔍 搜尋活動、歌手/藝人、場館、城市...">
       </div>
       <div class="desktop-actions">
         <a href="/" class="btn">🏠 首頁</a>
@@ -927,9 +927,10 @@
           <tr>
             <th>#</th>
             <th>平台</th>
+            <th>歌手/藝人</th>
             <th>活動名稱</th>
+            <th>場館 (Venue)</th>
             <th>演出日期</th>
-            <th>星期</th>
             <th>售票開賣時間</th>
             <th>操作</th>
           </tr>
@@ -948,7 +949,7 @@
         <a href="/" style="text-decoration:none; font-size:1.2rem;">🏠</a>
         <div class="gcal-month-title">
           <span id="mMainMonthTitle">2026年 8月</span>
-          <span class="ver-tag">v1.1.4</span>
+          <span class="ver-tag">v1.2.0</span>
         </div>
       </div>
       <div style="display:flex; align-items:center; gap:6px;">
@@ -975,7 +976,7 @@
     </div>
 
     <div class="search-box-m">
-      <input type="text" id="mSearchInput" placeholder="🔍 搜尋活動、歌手、會場...">
+      <input type="text" id="mSearchInput" placeholder="🔍 搜尋活動、歌手/藝人、場館、城市...">
     </div>
 
     <!-- Mobile Month Grid -->
@@ -1002,6 +1003,9 @@
       </div>
       <div class="modal-body">
         <div class="modal-row"><span class="modal-label">售票平台：</span><span class="modal-val" id="modalPlatform"></span></div>
+        <div class="modal-row"><span class="modal-label">歌手/演出：</span><span class="modal-val" id="modalArtist"></span></div>
+        <div class="modal-row"><span class="modal-label">活動場館：</span><span class="modal-val" id="modalVenue"></span></div>
+        <div class="modal-row"><span class="modal-label">活動地址：</span><span class="modal-val" id="modalAddress"></span></div>
         <div class="modal-row"><span class="modal-label">演出時間：</span><span class="modal-val" id="modalEventTime"></span></div>
         <div class="modal-row"><span class="modal-label">售票開賣：</span><span class="modal-val" id="modalSaleTime"></span></div>
         <div class="modal-row"><span class="modal-label">首次發現：</span><span class="modal-val" id="modalPubTime"></span></div>
@@ -1030,6 +1034,9 @@
   {
     "id": 365,
     "name": "【單買門票】XG世界巡迴演唱會 THE CORE 台北站 XG WORLD TOUR: THE CORE IN TAIPEI",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-05-03 00:00:00",
     "date": "2026-05-03",
     "year": "2026",
@@ -1056,6 +1063,9 @@
   {
     "id": 1,
     "name": "Evolov3 II Ranacimeto",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-28 23:00:00",
     "date": "2026-08-28",
     "year": "2026",
@@ -1082,6 +1092,9 @@
   {
     "id": 2,
     "name": "黃宇寒 Han 2026 小巡迴 —【尋 Ngai 地圖：城市交換日記】",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-28 19:30:00",
     "date": "2026-08-28",
     "year": "2026",
@@ -1108,6 +1121,9 @@
   {
     "id": 195,
     "name": "【音樂解密沙龍】週五限定：一杯咖啡聽懂爵士樂！Barney Kessel 的奇幻世界：改編卡門與拉丁風格的爵士吉他大師",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-28 19:30:00",
     "date": "2026-08-28",
     "year": "2026",
@@ -1134,6 +1150,9 @@
   {
     "id": 354,
     "name": "【加開席次】Official髭男dism 2026 亞洲巡迴演唱會-台北站 OFFICIAL HIGE DANDISM ASIA TOUR 2026 - in TAIPEI",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-28 00:00:00",
     "date": "2026-08-28",
     "year": "2026",
@@ -1160,6 +1179,9 @@
   {
     "id": 3,
     "name": "[8/29午場]東方爆音JAZZ -熱響-",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 14:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1186,6 +1208,9 @@
   {
     "id": 4,
     "name": "【John Patitucci Trio｜A Night of Conversation】",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 14:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1212,6 +1237,9 @@
   {
     "id": 5,
     "name": "八月的最後一個週六下午，帶你直擊一般演出看不到的「音樂誕生現場」！",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 14:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1238,6 +1266,9 @@
   {
     "id": 6,
     "name": "李瑩珠EVE 《POV》粉絲見面會：我們的第一個 POV",
+    "artist": "李瑩珠EVE",
+    "venue": "卡米地＋ Comedy Plus",
+    "address": "台北市中山區復興北路480號B1",
     "time": "2026-08-29 14:30:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1264,6 +1295,9 @@
   {
     "id": 7,
     "name": "‘Broccoli, you too?’ 1st live in Taipei",
+    "artist": "Broccoli, you too?",
+    "venue": "WHOA",
+    "address": "台北市文昌街130號2樓",
     "time": "2026-08-29 18:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1290,6 +1324,9 @@
   {
     "id": 8,
     "name": "[8/29晚場]東方爆音JAZZ -幻響-",
+    "artist": "東京ACTIVE NEETs feat. TAM",
+    "venue": "花漾展演空間-HANASPACE",
+    "address": "臺北市中正區東門里仁愛路一段17號10樓",
     "time": "2026-08-29 18:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1316,6 +1353,9 @@
   {
     "id": 9,
     "name": "MULA SAKEE 2026 永玄大典 台北站",
+    "artist": "MULA SAKEE",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-08-29 18:30:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1342,6 +1382,9 @@
   {
     "id": 388,
     "name": "2026東海岸大地藝術節月光．海音樂會－澎湃的海",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 17:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1368,6 +1411,9 @@
   {
     "id": 401,
     "name": "YUA Birthday Fan Meeting 三上悠亞生日粉絲見面會",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 14:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1394,6 +1440,9 @@
   {
     "id": 403,
     "name": "2026 XLOV ASIA TOUR ＜Serving—X＞ IN TAIPEI",
+    "artist": "XLOV",
+    "venue": "國立臺灣大學綜合體育館1F",
+    "address": "台北市大安區羅斯福路四段1號",
     "time": "2026-08-29 18:00:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1420,6 +1469,9 @@
   {
     "id": 410,
     "name": "2026 TRENDY TAIPEI 潮臺北—JAM JAM ASIA 亞洲音樂節",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-29 11:30:00",
     "date": "2026-08-29",
     "year": "2026",
@@ -1446,6 +1498,9 @@
   {
     "id": 10,
     "name": "週日跑團靠過來 - 0830盛夏聚會",
+    "artist": "",
+    "venue": "GrowLife 靠過來",
+    "address": "臺北市中正區新生南路一段160巷18-1號",
     "time": "2026-08-30 12:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1472,6 +1527,9 @@
   {
     "id": 11,
     "name": "[8/30 15:00]東方爆音JAZZ -萃響-",
+    "artist": "東京 ACTIVE NEETs feat. TAM",
+    "venue": "後台Backstage",
+    "address": "高雄市苓雅區苓東里海邊路15-3號(鯨魚03館)",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1498,6 +1556,9 @@
   {
     "id": 12,
     "name": "【一杯咖啡聽我彈爵士吉他】夏日特典：浪漫情歌爵士風情！重現風華年代的指尖深情（含現場 Jam Session）",
+    "artist": "",
+    "venue": "Basilica 爵士藝文咖啡",
+    "address": "台北市大同區迪化街一段280巷6號",
     "time": "2026-08-30 16:30:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1524,6 +1585,9 @@
   {
     "id": 197,
     "name": "八木海莉ONE-MAN LIVE 2026 in TAIPEI 登記抽選",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-30 18:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1550,6 +1614,9 @@
   {
     "id": 198,
     "name": "八木海莉ONE-MAN LIVE 2026 in TAIPEI",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-30 18:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1576,6 +1643,9 @@
   {
     "id": 199,
     "name": "八木海莉ONE-MAN LIVE 2026 in TAIPEI VIP PASS限量加購 登記抽選",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-08-30 18:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1602,6 +1672,9 @@
   {
     "id": 202,
     "name": "“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI 登記抽選 (“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI 台灣在住登記抽選(8/30場次))",
+    "artist": "KENTY",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1628,6 +1701,9 @@
   {
     "id": 203,
     "name": "“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI 登記抽選 (“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI 全球登記抽選(8/30場次))",
+    "artist": "KENTY",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1654,6 +1730,9 @@
   {
     "id": 204,
     "name": "“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI (“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI(8/30場次))",
+    "artist": "KENTY",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1680,6 +1759,9 @@
   {
     "id": 205,
     "name": "“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI VIP PASS限量加購 登記抽選 (“IDOL1ST KENTY” ASIA TOUR 2026 in TAIPEI VIP PASS限量加購 登記抽選(8/30場次))",
+    "artist": "KENTY",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1706,6 +1788,9 @@
   {
     "id": 269,
     "name": "OFFICIAL HIGE DANDISM 台北演唱會官方週邊商品 預約取貨 (OFFICIAL HIGE DANDISM 台北演唱會官方週邊商品 預約取貨 8/30場次)",
+    "artist": "OFFICIAL HIGE DANDISM",
+    "venue": "",
+    "address": "",
     "time": "2026-08-30 11:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1732,6 +1817,9 @@
   {
     "id": 273,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei (《向流星許願的我們》Keep Wishing | Wishing Upon the Shooting Stars FAN MEETING in Taipei)",
+    "artist": "鍾岳軒、初孟軒、余杰恩、各務孝太",
+    "venue": "三創生活園區 12F SYNTREND SHOW 多元廳",
+    "address": "臺北市中正區市民大道三段2號12樓",
     "time": "2026-08-30 16:30:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1758,6 +1846,9 @@
   {
     "id": 274,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei・福利加購",
+    "artist": "鍾岳軒、初孟軒、余杰恩、各務孝太",
+    "venue": "三創生活園區 12F SYNTREND SHOW 多元廳",
+    "address": "臺北市中正區市民大道三段2號12樓",
     "time": "2026-08-30 13:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1784,6 +1875,9 @@
   {
     "id": 298,
     "name": "《向流星許願的我們》Keep Wishing｜Wishing Upon the Shooting Stars FAN MEETING in Taipei・SOUND CHECK加購",
+    "artist": "",
+    "venue": "三創生活園區12F 多元廳",
+    "address": "臺北市中正區市民大道三段2號12樓",
     "time": "2026-08-30 15:30:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1810,6 +1904,9 @@
   {
     "id": 361,
     "name": "【單買門票】Everybody YA-HO 雅好 FAN LIVE",
+    "artist": "雅好",
+    "venue": "",
+    "address": "",
     "time": "2026-08-30 17:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1836,6 +1933,9 @@
   {
     "id": 366,
     "name": "Official髭男dism 2026 亞洲巡迴演唱會-台北站 OFFICIAL HIGE DANDISM ASIA TOUR 2026 - in TAIPEI",
+    "artist": "Official髭男dism",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-08-30 18:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1862,6 +1962,9 @@
   {
     "id": 369,
     "name": "【翁倩玉 陽光般的60週年演唱會-時間之歌】",
+    "artist": "翁倩玉",
+    "venue": "台北國際會議中心 TICC",
+    "address": "台北市信義區信義路五段1號",
     "time": "2026-08-30 15:00:00",
     "date": "2026-08-30",
     "year": "2026",
@@ -1888,6 +1991,9 @@
   {
     "id": 13,
     "name": "南西肯恩 NeciKen［From mud to flowers］2026 Tour 香港站",
+    "artist": "南西肯恩",
+    "venue": "留白Livehouse",
+    "address": "九龍西九文化區博物館道18號自由空間地下",
     "time": "2026-09-01 20:00:00",
     "date": "2026-09-01",
     "year": "2026",
@@ -1914,6 +2020,9 @@
   {
     "id": 14,
     "name": "MIRAGE FESTIVAL 2026｜48HR COMMUNITY SALES 社群限時快閃票",
+    "artist": "",
+    "venue": "自然圈農場 LoFi Land",
+    "address": "苗栗縣卓蘭鎮西坪36-20號",
     "time": "2026-09-04 11:00:00",
     "date": "2026-09-04",
     "year": "2026",
@@ -1940,6 +2049,9 @@
   {
     "id": 263,
     "name": "范安婷：城市裡的那些夢",
+    "artist": "范安婷",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-04 19:30:00",
     "date": "2026-09-04",
     "year": "2026",
@@ -1966,6 +2078,9 @@
   {
     "id": 15,
     "name": "Mathariri音樂節",
+    "artist": "",
+    "venue": "屏東體育館",
+    "address": "屏東縣屏東市公園里勝利路9號",
     "time": "2026-09-05 09:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -1992,6 +2107,9 @@
   {
     "id": 16,
     "name": "PAWER LOVE MUSIC FESTIVAL 2026 流浪祭",
+    "artist": "",
+    "venue": "臺北流行音樂中心",
+    "address": "臺北市南港區市民大道八段99號",
     "time": "2026-09-05 15:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2018,6 +2136,9 @@
   {
     "id": 17,
     "name": "王齊銘 綦江崽兒巡演 台北站",
+    "artist": "王齊銘",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2044,6 +2165,9 @@
   {
     "id": 18,
     "name": "【VIP】王齊銘 綦江崽兒巡演 台北站",
+    "artist": "王齊銘",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2070,6 +2194,9 @@
   {
     "id": 19,
     "name": "【福利加價購】王齊銘 綦江崽兒巡演 台北站",
+    "artist": "王齊銘",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2096,6 +2223,9 @@
   {
     "id": 20,
     "name": "【GA】王齊銘 綦江崽兒巡演 台北站",
+    "artist": "王齊銘",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2122,6 +2252,9 @@
   {
     "id": 21,
     "name": "《鳴潮》巡迴演唱會「致予新世界」台北站",
+    "artist": "",
+    "venue": "桃園會展中心",
+    "address": "桃園市中壢區領航北路一段99號",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2148,6 +2281,9 @@
   {
     "id": 22,
     "name": "【臺中場】2026 洪佩瑜《開了又開》巡迴演唱會",
+    "artist": "洪佩瑜",
+    "venue": "Legacy Taichung",
+    "address": "台中市西屯區安和路117號",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2174,6 +2310,9 @@
   {
     "id": 23,
     "name": "2026 洪佩瑜《開了又開》巡迴演唱會",
+    "artist": "洪佩瑜",
+    "venue": "Legacy Taichung",
+    "address": "台中市西屯區安和路117號",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2200,6 +2339,9 @@
   {
     "id": 222,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 登記抽選 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 台灣在住登記抽選(9/5場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "台北流行音樂中心",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 18:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2226,6 +2368,9 @@
   {
     "id": 224,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 登記抽選 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 全球登記抽選(9/5場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "台北流行音樂中心",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 18:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2252,6 +2397,9 @@
   {
     "id": 226,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei(9/5場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 18:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2278,6 +2426,9 @@
   {
     "id": 256,
     "name": "HER VOICE－無所畏懼的女聲",
+    "artist": "",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區博愛二路757號",
     "time": "2026-09-05 19:30:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2304,6 +2455,9 @@
   {
     "id": 264,
     "name": "羊米人YUMMY MAN【飛天摩托車】演唱會",
+    "artist": "羊米人",
+    "venue": "",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-09-05 19:30:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2330,6 +2484,9 @@
   {
     "id": 275,
     "name": "NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI",
+    "artist": "NCT WISH",
+    "venue": "國立體育大學綜合體育館（林口體育館）",
+    "address": "桃園市龜山區文化一路250號",
     "time": "2026-09-05 19:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2356,6 +2513,9 @@
   {
     "id": 276,
     "name": "NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI (NCT WISH 2ND ANNIVERSARY FANMEETING <六位王子都想娶我?> IN TAIPEI（加場）)",
+    "artist": "NCT WISH",
+    "venue": "",
+    "address": "桃園市龜山區文化一路250號",
     "time": "2026-09-05 13:30:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2382,6 +2542,9 @@
   {
     "id": 348,
     "name": "Atree夏樂祭 Ⅱ：薄暮時分 THE DUSK：AFTERGLOW",
+    "artist": "AcQUA源少年",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2408,6 +2571,9 @@
   {
     "id": 349,
     "name": "ITZY 3RD WORLD TOUR ＜TUNNEL VISION＞ in TAIPEI",
+    "artist": "ITZY",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2434,6 +2600,9 @@
   {
     "id": 350,
     "name": "Atree夏樂祭 Ⅰ：破曉共振 THE DAWN：SOLAR RESONANCE",
+    "artist": "Ozone",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2460,6 +2629,9 @@
   {
     "id": 351,
     "name": "Atree夏樂祭｜《限量雙篇章套票》From Dawn to Dusk Pass",
+    "artist": "",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-05 00:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2486,6 +2658,9 @@
   {
     "id": 370,
     "name": "w-inds. LIVE TOUR 2026 “GOLDEN SINGLES”(福利)",
+    "artist": "w-inds.",
+    "venue": "",
+    "address": "高雄市",
     "time": "2026-09-05 17:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2512,6 +2687,9 @@
   {
     "id": 371,
     "name": "w-inds. LIVE TOUR 2026 “GOLDEN SINGLES”",
+    "artist": "w-inds.",
+    "venue": "高雄流行音樂中心",
+    "address": "高雄市",
     "time": "2026-09-05 17:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2538,6 +2716,9 @@
   {
     "id": 399,
     "name": "U－KNOW PROJECT 26：SCENE＃1 in Taipei",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-05 18:00:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2564,6 +2745,9 @@
   {
     "id": 408,
     "name": "幽靈書店Ghost Bookstore / 4 Steps ‘Fore the Spiral 首度台北專場",
+    "artist": "Ghost Bookstore",
+    "venue": "野地方 Wildlab",
+    "address": "台北市中正區杭州南路一段147號B1",
     "time": "2026-09-05 19:30:00",
     "date": "2026-09-05",
     "year": "2026",
@@ -2590,6 +2774,9 @@
   {
     "id": 24,
     "name": "[14:00場] KIM SIHUN ASIA TOUR 2026 [INTO DIZZY STATE] in TAIPEI",
+    "artist": "KIM SIHUN",
+    "venue": "凝聚力音樂娛樂Cohesion Space",
+    "address": "臺北市松山區八德路三段106巷1號B1",
     "time": "2026-09-06 14:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2616,6 +2803,9 @@
   {
     "id": 25,
     "name": "KIM SIHUN ASIA TOUR 2026 [INTO DIZZY STATE] in TAIPEI",
+    "artist": "KIM SIHUN",
+    "venue": "凝聚力音樂娛樂Cohesion Space",
+    "address": "臺北市松山區八德路三段106巷1號B1",
     "time": "2026-09-06 14:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2642,6 +2832,9 @@
   {
     "id": 26,
     "name": "[18:00場] KIM SIHUN ASIA TOUR 2026 [INTO DIZZY STATE] in TAIPEI",
+    "artist": "KIM SIHUN",
+    "venue": "凝聚力音樂娛樂Cohesion Space",
+    "address": "臺北市松山區八德路三段106巷1號B1",
     "time": "2026-09-06 18:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2668,6 +2861,9 @@
   {
     "id": 223,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 登記抽選 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 台灣在住登記抽選(9/6場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "台北流行音樂中心",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-06 16:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2694,6 +2890,9 @@
   {
     "id": 225,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 登記抽選 (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei 全球登記抽選(9/6場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "台北流行音樂中心",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-06 16:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2720,6 +2919,9 @@
   {
     "id": 227,
     "name": "Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei (Ryosuke Yamada ASIA TOUR 2026 Red.Y in Taipei(9/6場次))",
+    "artist": "Ryosuke Yamada",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-06 16:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2746,6 +2948,9 @@
   {
     "id": 246,
     "name": "RAIDOU VS 真・女神轉生Ⅴ Vengeance",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-06 18:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2772,6 +2977,9 @@
   {
     "id": 289,
     "name": "Dionela – The Promise Tour Live in Taipei",
+    "artist": "Dionela",
+    "venue": "華山1914創意文化園區中5A館",
+    "address": "台北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-06 19:30:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2798,6 +3006,9 @@
   {
     "id": 372,
     "name": "KOTOKO LIVE TOUR 2026”The Bible2” in TAIPEI",
+    "artist": "KOTOKO",
+    "venue": "WESTAR",
+    "address": "台北市萬華區漢中街116號8樓",
     "time": "2026-09-06 18:00:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2824,6 +3035,9 @@
   {
     "id": 392,
     "name": "Enemies With Benefits 1st Fan meeting in Taipei",
+    "artist": "Janhae, JingJing, Kapook, Ciize",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-06 15:30:00",
     "date": "2026-09-06",
     "year": "2026",
@@ -2850,6 +3064,9 @@
   {
     "id": 347,
     "name": "2026年第14屆亞洲(U18)青棒錦標賽",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-07 00:00:00",
     "date": "2026-09-07",
     "year": "2026",
@@ -2876,6 +3093,9 @@
   {
     "id": 355,
     "name": "2026玖壹壹南北貳路音樂節",
+    "artist": "玖壹壹",
+    "venue": "",
+    "address": "",
     "time": "2026-09-07 00:00:00",
     "date": "2026-09-07",
     "year": "2026",
@@ -2902,6 +3122,9 @@
   {
     "id": 27,
     "name": "Minami Kuribayashi 25th Anniversary Oneman Live in Hong Kong",
+    "artist": "栗林みな実",
+    "venue": "PORTAL",
+    "address": "1/F, The Burrow",
     "time": "2026-09-10 20:00:00",
     "date": "2026-09-10",
     "year": "2026",
@@ -2928,6 +3151,9 @@
   {
     "id": 28,
     "name": "HYTES Special 2nd LIVE in TAIPEI",
+    "artist": "HYTES",
+    "venue": "杰克音樂 Jack's studio",
+    "address": "10862臺北市萬華區萬壽里昆明街76號B1",
     "time": "2026-09-11 14:00:00",
     "date": "2026-09-11",
     "year": "2026",
@@ -2954,6 +3180,9 @@
   {
     "id": 255,
     "name": "INORAN Jade & Pearl Far East Island ASIA TOUR 2026",
+    "artist": "INORAN",
+    "venue": "",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-09-11 19:30:00",
     "date": "2026-09-11",
     "year": "2026",
@@ -2980,6 +3209,9 @@
   {
     "id": 271,
     "name": "UNIDOTS/mizuki瑞葵 LIVE 2026 in TAIPEI",
+    "artist": "UNIDOTS/mizuki瑞葵",
+    "venue": "MOONDOG Taipei",
+    "address": "台北市松山區復興南路一段39號9F",
     "time": "2026-09-11 20:00:00",
     "date": "2026-09-11",
     "year": "2026",
@@ -3006,6 +3238,9 @@
   {
     "id": 346,
     "name": "IVE WORLD TOUR ＜SHOW WHAT I AM＞ IN TAIPEI",
+    "artist": "IVE",
+    "venue": "",
+    "address": "",
     "time": "2026-09-11 00:00:00",
     "date": "2026-09-11",
     "year": "2026",
@@ -3032,6 +3267,9 @@
   {
     "id": 389,
     "name": "日本夢幻數搖水中Spica  2026年專場",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-11 20:00:00",
     "date": "2026-09-11",
     "year": "2026",
@@ -3058,6 +3296,9 @@
   {
     "id": 29,
     "name": "風與指尖的對話：木笛與吉他的拉丁夜行",
+    "artist": "拾續樂集",
+    "venue": "蓋婭莊園 蓋婭劇場",
+    "address": "嘉義縣大林鎮大埔美園區七路18號",
     "time": "2026-09-12 15:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3084,6 +3325,9 @@
   {
     "id": 30,
     "name": "WATERBOMB KAOHSIUNG 水炸彈音樂節",
+    "artist": "",
+    "venue": "高雄夢時代正對面廣場",
+    "address": "高雄市前鎮區中華五路789號",
     "time": "2026-09-12 14:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3110,6 +3354,9 @@
   {
     "id": 31,
     "name": "【早鳥票】WATERBOMB KAOHSIUNG 水炸彈音樂節",
+    "artist": "",
+    "venue": "高雄夢時代正對面廣場",
+    "address": "高雄市前鎮區中華五路789號",
     "time": "2026-09-12 14:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3136,6 +3383,9 @@
   {
     "id": 32,
     "name": "春奈露娜 2026 巡迴演唱會 台北場",
+    "artist": "春奈露娜",
+    "venue": "NUZONE展演空間",
+    "address": "臺北市大安區市民大道三段198號2樓",
     "time": "2026-09-12 19:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3162,6 +3412,9 @@
   {
     "id": 33,
     "name": "【高雄場】2026 洪佩瑜《開了又開》巡迴演唱會",
+    "artist": "洪佩瑜",
+    "venue": "LIVE WAREHOUSE",
+    "address": "高雄市鹽埕區大義街2-5號 駁二藝術特區大義C10倉庫",
     "time": "2026-09-12 19:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3188,6 +3441,9 @@
   {
     "id": 34,
     "name": "遊牧時空（失控）NOMADIC SPACE-TIME SAFARI (OUT OF CONTROL) CONCERT",
+    "artist": "Bazaar × Hamnavâ 中東樂舞團",
+    "venue": "河岸留言西門紅樓展演館",
+    "address": "108台北市萬華區西寧南路177號",
     "time": "2026-09-12 20:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3214,6 +3470,9 @@
   {
     "id": 35,
     "name": "2026 亞洲首場 hololive DJ Night 官方 DJ 合作派對「hololive DJ Night ft. OTAKUNI in Taipei」",
+    "artist": "宅邦戰隊",
+    "venue": "SUB Live",
+    "address": "臺北市南港區東明里市民大道八段99號",
     "time": "2026-09-12 19:30:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3240,6 +3499,9 @@
   {
     "id": 345,
     "name": "潘越雲 坐看雲起時 演唱會",
+    "artist": "潘越雲",
+    "venue": "",
+    "address": "",
     "time": "2026-09-12 00:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3266,6 +3528,9 @@
   {
     "id": 381,
     "name": "2026 蔡琴 不要告別 巡迴演唱會〔台北返場〕",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-12 19:30:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3292,6 +3557,9 @@
   {
     "id": 385,
     "name": "2026 FTISLAND TOUR 0 — XIX — III ‘FaTe’ in KAOHSIUNG",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-12 17:00:00",
     "date": "2026-09-12",
     "year": "2026",
@@ -3318,6 +3586,9 @@
   {
     "id": 36,
     "name": "【9/13單日票】WATERBOMB KAOHSIUNG 水炸彈音樂節",
+    "artist": "",
+    "venue": "高雄夢時代正對面廣場",
+    "address": "高雄市前鎮區中華五路789號",
     "time": "2026-09-13 14:00:00",
     "date": "2026-09-13",
     "year": "2026",
@@ -3344,6 +3615,9 @@
   {
     "id": 387,
     "name": "2026 ONF FANMEETING 〔Door To TAIPEI〕",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-13 13:00:00",
     "date": "2026-09-13",
     "year": "2026",
@@ -3370,6 +3644,9 @@
   {
     "id": 411,
     "name": "ヨルシカ LIVE TOUR 2026「一人称」@千葉",
+    "artist": "ヨルシカ",
+    "venue": "LaLa arena TOKYO-BAY",
+    "address": "千葉",
     "time": "2026-09-15 12:00",
     "date": "2026-09-15",
     "year": "2026",
@@ -3396,6 +3673,9 @@
   {
     "id": 37,
     "name": "2026 王力宏巡演吉他手 Nathania Jualim × .strandberg* Guitar Clinic 台北場",
+    "artist": "Nathania Jualim",
+    "venue": "人文工坊 O Two O Four 美式音樂餐廳",
+    "address": "新北市板橋區公園街34巷26號B1",
     "time": "2026-09-16 18:30:00",
     "date": "2026-09-16",
     "year": "2026",
@@ -3422,6 +3702,9 @@
   {
     "id": 38,
     "name": "五条院凌「Oh Rose」鋼琴音樂會",
+    "artist": "五条院凌",
+    "venue": "新北市藝文中心 演奏廳",
+    "address": "新北市板橋區莊敬路62號",
     "time": "2026-09-16 19:00:00",
     "date": "2026-09-16",
     "year": "2026",
@@ -3448,6 +3731,9 @@
   {
     "id": 39,
     "name": "Tramhaus Live In Taipei 2026",
+    "artist": "Tramhaus",
+    "venue": "THE WALL LIVE HOUSE",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-09-16 20:00:00",
     "date": "2026-09-16",
     "year": "2026",
@@ -3474,6 +3760,9 @@
   {
     "id": 344,
     "name": "李大奔《THE MODEL TOUR》新專輯巡演台北站",
+    "artist": "李大奔",
+    "venue": "",
+    "address": "",
     "time": "2026-09-16 00:00:00",
     "date": "2026-09-16",
     "year": "2026",
@@ -3500,6 +3789,9 @@
   {
     "id": 412,
     "name": "ヨルシカ LIVE TOUR 2026「一人称」@千葉",
+    "artist": "ヨルシカ",
+    "venue": "LaLa arena TOKYO-BAY",
+    "address": "千葉",
     "time": "2026-09-16 12:00",
     "date": "2026-09-16",
     "year": "2026",
@@ -3526,6 +3818,9 @@
   {
     "id": 40,
     "name": "jizue 20th Anniversary Album「orbis」Release Tour in Taipei",
+    "artist": "jizue",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-09-17 20:00:00",
     "date": "2026-09-17",
     "year": "2026",
@@ -3552,6 +3847,9 @@
   {
     "id": 206,
     "name": "Mili — One Million Moons Asia Tour 2025–2026 — Taipei",
+    "artist": "Mili",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-17 19:30:00",
     "date": "2026-09-17",
     "year": "2026",
@@ -3578,6 +3876,9 @@
   {
     "id": 207,
     "name": "Mili — One Million Moons Asia Tour 2025–2026 — Taipei 登記抽選",
+    "artist": "Mili",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-17 19:30:00",
     "date": "2026-09-17",
     "year": "2026",
@@ -3604,6 +3905,9 @@
   {
     "id": 285,
     "name": "呂杰達x鄭翔予x鍾建暉《酒醒吧！新生代》",
+    "artist": "呂杰達x鄭翔予x鍾建暉",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-17 19:30:00",
     "date": "2026-09-17",
     "year": "2026",
@@ -3630,6 +3934,9 @@
   {
     "id": 41,
     "name": "山形瑞秋 RACHAEL YAMAGATA Starlit Alchemy Tour Live in TAIPEI",
+    "artist": "山形瑞秋",
+    "venue": "三創CLAPPER STUDIO",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-09-18 19:00:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3656,6 +3963,9 @@
   {
     "id": 42,
     "name": "【臺北場】2026 洪佩瑜《開了又開》巡迴演唱會",
+    "artist": "洪佩瑜",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-18 20:00:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3682,6 +3992,9 @@
   {
     "id": 201,
     "name": "RUSH BALL 2026 in 台灣 with FRIENDSHIP.",
+    "artist": "",
+    "venue": "",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3708,6 +4021,9 @@
   {
     "id": 297,
     "name": "再次相認 Remembering Each Other－巴賴Balai 久違的台北女巫專演",
+    "artist": "巴賴Balai",
+    "venue": "女巫店",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3734,6 +4050,9 @@
   {
     "id": 363,
     "name": "蕭煌奇2026〈BRAVO〉演唱會 台北小巨蛋",
+    "artist": "蕭煌奇",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3760,6 +4079,9 @@
   {
     "id": 391,
     "name": "歐陸暗黑奇女子Molly Nilsson Live in Taipei 2026",
+    "artist": "Molly Nilsson",
+    "venue": "野地方 Wildlab",
+    "address": "台北市中正區杭州南路一段147號B1",
     "time": "2026-09-18 19:30:00",
     "date": "2026-09-18",
     "year": "2026",
@@ -3786,6 +4108,9 @@
   {
     "id": 43,
     "name": "2026.9.19 Nina 生日會",
+    "artist": "Nina",
+    "venue": "KIRABASE北車店",
+    "address": "台北市中正區忠孝西路一段50號B3",
     "time": "2026-09-19 14:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3812,6 +4137,9 @@
   {
     "id": 44,
     "name": "《好時代》Sunset Music Festival - CANTO on the Beach 廣東歌沙灘音樂會",
+    "artist": "",
+    "venue": "愉景灣大白灣沙灘",
+    "address": "海馬徑大白灣沙灘",
     "time": "2026-09-19 15:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3838,6 +4166,9 @@
   {
     "id": 45,
     "name": "Tilly Birds 2026 台北專場演唱會",
+    "artist": "Tilly Birds",
+    "venue": "NUZONE展演空間",
+    "address": "台北市大安區市民大道三段198號2樓",
     "time": "2026-09-19 19:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3864,6 +4195,9 @@
   {
     "id": 46,
     "name": "【9/19場】台北.且聽天命《黑神話：悟空》全球音樂會",
+    "artist": "",
+    "venue": "LEGACY MAX新光三越A11",
+    "address": "台北市信義區松壽路11號6樓",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3890,6 +4224,9 @@
   {
     "id": 47,
     "name": "銀幕之外 朱芸編 Beyond the Screen",
+    "artist": "朱芸編",
+    "venue": "CORNER MAX大角落多功能展演館",
+    "address": "臺北市大安區華聲里光復南路102號1樓",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3916,6 +4253,9 @@
   {
     "id": 48,
     "name": "Andr [Shedding Skin 脱皮] 2026 Asia Tour in  Taipei [Special Edition]",
+    "artist": "Andr",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號(華山1914創意文化園區中5A館)",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3942,6 +4282,9 @@
   {
     "id": 49,
     "name": "溫蒂漫步 Wendy Wander 新專輯前導 mini Live “The Entrance”",
+    "artist": "溫蒂漫步",
+    "venue": "SUB Live",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-19 20:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3968,6 +4311,9 @@
   {
     "id": 50,
     "name": "台北.且聽天命《黑神話：悟空》全球音樂會",
+    "artist": "",
+    "venue": "LEGACY MAX新光三越A11",
+    "address": "台北市信義區松壽路11號6樓",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -3994,6 +4340,9 @@
   {
     "id": 214,
     "name": "RUSH BALL 2026 in Taipei & Taichung on the ROAD (RUSH BALL 2026 in Taipei & Taichung on the ROAD(台北場))",
+    "artist": "",
+    "venue": "",
+    "address": "115臺北市南港區市民大道八段99號",
     "time": "2026-09-19 18:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4020,6 +4369,9 @@
   {
     "id": 282,
     "name": "房潔恩James fong 《雲朵觀察家》ft.杏仁茶Victoria",
+    "artist": "房潔恩James fong",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-19 19:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4046,6 +4398,9 @@
   {
     "id": 338,
     "name": "2026 LEE YOUNGJI WORLD TOUR ＜2.0＞",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4072,6 +4427,9 @@
   {
     "id": 339,
     "name": "Post Malone Presents The BIG ASS Stadium World Tour",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4098,6 +4456,9 @@
   {
     "id": 340,
     "name": "THE ROSE ROSETOPIA ASIA TOUR 2026 IN KAOHSIUNG",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4124,6 +4485,9 @@
   {
     "id": 341,
     "name": "【Mastercard專區】2026 LEE YOUNGJI WORLD TOUR ＜2.0＞",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4150,6 +4514,9 @@
   {
     "id": 342,
     "name": "【歌迷返鄉專車】x Post Malone Presents The BIG ASS Stadium World Tour",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4176,6 +4543,9 @@
   {
     "id": 343,
     "name": "【Mastercard專區】Post Malone Presents The BIG ASS Stadium World Tour",
+    "artist": "Post Malone",
+    "venue": "高雄國家體育場",
+    "address": "高雄市",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4202,6 +4572,9 @@
   {
     "id": 360,
     "name": "【10/25場次】MUSIC EXPO LIVE 2026 in TAIPEI",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-09-19 00:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4228,6 +4601,9 @@
   {
     "id": 393,
     "name": "FayeAtom 1st fan meeting in Kaohsiung",
+    "artist": "Faye, Atom",
+    "venue": "高雄萬豪酒店 8樓宴會廳",
+    "address": "高雄市鼓山區大順一路115號",
     "time": "2026-09-19 15:30:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4254,6 +4630,9 @@
   {
     "id": 409,
     "name": "2026 N.Flying LIVE ‘＆CON5：into REM’ IN TAIPEI",
+    "artist": "N.Flying",
+    "venue": "新北市工商展覽中心",
+    "address": "新北市五股區五權路1號",
     "time": "2026-09-19 17:00:00",
     "date": "2026-09-19",
     "year": "2026",
@@ -4280,6 +4659,9 @@
   {
     "id": 51,
     "name": "2026 河北彩花 My Angel Fan Meeting 台北站",
+    "artist": "河北彩花",
+    "venue": "Billboard Live TAIPEI",
+    "address": "臺北市信義區西村里松壽路12號7樓",
     "time": "2026-09-20 18:00:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4306,6 +4688,9 @@
   {
     "id": 52,
     "name": "【9/20場】台北.且聽天命《黑神話：悟空》全球音樂會",
+    "artist": "",
+    "venue": "LEGACY MAX新光三越A11",
+    "address": "台北市信義區松壽路11號6樓",
     "time": "2026-09-20 19:30:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4332,6 +4717,9 @@
   {
     "id": 53,
     "name": "「跨校聯誼Vol.2」九月高校 / 午後幽靈 / Sunday Something",
+    "artist": "九月高校 / 午後幽靈 / Sunday Something",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-09-20 19:30:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4358,6 +4746,9 @@
   {
     "id": 215,
     "name": "RUSH BALL 2026 in Taipei & Taichung on the ROAD (RUSH BALL 2026 in Taipei & Taichung on the ROAD(台中場))",
+    "artist": "",
+    "venue": "",
+    "address": "407臺中市西屯區安和路117號",
     "time": "2026-09-20 18:00:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4384,6 +4775,9 @@
   {
     "id": 337,
     "name": "Do As Infinity 27th Anniversary LIVE TOUR IN TAIPEI",
+    "artist": "Do As Infinity",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-20 00:00:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4410,6 +4804,9 @@
   {
     "id": 364,
     "name": "【BAND-MAID WORLD TOUR 2026 in Taipei】",
+    "artist": "BAND-MAID",
+    "venue": "",
+    "address": "台北市",
     "time": "2026-09-20 18:00:00",
     "date": "2026-09-20",
     "year": "2026",
@@ -4436,6 +4833,9 @@
   {
     "id": 54,
     "name": "千湖國鋼鐵魔獸台北狂嘯夜 BEAST IN BLACK An Evening In TAIPEI",
+    "artist": "BEAST IN BLACK",
+    "venue": "MOONDOG",
+    "address": "台北市松山區復興南路一段39號9樓",
     "time": "2026-09-22 19:00:00",
     "date": "2026-09-22",
     "year": "2026",
@@ -4462,6 +4862,9 @@
   {
     "id": 55,
     "name": "英格伯漢普汀克 不柘傳奇2026世界巡迴演唱會－台北站",
+    "artist": "英格伯漢普汀克",
+    "venue": "TICC 臺北國際會議中心",
+    "address": "台北市信義區信義路五段1號",
     "time": "2026-09-23 19:30:00",
     "date": "2026-09-23",
     "year": "2026",
@@ -4488,6 +4891,9 @@
   {
     "id": 56,
     "name": "LICHANG.rar album release party 最終站",
+    "artist": "LICHANG.rar",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-24 19:30:00",
     "date": "2026-09-24",
     "year": "2026",
@@ -4514,6 +4920,9 @@
   {
     "id": 57,
     "name": "尾巴音樂節",
+    "artist": "",
+    "venue": "烏日啤酒廠-啤酒廣場",
+    "address": "臺中市烏日區光華街1號",
     "time": "2026-09-25 14:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4540,6 +4949,9 @@
   {
     "id": 58,
     "name": "SKE48 ASIA TOUR 2026 TAIPEI",
+    "artist": "SKE48",
+    "venue": "CLAPPER STUDIO",
+    "address": "台北市中正區正守里市民大道三段2號5F",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4566,6 +4978,9 @@
   {
     "id": 59,
     "name": "【9/25售票頁】THE RAMPAGE PREMIUM LIVE EVENT 2026 in TAIPEI",
+    "artist": "THE RAMPAGE",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4592,6 +5007,9 @@
   {
     "id": 60,
     "name": "【9/25特典加購】THE RAMPAGE PREMIUM LIVE EVENT 2026 in TAIPEI",
+    "artist": "THE RAMPAGE",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4618,6 +5036,9 @@
   {
     "id": 61,
     "name": "THE RAMPAGE PREMIUM LIVE EVENT 2026 in TAIPEI",
+    "artist": "THE RAMPAGE",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4644,6 +5065,9 @@
   {
     "id": 262,
     "name": "我們搖滾——無妄合作社十週年演唱會 (【台中場】我們搖滾——無妄合作社十週年演唱會)",
+    "artist": "無妄合作社",
+    "venue": "",
+    "address": "臺北市南港區東明里市民大道八段99號, 高雄市苓雅區苓東里海邊路15-3號, 臺中市西屯區福和里安和路117號",
     "time": "2026-09-25 19:30:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4670,6 +5094,9 @@
   {
     "id": 299,
     "name": "2026臺北爵士音樂節 感爵夜現場 Jazz Right Here｜李芳旭三重奏",
+    "artist": "李芳旭三重奏",
+    "venue": "女巫店",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-25 19:30:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4696,6 +5123,9 @@
   {
     "id": 402,
     "name": "2026 ByeonWooSeok Asia Fanmeeting Tour ＜The Secret Library＞ in Taipei",
+    "artist": "邊佑錫",
+    "venue": "國立體育大學綜合體育館",
+    "address": "桃園市龜山區文化一路250號",
     "time": "2026-09-25 18:00:00",
     "date": "2026-09-25",
     "year": "2026",
@@ -4722,6 +5152,9 @@
   {
     "id": 62,
     "name": "【午場】HANAZAWA KANA LIVE 2026 KANAMEGURI in TAIPEI",
+    "artist": "花澤香菜",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-09-26 14:30:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4748,6 +5181,9 @@
   {
     "id": 63,
     "name": "HANAZAWA KANA LIVE 2026 KANAMEGURI in TAIPEI",
+    "artist": "花澤香菜",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-09-26 14:30:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4774,6 +5210,9 @@
   {
     "id": 64,
     "name": "【9/26售票頁】THE RAMPAGE PREMIUM LIVE EVENT 2026 in TAIPEI",
+    "artist": "THE RAMPAGE",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-26 16:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4800,6 +5239,9 @@
   {
     "id": 65,
     "name": "【9/26特典加購】THE RAMPAGE PREMIUM LIVE EVENT 2026 in TAIPEI",
+    "artist": "THE RAMPAGE",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-09-26 16:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4826,6 +5268,9 @@
   {
     "id": 66,
     "name": "【晚場】HANAZAWA KANA LIVE 2026 KANAMEGURI in TAIPEI",
+    "artist": "花澤香菜",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-09-26 18:30:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4852,6 +5297,9 @@
   {
     "id": 67,
     "name": "Shouta Aoi LIVE 2026 WONDER lab. LIMITLESS 香港公演",
+    "artist": "蒼井翔太",
+    "venue": "TIDES",
+    "address": "九龍紅磡德安街1號黃埔天地黃埔號（第6期）",
     "time": "2026-09-26 20:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4878,6 +5326,9 @@
   {
     "id": 234,
     "name": "CHIAI FUJIKAWA LIVE TOUR 2026 \"RADIUS OF 3 METERS\" in TAIPEI 登記抽選",
+    "artist": "藤川千愛",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-26 18:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4904,6 +5355,9 @@
   {
     "id": 235,
     "name": "CHIAI FUJIKAWA LIVE TOUR 2026 \"RADIUS OF 3 METERS\" in TAIPEI VIP PASS限量加購 登記抽選",
+    "artist": "藤川千愛",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-09-26 18:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4930,6 +5384,9 @@
   {
     "id": 283,
     "name": "Ilid Kaolo 以莉高露－專輯發行前的暖身操 (【09/26】Ilid Kaolo 以莉高露－專輯發行前的暖身操)",
+    "artist": "Ilid Kaolo 以莉高露",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-09-26 19:30:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4956,6 +5413,9 @@
   {
     "id": 333,
     "name": "LANY：soft world tour",
+    "artist": "LANY",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -4982,6 +5442,9 @@
   {
     "id": 334,
     "name": "【NIEL 無畏FEARLESS SHOWCASE IN TAIPEI】",
+    "artist": "NIEL",
+    "venue": "CLAPPER STUDIO",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -5008,6 +5471,9 @@
   {
     "id": 335,
     "name": "【VIP Upgrade/升級VIP】LANY：soft world tour",
+    "artist": "LANY",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -5034,6 +5500,9 @@
   {
     "id": 336,
     "name": "【Mastercard專區】LANY：soft world tour",
+    "artist": "LANY",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-09-26 00:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -5042,11 +5511,11 @@
     "time_str": "00:00",
     "weekday": "六",
     "is_weekend": true,
-    "sale_time": "",
-    "sale_date": "",
-    "sale_month": "",
-    "sale_day": "",
-    "sale_time_str": "",
+    "sale_time": "2026-03-25 10:00:00",
+    "sale_date": "2026-03-25",
+    "sale_month": "2026-03",
+    "sale_day": "25",
+    "sale_time_str": "10:00",
     "link": "https://tixcraft.com/activity/detail/26_lany_c",
     "published_time": "2026-03-18 07:04:52",
     "pub_date": "2026-03-18",
@@ -5060,6 +5529,9 @@
   {
     "id": 373,
     "name": "鑽石舞台之夜",
+    "artist": "",
+    "venue": "TICC 台北國際會議中心",
+    "address": "台北市信義區信義路五段1號",
     "time": "2026-09-26 18:00:00",
     "date": "2026-09-26",
     "year": "2026",
@@ -5086,6 +5558,9 @@
   {
     "id": 68,
     "name": "【午場】林鼓子台北粉絲見面會2026",
+    "artist": "林鼓子",
+    "venue": "HANA SPACE花漾展演空間",
+    "address": "台北市中正區仁愛路一段17號10樓",
     "time": "2026-09-27 14:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5112,6 +5587,9 @@
   {
     "id": 69,
     "name": "林鼓子台北粉絲見面會2026",
+    "artist": "林鼓子",
+    "venue": "HANA SPACE花漾展演空間",
+    "address": "台北市中正區仁愛路一段17號10樓",
     "time": "2026-09-27 14:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5138,6 +5616,9 @@
   {
     "id": 70,
     "name": "【晚場】林鼓子台北粉絲見面會2026",
+    "artist": "林鼓子",
+    "venue": "HANA SPACE花漾展演空間",
+    "address": "台北市中正區仁愛路一段17號10樓",
     "time": "2026-09-27 18:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5164,6 +5645,9 @@
   {
     "id": 71,
     "name": "浜野はるき LIVE TOUR 2026 “COVER GIRLs” IN TAIPEI",
+    "artist": "浜野はるき",
+    "venue": "MOONDOG",
+    "address": "臺北市松山區復興南路一段39號9F",
     "time": "2026-09-27 18:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5190,6 +5674,9 @@
   {
     "id": 72,
     "name": "你是毋是拄著魔神仔 —— 隨性《魔神仔》發片最終場",
+    "artist": "隨性",
+    "venue": "Legacy Taipei",
+    "address": "臺北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-09-27 19:30:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5216,6 +5703,9 @@
   {
     "id": 332,
     "name": "BE：FIRST WORLD SHOWCASE 2026",
+    "artist": "BE:FIRST",
+    "venue": "",
+    "address": "",
     "time": "2026-09-27 00:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5242,6 +5732,9 @@
   {
     "id": 374,
     "name": "鑽石舞台之夜",
+    "artist": "胡瓜",
+    "venue": "TICC 台北國際會議中心",
+    "address": "台北市信義區信義路五段1號",
     "time": "2026-09-27 16:00:00",
     "date": "2026-09-27",
     "year": "2026",
@@ -5268,6 +5761,9 @@
   {
     "id": 73,
     "name": "布萊梅樂隊·如果樂器會說話！",
+    "artist": "台灣千禧室內樂團",
+    "venue": "世韻藝術有限公司10樓",
+    "address": "新北市土城區承天路8巷2號10樓",
     "time": "2026-09-28 14:30:00",
     "date": "2026-09-28",
     "year": "2026",
@@ -5294,6 +5790,9 @@
   {
     "id": 331,
     "name": "Henry Moodie：Mood Swings World Tour in Kaohsiung",
+    "artist": "Henry Moodie",
+    "venue": "",
+    "address": "",
     "time": "2026-09-28 00:00:00",
     "date": "2026-09-28",
     "year": "2026",
@@ -5320,6 +5819,9 @@
   {
     "id": 233,
     "name": "The Omnific Asia Tour Live in Taipei",
+    "artist": "The Omnific",
+    "venue": "野地方 Wild Lab",
+    "address": "台北市中正區杭州南路一段147號B1",
     "time": "2026-09-29 19:30:00",
     "date": "2026-09-29",
     "year": "2026",
@@ -5346,6 +5848,9 @@
   {
     "id": 74,
     "name": "pH-1 Live in Hong Kong",
+    "artist": "pH-1",
+    "venue": "TIDES",
+    "address": "九龍紅磡德安街1號黃埔天地黃埔號（第6期）",
     "time": "2026-09-30 19:30:00",
     "date": "2026-09-30",
     "year": "2026",
@@ -5372,6 +5877,9 @@
   {
     "id": 75,
     "name": "巴雀室”重瘋：弦樂四重奏《日出．映像》",
+    "artist": "巴雀",
+    "venue": "陽明交大演藝廳",
+    "address": "新竹市東區大學路1001號 (學生活動中心2樓)",
     "time": "2026-09-30 19:30:00",
     "date": "2026-09-30",
     "year": "2026",
@@ -5398,6 +5906,9 @@
   {
     "id": 76,
     "name": "「本事現場 29」The Notwist Live in Taipei",
+    "artist": "The Notwist",
+    "venue": "SUB",
+    "address": "台北市南港區東明里市民大道八段99號",
     "time": "2026-10-02 19:30:00",
     "date": "2026-10-02",
     "year": "2026",
@@ -5424,6 +5935,9 @@
   {
     "id": 270,
     "name": "PREP Live In Taipei",
+    "artist": "PREP",
+    "venue": "華山1914創意文化園區中5A館",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-10-02 19:30:00",
     "date": "2026-10-02",
     "year": "2026",
@@ -5450,6 +5964,9 @@
   {
     "id": 386,
     "name": "江美琪《傷心唱出來就沒事了》演唱會 2‧0 台北站",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-02 19:30:00",
     "date": "2026-10-02",
     "year": "2026",
@@ -5476,6 +5993,9 @@
   {
     "id": 77,
     "name": "【上午場】小原好美 粉絲見面會2026 feat. 古賀葵",
+    "artist": "小原好美",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-10-03 13:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5502,6 +6022,9 @@
   {
     "id": 78,
     "name": "小原好美 粉絲見面會2026 feat. 古賀葵",
+    "artist": "小原好美",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-10-03 13:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5528,6 +6051,9 @@
   {
     "id": 79,
     "name": "呼聲 VOICES 2026",
+    "artist": "",
+    "venue": "臺北大佳河濱公園",
+    "address": "臺北市中山區濱江街5號",
     "time": "2026-10-03 12:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5554,6 +6080,9 @@
   {
     "id": 80,
     "name": "【會員優先購、全面啟售】2026 SUPER JUNIOR-83z FANCON TOUR [1983] in KAOHSIUNG",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "高雄流行音樂中心",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5580,6 +6109,9 @@
   {
     "id": 81,
     "name": "【信用卡優先購】2026 SUPER JUNIOR-83z FANCON TOUR [1983] in KAOHSIUNG",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "高雄流行音樂中心",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5606,6 +6138,9 @@
   {
     "id": 82,
     "name": "【下午場】小原好美 粉絲見面會2026 feat. 古賀葵",
+    "artist": "小原好美",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5632,6 +6167,9 @@
   {
     "id": 83,
     "name": "Regallily “Dawn”《TAIPEI》",
+    "artist": "Regallily",
+    "venue": "The Wall Live House",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5658,6 +6196,9 @@
   {
     "id": 84,
     "name": "2026 SUPER JUNIOR-83z FANCON TOUR [1983] in KAOHSIUNG",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "高雄流行音樂中心",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5684,6 +6225,9 @@
   {
     "id": 85,
     "name": "【高雄場】黃莑茗 【哎呀！跌個狗吃屎！Mini Tour】",
+    "artist": "黃莑茗",
+    "venue": "海邊的卡夫卡-高流店",
+    "address": "高雄市鹽埕區真愛路1號1樓",
     "time": "2026-10-03 18:30:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5710,6 +6254,9 @@
   {
     "id": 89,
     "name": "黃莑茗 【哎呀！跌個狗吃屎！Mini Tour】",
+    "artist": "黃莑茗",
+    "venue": "海邊的卡夫卡-高流店",
+    "address": "高雄市",
     "time": "2026-10-03 18:30:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5736,6 +6283,9 @@
   {
     "id": 286,
     "name": "2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會 (【1：1自拍】2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會)",
+    "artist": "OK TAECYEON",
+    "venue": "",
+    "address": "台北市南港區忠孝東路七段99號",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5762,6 +6312,9 @@
   {
     "id": 287,
     "name": "2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會 (【1：1簽名會】2026 OK TAECYEON SPECIAL EVENT IN TAIPEI TodaY 特典會)",
+    "artist": "OK TAECYEON",
+    "venue": "",
+    "address": "台北市南港區忠孝東路七段99號",
     "time": "2026-10-03 18:00:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5788,6 +6341,9 @@
   {
     "id": 357,
     "name": "國泰世華銀行 彭佳慧《數著時間的日子》巡迴演唱會",
+    "artist": "彭佳慧",
+    "venue": "台北小巨蛋、高雄巨蛋",
+    "address": "台北市、高雄市",
     "time": "2026-10-03 19:30:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5814,6 +6370,9 @@
   {
     "id": 394,
     "name": "2026 GR嘉年華",
+    "artist": "",
+    "venue": "大臺南會展中心南方廣場",
+    "address": "台南市歸仁區歸仁十二路3號",
     "time": "2026-10-03 10:30:00",
     "date": "2026-10-03",
     "year": "2026",
@@ -5840,6 +6399,9 @@
   {
     "id": 86,
     "name": "JUSTHIS LIVE: LOST IN TAIPEI",
+    "artist": "JUSTHIS",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-04 18:00:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5866,6 +6428,9 @@
   {
     "id": 87,
     "name": "【豪經艙】JUSTHIS LIVE: LOST IN TAIPEI",
+    "artist": "JUSTHIS",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-04 18:00:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5892,6 +6457,9 @@
   {
     "id": 88,
     "name": "【經濟艙】JUSTHIS LIVE: LOST IN TAIPEI",
+    "artist": "JUSTHIS",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-04 18:00:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5918,6 +6486,9 @@
   {
     "id": 216,
     "name": "行腳巡禮MISOGI ～番外篇～ in 台灣 登記抽選",
+    "artist": "-真天地開闢集團-慈愚挫愚",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-10-04 18:30:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5944,6 +6515,9 @@
   {
     "id": 217,
     "name": "行腳巡禮MISOGI ～番外篇～ in 台灣",
+    "artist": "-真天地開闢集團-慈愚挫愚",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-10-04 18:30:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5970,6 +6544,9 @@
   {
     "id": 231,
     "name": "LORNA SHORE LIVE IN TAIPEI",
+    "artist": "LORNA SHORE",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號華山1914創意文化園區中5A館",
     "time": "2026-10-04 19:30:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -5996,6 +6573,9 @@
   {
     "id": 358,
     "name": "2026吉卜力動畫音樂原唱歌手交響演唱會",
+    "artist": "",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-10-04 18:00:00",
     "date": "2026-10-04",
     "year": "2026",
@@ -6022,6 +6602,9 @@
   {
     "id": 90,
     "name": "ZAKES BANTWINI—GRAMMY®WINNER TAIWAN DEBUT",
+    "artist": "Zakes Bantwini",
+    "venue": "SUPERHOUSE",
+    "address": "台中市南屯區大觀路161號",
     "time": "2026-10-08 22:30:00",
     "date": "2026-10-08",
     "year": "2026",
@@ -6048,6 +6631,9 @@
   {
     "id": 278,
     "name": "李東軒AUSTIN LEE《FOREVER 我們・不變》十週年演唱會",
+    "artist": "李東軒",
+    "venue": "華山1914創意文化園區",
+    "address": "台北市中正區八德路一段一號 華山1914創意文化園區",
     "time": "2026-10-08 19:30:00",
     "date": "2026-10-08",
     "year": "2026",
@@ -6074,6 +6660,9 @@
   {
     "id": 284,
     "name": "Ilid Kaolo 以莉高露－專輯發行前的暖身操 (【10/08】Ilid Kaolo 以莉高露－專輯發行前的暖身操)",
+    "artist": "Ilid Kaolo 以莉高露",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-10-08 19:30:00",
     "date": "2026-10-08",
     "year": "2026",
@@ -6100,6 +6689,9 @@
   {
     "id": 404,
     "name": "2026 第23屆 Taipei Toy Festival 台北國際玩具創作大展─套票",
+    "artist": "",
+    "venue": "華山1914文化創意產業園區",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-10-08 10:00:00",
     "date": "2026-10-08",
     "year": "2026",
@@ -6126,6 +6718,9 @@
   {
     "id": 405,
     "name": "2026 第23屆 Taipei Toy Festival 台北國際玩具創作大展",
+    "artist": "",
+    "venue": "華山1914文化創意產業園區",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-10-08 10:00:00",
     "date": "2026-10-08",
     "year": "2026",
@@ -6152,6 +6747,9 @@
   {
     "id": 91,
     "name": "Daoko Special Live in IEGP",
+    "artist": "Daoko",
+    "venue": "MOONDOG",
+    "address": "臺北市松山區復興南路一段39號9F",
     "time": "2026-10-09 18:30:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6178,6 +6776,9 @@
   {
     "id": 247,
     "name": "YUURI 2026 LIVE IN TAIPEI 登記抽選 (YUURI 2026 LIVE IN TAIPEI 登記抽選（10/9場次）)",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-09 17:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6204,6 +6805,9 @@
   {
     "id": 249,
     "name": "YUURI 2026 LIVE IN TAIPEI (YUURI 2026 LIVE in TAIPEI（10/9場次）)",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-09 17:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6230,6 +6834,9 @@
   {
     "id": 259,
     "name": "Kaohsiung Park Music Festival (【10/09】Kaohsiung Park Music Festival)",
+    "artist": "",
+    "venue": "高雄展覽館",
+    "address": "高雄市前鎮區鎮北里成功二路39號",
     "time": "2026-10-09 14:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6256,6 +6863,9 @@
   {
     "id": 261,
     "name": "Kaohsiung Park Music Festival (【雙日】Kaohsiung Park Music Festival)",
+    "artist": "",
+    "venue": "",
+    "address": "高雄市前鎮區鎮北里成功二路39號",
     "time": "2026-10-09 14:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6282,6 +6892,9 @@
   {
     "id": 267,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/09場次）)",
+    "artist": "BIGBANG",
+    "venue": "",
+    "address": "臺北市信義區新仁里忠孝東路四段515號",
     "time": "2026-10-09 18:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6308,6 +6921,9 @@
   {
     "id": 330,
     "name": "2026 izna Concert Tour：WHO DAT GIRL? in TAIPEI",
+    "artist": "izna",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-10-09 00:00:00",
     "date": "2026-10-09",
     "year": "2026",
@@ -6334,6 +6950,9 @@
   {
     "id": 92,
     "name": "音羽-otoha- OUR PLANET additional in TAIPEI",
+    "artist": "音羽-otoha-",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-10-10 18:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6360,6 +6979,9 @@
   {
     "id": 93,
     "name": "2026 Takao Rock 打狗祭：Hi-ing 5 - 拍謝少年【噪音特區 Noise Zone】高流演唱會",
+    "artist": "拍謝少年",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-10 19:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6386,6 +7008,9 @@
   {
     "id": 94,
     "name": "Konomi Suzuki Asia Tour 2026 in Hong Kong",
+    "artist": "鈴木このみ",
+    "venue": "PORTAL",
+    "address": "新蒲崗彩虹道212號THE BURROW 1樓",
     "time": "2026-10-10 19:30:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6412,6 +7037,9 @@
   {
     "id": 248,
     "name": "YUURI 2026 LIVE IN TAIPEI 登記抽選 (YUURI 2026 LIVE IN TAIPEI 登記抽選（10/10場次）)",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-10 17:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6438,6 +7066,9 @@
   {
     "id": 250,
     "name": "YUURI 2026 LIVE IN TAIPEI (YUURI 2026 LIVE in TAIPEI（10/10場次）)",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-10 17:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6464,6 +7095,9 @@
   {
     "id": 260,
     "name": "Kaohsiung Park Music Festival (【10/10】Kaohsiung Park Music Festival)",
+    "artist": "",
+    "venue": "高雄展覽館",
+    "address": "高雄市前鎮區鎮北里成功二路39號",
     "time": "2026-10-10 14:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6490,6 +7124,9 @@
   {
     "id": 265,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/10場次）)",
+    "artist": "BIGBANG",
+    "venue": "",
+    "address": "臺北市信義區新仁里忠孝東路四段515號",
     "time": "2026-10-10 18:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6516,6 +7153,9 @@
   {
     "id": 277,
     "name": "PERSONA LIVE TOUR 2026 - Resonance - 台北公演",
+    "artist": "PERSONA",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-10-10 17:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6542,6 +7182,9 @@
   {
     "id": 291,
     "name": "Crossing Road《一起過馬路》年度專場",
+    "artist": "Crossing Road",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-10-10 19:30:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6568,6 +7211,9 @@
   {
     "id": 328,
     "name": "中華電信冠名贊助 QWER 2nd TOUR ＜ROCKATION：ROCKET LAUNCH!!＞ IN TAIPEI",
+    "artist": "QWER",
+    "venue": "國立體育大學綜合體育館",
+    "address": "",
     "time": "2026-10-10 00:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6594,6 +7240,9 @@
   {
     "id": 329,
     "name": "臺北大巨蛋演唱會-歌迷返鄉專車【非官方服務】",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-10 00:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6620,6 +7269,9 @@
   {
     "id": 390,
     "name": "2026 秋Out 音樂節",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-10 13:00:00",
     "date": "2026-10-10",
     "year": "2026",
@@ -6646,6 +7298,9 @@
   {
     "id": 95,
     "name": "2026 STAYC FAN CONCERT TOUR [STAY CLOSER] IN TAIPEI",
+    "artist": "STAYC",
+    "venue": "台北國際會議中心 (TICC)",
+    "address": "台北市信義區信義路五段1號",
     "time": "2026-10-11 17:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6672,6 +7327,9 @@
   {
     "id": 96,
     "name": "康康SHOW-色·可餐",
+    "artist": "康康",
+    "venue": "Billboard Live TAIPEI",
+    "address": "臺北市信義區西村里松壽路12號7樓",
     "time": "2026-10-11 18:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6698,6 +7356,9 @@
   {
     "id": 97,
     "name": "【台中場】黃莑茗 【哎呀！跌個狗吃屎！Mini Tour】",
+    "artist": "黃莑茗",
+    "venue": "沃茲新創空間 Words Live丨忠明館",
+    "address": "臺中市南屯區西川里忠明南路478號B1",
     "time": "2026-10-11 18:30:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6724,6 +7385,9 @@
   {
     "id": 98,
     "name": "Yo-Sea Asia Tour 2026 - Minimum Band Set",
+    "artist": "Yo-Sea",
+    "venue": "The Wall Live House",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-10-11 20:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6750,6 +7414,9 @@
   {
     "id": 236,
     "name": "志崎樺音台北粉絲見面會 (志崎樺音台北粉絲見面會 (午場))",
+    "artist": "志崎樺音",
+    "venue": "",
+    "address": "台北市中正區仁愛路一段17號10樓",
     "time": "2026-10-11 13:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6776,6 +7443,9 @@
   {
     "id": 237,
     "name": "志崎樺音台北粉絲見面會 (志崎樺音台北粉絲見面會 (晚場))",
+    "artist": "志崎樺音",
+    "venue": "",
+    "address": "台北市中正區仁愛路一段17號10樓",
     "time": "2026-10-11 17:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6802,6 +7472,9 @@
   {
     "id": 266,
     "name": "BIGBANG 2026-2027 WORLD TOUR < XX : COSMOS > IN TAIPEI (BIGBANG 2026-2027 WORLD TOUR < XX：COSMOS > IN TAIPEI（10/11場次）)",
+    "artist": "BIGBANG",
+    "venue": "",
+    "address": "臺北市信義區新仁里忠孝東路四段515號",
     "time": "2026-10-11 18:00:00",
     "date": "2026-10-11",
     "year": "2026",
@@ -6828,6 +7501,9 @@
   {
     "id": 99,
     "name": "【Ari Hoenig Trio 2026】",
+    "artist": "Ari Hoenig Trio",
+    "venue": "河岸留言西門紅樓展演館",
+    "address": "108台北市萬華區西寧南路177號",
     "time": "2026-10-12 20:00:00",
     "date": "2026-10-12",
     "year": "2026",
@@ -6854,6 +7530,9 @@
   {
     "id": 272,
     "name": "Amenra Live in Taipei",
+    "artist": "Amenra",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號",
     "time": "2026-10-16 19:30:00",
     "date": "2026-10-16",
     "year": "2026",
@@ -6880,6 +7559,9 @@
   {
     "id": 300,
     "name": "THE SPELLBOUNDxBOOM BOOM SATELLITES TAIPEI LIVE 2026",
+    "artist": "THE SPELLBOUND",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-10-16 20:00:00",
     "date": "2026-10-16",
     "year": "2026",
@@ -6906,6 +7588,9 @@
   {
     "id": 100,
     "name": "TSUMUGI RISA FAN MEETING 2026 in TAIPEI 午場",
+    "artist": "紡木吏佐",
+    "venue": "WESTAR",
+    "address": "臺北市萬華區西門里漢中街116號8樓",
     "time": "2026-10-17 14:30:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -6932,6 +7617,9 @@
   {
     "id": 101,
     "name": "TSUMUGI RISA FAN MEETING 2026 in TAIPEI",
+    "artist": "紡木吏佐",
+    "venue": "WESTAR",
+    "address": "臺北市萬華區西門里漢中街116號8樓",
     "time": "2026-10-17 14:30:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -6958,6 +7646,9 @@
   {
     "id": 102,
     "name": "TSUMUGI RISA FAN MEETING 2026 in TAIPEI 晚場",
+    "artist": "紡木吏佐",
+    "venue": "WESTAR",
+    "address": "臺北市萬華區西門里漢中街116號8樓",
     "time": "2026-10-17 18:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -6984,6 +7675,9 @@
   {
     "id": 103,
     "name": "玉置成實 2026亞洲巡迴演唱會 台北場",
+    "artist": "玉置成實",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-10-17 18:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7010,6 +7704,9 @@
   {
     "id": 104,
     "name": "【10/17】永豐金控｜永豐銀行｜永豐金證券 冠名贊助 理想混蛋《不是因為天氣晴朗才見面》演唱會",
+    "artist": "理想混蛋",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區博愛二路757號",
     "time": "2026-10-17 18:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7036,6 +7733,9 @@
   {
     "id": 105,
     "name": "【CUBE信用卡優先購、高流會員優先購、全面啟售】國泰世華銀行 蔡健雅 除此之外Into The B-Sides",
+    "artist": "蔡健雅",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路１號",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7062,6 +7762,9 @@
   {
     "id": 106,
     "name": "國泰世華銀行 蔡健雅 除此之外Into The B-Sides",
+    "artist": "蔡健雅",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7088,6 +7791,9 @@
   {
     "id": 107,
     "name": "【另一面的蔡健雅雙人互動套票】國泰世華銀行 蔡健雅 除此之外Into The B-Sides",
+    "artist": "蔡健雅",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7114,6 +7820,9 @@
   {
     "id": 108,
     "name": "UPIKO UPRISE TOUR 2026 in Taipei",
+    "artist": "UPIKO",
+    "venue": "西門河岸留言 Riverside Livehouse",
+    "address": "台北市萬華區西寧南路177號",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7140,6 +7849,9 @@
   {
     "id": 109,
     "name": "永豐金控｜永豐銀行｜永豐金證券 冠名贊助 理想混蛋《不是因為天氣晴朗才見面》演唱會",
+    "artist": "理想混蛋",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區博愛二路757號",
     "time": "2026-10-17 18:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7166,6 +7878,9 @@
   {
     "id": 290,
     "name": "sulysalt \"opposite\" album release show #2",
+    "artist": "sulysalt",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-10-17 19:30:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7192,6 +7907,9 @@
   {
     "id": 375,
     "name": "永遠的巨星 謝雷 2026演唱會",
+    "artist": "謝雷",
+    "venue": "",
+    "address": "",
     "time": "2026-10-17 19:00:00",
     "date": "2026-10-17",
     "year": "2026",
@@ -7218,6 +7936,9 @@
   {
     "id": 110,
     "name": "🌸小櫻花First Live🌸首場個人音樂會",
+    "artist": "小櫻花",
+    "venue": "雅痞書店",
+    "address": "臺北市大安區復興南路一段126巷1號3樓",
     "time": "2026-10-18 13:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7244,6 +7965,9 @@
   {
     "id": 111,
     "name": "【10/18】永豐金控｜永豐銀行｜永豐金證券 冠名贊助 理想混蛋《不是因為天氣晴朗才見面》演唱會",
+    "artist": "理想混蛋",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區博愛二路757號",
     "time": "2026-10-18 17:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7270,6 +7994,9 @@
   {
     "id": 112,
     "name": "【售票頁】FANTASTICS LIVE 2026 in TAIPEI \"放大絶\"",
+    "artist": "FANTASTICS",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-10-18 17:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7296,6 +8023,9 @@
   {
     "id": 113,
     "name": "FANTASTICS LIVE 2026 in TAIPEI \"放大絶\"",
+    "artist": "FANTASTICS",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-10-18 17:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7322,6 +8052,9 @@
   {
     "id": 114,
     "name": "Fear, and Loathing in Las Vegas 台北演唱會 2026",
+    "artist": "Fear, and Loathing in Las Vegas",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-10-18 18:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7348,6 +8081,9 @@
   {
     "id": 115,
     "name": "CHIANZ SUPER HOLIC TOUR 2026 IN TAIPEI",
+    "artist": "CHIANZ",
+    "venue": "MOONDOG",
+    "address": "臺北市松山區復興南路一段39號9F",
     "time": "2026-10-18 19:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7374,6 +8110,9 @@
   {
     "id": 116,
     "name": "【台北場】黃莑茗 【哎呀！跌個狗吃屎！Mini Tour】",
+    "artist": "黃莑茗",
+    "venue": "女巫店",
+    "address": "臺北市大安區大學里新生南路三段56巷7號",
     "time": "2026-10-18 19:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7400,6 +8139,9 @@
   {
     "id": 117,
     "name": "Age Factory “静脈/ERROR” Release Tour 2026 Taipei",
+    "artist": "Age Factory",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道8段99號",
     "time": "2026-10-18 20:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7426,6 +8168,9 @@
   {
     "id": 242,
     "name": "FLOW WORLD TOUR 2026 \"NARUTO THE ROCK\" Live in Taipei",
+    "artist": "FLOW",
+    "venue": "",
+    "address": "台北市中正區八德路一段一號/華山1914創意文化園區/中5A館",
     "time": "2026-10-18 19:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7452,6 +8197,9 @@
   {
     "id": 326,
     "name": "Charlie Puth - Whatever’s Clever! World Tour",
+    "artist": "Charlie Puth",
+    "venue": "",
+    "address": "",
     "time": "2026-10-18 00:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7478,6 +8226,9 @@
   {
     "id": 327,
     "name": "【Mastercard專區】Charlie Puth - Whatever’s Clever! World Tour",
+    "artist": "Charlie Puth",
+    "venue": "",
+    "address": "",
     "time": "2026-10-18 00:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7504,6 +8255,9 @@
   {
     "id": 396,
     "name": "2026 BANG YONGGUK WORLD TOUR「HAEBANG」in Taipei",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-18 18:30:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7530,6 +8284,9 @@
   {
     "id": 397,
     "name": "2026 tripleS World Tour ＜ANDLESS＞ in Taipei",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-18 19:00:00",
     "date": "2026-10-18",
     "year": "2026",
@@ -7556,6 +8313,9 @@
   {
     "id": 325,
     "name": "Charlie Puth - Whatever’s Clever! World Tour",
+    "artist": "Charlie Puth",
+    "venue": "台北小巨蛋",
+    "address": "",
     "time": "2026-10-20 00:00:00",
     "date": "2026-10-20",
     "year": "2026",
@@ -7582,6 +8342,9 @@
   {
     "id": 118,
     "name": "向井太一 MUKAI TAICHI〈THE 34 TOUR〉",
+    "artist": "向井太一",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號（華山1914文化創意產業園區中5A館）",
     "time": "2026-10-22 19:30:00",
     "date": "2026-10-22",
     "year": "2026",
@@ -7608,6 +8371,9 @@
   {
     "id": 200,
     "name": "誰說我不在乎　高明駿2026演唱會-台北站",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-23 19:00:00",
     "date": "2026-10-23",
     "year": "2026",
@@ -7634,6 +8400,9 @@
   {
     "id": 395,
     "name": "山岡晃 Akira Yamaoka『迷霧迴響』2026限定專場．台北",
+    "artist": "山岡晃",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-10-23 19:30:00",
     "date": "2026-10-23",
     "year": "2026",
@@ -7660,6 +8429,9 @@
   {
     "id": 398,
     "name": "LenaMiu Love Meets You Fan Meeting in Taipei",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-23 16:30:00",
     "date": "2026-10-23",
     "year": "2026",
@@ -7686,6 +8458,9 @@
   {
     "id": 119,
     "name": "空中補給屬於時間的答案巡迴演唱會-高雄站",
+    "artist": "空中補給",
+    "venue": "高雄流行音樂中心-海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-24 14:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7712,6 +8487,9 @@
   {
     "id": 120,
     "name": "2026 囪擊音樂祭",
+    "artist": "",
+    "venue": "十鼓文創園區-夢糖劇場",
+    "address": "台南市仁德區文華路二段326號",
     "time": "2026-10-24 11:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7738,6 +8516,9 @@
   {
     "id": 121,
     "name": "高橋洋子 2026亞洲巡迴演唱會 -夜想曲- 台北場",
+    "artist": "高橋洋子",
+    "venue": "Legacy TERA",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7764,6 +8545,9 @@
   {
     "id": 122,
     "name": "【門票】JESSICA CONCERT TOUR \"Reflections\"2026 IN TAIPEI",
+    "artist": "JESSICA",
+    "venue": "國立台灣大學綜合體育館",
+    "address": "台北市大安區辛亥路二段29號",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7790,6 +8574,9 @@
   {
     "id": 123,
     "name": "向井太一｜2026巡演「THE 34 TOUR」香港站",
+    "artist": "向井太一",
+    "venue": "TIDES",
+    "address": "九龍紅磡德安街1號黃埔天地黃埔號（第6期）",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7816,6 +8603,9 @@
   {
     "id": 124,
     "name": "【一元福利加購頁，限網站購票】JESSICA CONCERT TOUR \"Reflections\"2026 IN TAIPEI",
+    "artist": "JESSICA",
+    "venue": "國立台灣大學綜合體育館",
+    "address": "台北市大安區辛亥路二段29號",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7842,6 +8632,9 @@
   {
     "id": 125,
     "name": "JESSICA CONCERT TOUR \"Reflections\"2026 IN TAIPEI",
+    "artist": "JESSICA",
+    "venue": "國立台灣大學綜合體育館",
+    "address": "台北市大安區辛亥路二段29號",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7868,6 +8661,9 @@
   {
     "id": 126,
     "name": "【10/24】羊文学 Hitsujibungaku TOUR 2026 \"SU———HA———\" IN KAOHSIUNG",
+    "artist": "羊文学",
+    "venue": "LIVE WAREHOUSE 大庫",
+    "address": "高雄市鹽埕區大義街2-5號大義倉庫C10",
     "time": "2026-10-24 18:30:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7894,6 +8690,9 @@
   {
     "id": 127,
     "name": "尤雅- 2026《往事只能回味》演唱會-高雄站",
+    "artist": "尤雅",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-24 19:30:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7920,6 +8719,9 @@
   {
     "id": 128,
     "name": "羊文学 Hitsujibungaku TOUR 2026 \"SU———HA———\" IN KAOHSIUNG",
+    "artist": "羊文学",
+    "venue": "LIVE WAREHOUSE 大庫",
+    "address": "高雄市鹽埕區大義街2-5號大義倉庫C10",
     "time": "2026-10-24 18:30:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7946,6 +8748,9 @@
   {
     "id": 228,
     "name": "Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜 (Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜 （雙日）)",
+    "artist": "Moi dix Mois",
+    "venue": "",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-10-24 19:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7972,6 +8777,9 @@
   {
     "id": 229,
     "name": "Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜 (Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜（10/24）)",
+    "artist": "Moi dix Mois",
+    "venue": "",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-10-24 19:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -7998,6 +8806,9 @@
   {
     "id": 232,
     "name": "岡崎體育10週年巡演＂Zepp10 連單全押＂<台北水啦賞>",
+    "artist": "岡崎體育",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8024,6 +8835,9 @@
   {
     "id": 243,
     "name": "2026 囪擊音樂祭 (2026 囪擊音樂祭 10/24 場次)",
+    "artist": "",
+    "venue": "",
+    "address": "台南市仁德區文華路二段326號",
     "time": "2026-10-24 11:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8050,6 +8864,9 @@
   {
     "id": 359,
     "name": "【10/24場次】MUSIC EXPO LIVE 2026 in TAIPEI",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8076,6 +8893,9 @@
   {
     "id": 362,
     "name": "【單買門票】Shizuka Kudo 2026 \"Dynamic\" CONCERT in TAIPEI",
+    "artist": "Shizuka Kudo",
+    "venue": "",
+    "address": "",
     "time": "2026-10-24 19:30:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8102,6 +8922,9 @@
   {
     "id": 376,
     "name": "Novelbright 限量VIP Upgrade 升級加購",
+    "artist": "Novelbright",
+    "venue": "",
+    "address": "",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8128,6 +8951,9 @@
   {
     "id": 377,
     "name": "Novelbright ASIA TOUR 2026 ~PYRAMID~ IN TAIPEI",
+    "artist": "Novelbright",
+    "venue": "新北市工商展覽中心",
+    "address": "新北市",
     "time": "2026-10-24 18:00:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8154,6 +8980,9 @@
   {
     "id": 413,
     "name": "YOASOBI ASIA TOUR 2026@大阪",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "大阪",
     "time": "2026-10-24 12:00",
     "date": "2026-10-24",
     "year": "2026",
@@ -8180,6 +9009,9 @@
   {
     "id": 129,
     "name": "【13:00】《Disney in Concert: Once Upon a Time》",
+    "artist": "",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-25 13:00:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8206,6 +9038,9 @@
   {
     "id": 130,
     "name": "《Disney in Concert: Once Upon a Time》",
+    "artist": "",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-25 13:00:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8232,6 +9067,9 @@
   {
     "id": 131,
     "name": "【16:30】《Disney in Concert: Once Upon a Time》",
+    "artist": "",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-10-25 16:30:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8258,6 +9096,9 @@
   {
     "id": 132,
     "name": "【10/25加場】羊文学 Hitsujibungaku TOUR 2026 \"SU———HA———\" IN KAOHSIUNG",
+    "artist": "羊文学",
+    "venue": "LIVE WAREHOUSE 大庫",
+    "address": "高雄市鹽埕區大義街2-5號大義倉庫C10",
     "time": "2026-10-25 18:30:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8284,6 +9125,9 @@
   {
     "id": 133,
     "name": "Paul Gilbert WROC World Tour 2026",
+    "artist": "Paul Gilbert",
+    "venue": "Corner House",
+    "address": "臺北市南港區忠孝東路六段21號1樓",
     "time": "2026-10-25 19:00:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8310,6 +9154,9 @@
   {
     "id": 134,
     "name": "Control T《Waste Land》十週年發片巡迴｜台中站",
+    "artist": "Control T",
+    "venue": "柱 THE PILLARS",
+    "address": "台中篤行路13號3樓",
     "time": "2026-10-25 19:00:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8336,6 +9183,9 @@
   {
     "id": 135,
     "name": "East Of Eden Live in Hong Kong 2026",
+    "artist": "East Of Eden",
+    "venue": "PORTAL",
+    "address": "1/F, The Burrow, 212 Choi Hung Road",
     "time": "2026-10-25 19:30:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8362,6 +9212,9 @@
   {
     "id": 230,
     "name": "Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜 (Moi dix Mois Live in Taipei 2026 with Kaya 〜Compagnon de route〜（10/25）)",
+    "artist": "Moi dix Mois",
+    "venue": "",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-10-25 18:30:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8388,6 +9241,9 @@
   {
     "id": 244,
     "name": "2026 囪擊音樂祭 (2026 囪擊音樂祭 10/25 場次)",
+    "artist": "",
+    "venue": "",
+    "address": "台南市仁德區文華路二段326號",
     "time": "2026-10-25 11:00:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8414,6 +9270,9 @@
   {
     "id": 414,
     "name": "YOASOBI ASIA TOUR 2026@大阪",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "大阪",
     "time": "2026-10-25 12:00",
     "date": "2026-10-25",
     "year": "2026",
@@ -8440,6 +9299,9 @@
   {
     "id": 136,
     "name": "黃之儀Kyra Zilver「冷都女Tour」巡迴 台北站",
+    "artist": "黃之儀 Kyra Zilver",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-26 18:00:00",
     "date": "2026-10-26",
     "year": "2026",
@@ -8466,6 +9328,9 @@
   {
     "id": 137,
     "name": "【豪經艙】黃之儀Kyra Zilver「冷都女Tour」巡迴 台北站",
+    "artist": "黃之儀 Kyra Zilver",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-26 18:00:00",
     "date": "2026-10-26",
     "year": "2026",
@@ -8492,6 +9357,9 @@
   {
     "id": 138,
     "name": "【經濟艙】黃之儀Kyra Zilver「冷都女Tour」巡迴 台北站",
+    "artist": "黃之儀 Kyra Zilver",
+    "venue": "三重時藝劇場",
+    "address": "新北市三重區正義南路86巷2號",
     "time": "2026-10-26 18:00:00",
     "date": "2026-10-26",
     "year": "2026",
@@ -8518,6 +9386,9 @@
   {
     "id": 245,
     "name": "2026 囪擊音樂祭 (2026 囪擊音樂祭 10/26 場次)",
+    "artist": "",
+    "venue": "",
+    "address": "台南市仁德區文華路二段326號",
     "time": "2026-10-26 11:00:00",
     "date": "2026-10-26",
     "year": "2026",
@@ -8544,6 +9415,9 @@
   {
     "id": 139,
     "name": "[台北場]義大利指彈天團-40 Fingers亞洲巡迴演出",
+    "artist": "40 Fingers",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區中原里新北大道四段3號8樓",
     "time": "2026-10-30 19:30:00",
     "date": "2026-10-30",
     "year": "2026",
@@ -8570,6 +9444,9 @@
   {
     "id": 140,
     "name": "義大利指彈天團-40 Fingers亞洲巡迴演出",
+    "artist": "40 Fingers",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區中原里新北大道四段3號8樓",
     "time": "2026-10-30 19:30:00",
     "date": "2026-10-30",
     "year": "2026",
@@ -8596,6 +9473,9 @@
   {
     "id": 141,
     "name": "【13:00場】2026 YERIN FAN CONCERT ‘STAR BLOOM‘ IN TAIPEI",
+    "artist": "YERIN",
+    "venue": "HANASPACE",
+    "address": "臺北市中正區東門里仁愛路一段17號10樓",
     "time": "2026-10-31 13:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8622,6 +9502,9 @@
   {
     "id": 142,
     "name": "2026 YERIN FAN CONCERT ‘STAR BLOOM‘ IN TAIPEI",
+    "artist": "YERIN",
+    "venue": "HANASPACE",
+    "address": "臺北市中正區東門里仁愛路一段17號10樓",
     "time": "2026-10-31 13:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8648,6 +9531,9 @@
   {
     "id": 143,
     "name": "【18:00場】2026 YERIN FAN CONCERT ‘STAR BLOOM‘ IN TAIPEI",
+    "artist": "YERIN",
+    "venue": "HANASPACE",
+    "address": "臺北市中正區東門里仁愛路一段17號10樓",
     "time": "2026-10-31 18:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8674,6 +9560,9 @@
   {
     "id": 144,
     "name": "Fujii Kaze Prema World Tour - Kaohsiung",
+    "artist": "藤井風",
+    "venue": "高雄國家體育場",
+    "address": "高雄市左營區世運大道100號",
     "time": "2026-10-31 19:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8700,6 +9589,9 @@
   {
     "id": 145,
     "name": "[高雄場]義大利指彈天團-40 Fingers亞洲巡迴演出",
+    "artist": "40 Fingers",
+    "venue": "高雄後台 Backstage Live",
+    "address": "高雄市苓雅區苓東里海邊路15-3號",
     "time": "2026-10-31 19:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8726,6 +9618,9 @@
   {
     "id": 196,
     "name": "旺福 2026 旺聖節 –《魂遊世界》",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-31 19:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8752,6 +9647,9 @@
   {
     "id": 218,
     "name": "Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI 登記抽選 (Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI 登記抽選（10/31場次）)",
+    "artist": "Vaundy",
+    "venue": "台北小巨蛋",
+    "address": "臺北市松山區南京東路四段2號",
     "time": "2026-10-31 19:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8778,6 +9676,9 @@
   {
     "id": 220,
     "name": "Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI (Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI（10/31場次）)",
+    "artist": "Vaundy",
+    "venue": "台北小巨蛋",
+    "address": "臺北市松山區南京東路四段2號",
     "time": "2026-10-31 19:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8804,6 +9705,9 @@
   {
     "id": 293,
     "name": "2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI (2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI（第一場次）)",
+    "artist": "WHIB",
+    "venue": "",
+    "address": "臺北市中正區市民大道三段2號5樓",
     "time": "2026-10-31 13:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8830,6 +9734,9 @@
   {
     "id": 294,
     "name": "2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI (2026 WHIB FAN CONCERT <BLUE HOUR> IN TAIPEI（第二場次）)",
+    "artist": "WHIB",
+    "venue": "",
+    "address": "臺北市中正區市民大道三段2號5樓",
     "time": "2026-10-31 18:00:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8856,6 +9763,9 @@
   {
     "id": 382,
     "name": "《暗喻幻想》Metaphor：ReFantazio 交響音樂會",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-10-31 19:30:00",
     "date": "2026-10-31",
     "year": "2026",
@@ -8882,6 +9792,9 @@
   {
     "id": 219,
     "name": "Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI 登記抽選 (Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI 登記抽選（11/1場次）)",
+    "artist": "Vaundy",
+    "venue": "台北小巨蛋",
+    "address": "臺北市松山區南京東路四段2號",
     "time": "2026-11-01 19:00:00",
     "date": "2026-11-01",
     "year": "2026",
@@ -8908,6 +9821,9 @@
   {
     "id": 221,
     "name": "Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI (Vaundy ASIA  ARENA TOUR 2026 “HORO” IN TAIPEI（11/1場次）)",
+    "artist": "Vaundy",
+    "venue": "台北小巨蛋",
+    "address": "臺北市松山區南京東路四段2號",
     "time": "2026-11-01 19:00:00",
     "date": "2026-11-01",
     "year": "2026",
@@ -8934,6 +9850,9 @@
   {
     "id": 324,
     "name": "孫盛希Shi Shi [The Taste of …] 台北演唱會",
+    "artist": "孫盛希",
+    "venue": "Legacy TERA",
+    "address": "",
     "time": "2026-11-01 00:00:00",
     "date": "2026-11-01",
     "year": "2026",
@@ -8960,6 +9879,9 @@
   {
     "id": 378,
     "name": "「2026年國際沈文程日-小琉球情歌演唱會」",
+    "artist": "沈文程",
+    "venue": "臺南文化中心演藝廳",
+    "address": "台南市東區中華東路三段332號",
     "time": "2026-11-01 15:00:00",
     "date": "2026-11-01",
     "year": "2026",
@@ -8986,6 +9908,9 @@
   {
     "id": 383,
     "name": "UNDERTALE：The Determination Symphony",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-11-01 15:00:00",
     "date": "2026-11-01",
     "year": "2026",
@@ -9012,6 +9937,9 @@
   {
     "id": 379,
     "name": "Jason Mraz ASIA TOUR 2026 IN TAIPEI",
+    "artist": "Jason Mraz",
+    "venue": "南港展覽館一館四樓",
+    "address": "台北市",
     "time": "2026-11-02 19:30:00",
     "date": "2026-11-02",
     "year": "2026",
@@ -9038,6 +9966,9 @@
   {
     "id": 146,
     "name": "陳謙文x方馨x簡沛恩 情歌若響公益演唱會",
+    "artist": "陳謙文、方馨、簡沛恩",
+    "venue": "Legacy TERA 音樂展演空間",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-06 19:00:00",
     "date": "2026-11-06",
     "year": "2026",
@@ -9064,6 +9995,9 @@
   {
     "id": 147,
     "name": "【上午場】工藤晴香2026 台北粉絲見面會",
+    "artist": "工藤晴香",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-07 13:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9090,6 +10024,9 @@
   {
     "id": 148,
     "name": "工藤晴香2026 台北粉絲見面會",
+    "artist": "工藤晴香",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-07 13:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9116,6 +10053,9 @@
   {
     "id": 149,
     "name": "2026 Ru's Piano Birthday Party",
+    "artist": "Ru's Piano",
+    "venue": "Corner House角落文創展演空間",
+    "address": "臺北市南港區合成里忠孝東路六段21號1樓",
     "time": "2026-11-07 14:30:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9142,6 +10082,9 @@
   {
     "id": 150,
     "name": "2026 浪人祭｜百年好運・億載千秋",
+    "artist": "",
+    "venue": "觀夕平台旁大草皮（台南安平遙控飛機場）",
+    "address": "台南市安平區金城里洲安三街",
     "time": "2026-11-07 12:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9168,6 +10111,9 @@
   {
     "id": 151,
     "name": "2026 浪人祭｜百年好運・億載千秋｜住宿專案",
+    "artist": "",
+    "venue": "觀夕平台旁大草皮（台南安平遙控飛機場）",
+    "address": "台南市安平區金城里洲安三街",
     "time": "2026-11-07 12:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9194,6 +10140,9 @@
   {
     "id": 152,
     "name": "【下午場】工藤晴香2026 台北粉絲見面會",
+    "artist": "工藤晴香",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-07 18:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9220,6 +10169,9 @@
   {
     "id": 295,
     "name": "2026 FNC BAND KINGDOM IN TAIPEI (2026 FNC BAND KINGDOM IN TAIPEI（11/7場次）)",
+    "artist": "FNC BAND KINGDOM",
+    "venue": "",
+    "address": "桃園市龜山區文化一路250號",
     "time": "2026-11-07 14:30:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9246,6 +10198,9 @@
   {
     "id": 323,
     "name": "凱基金控xAccusefive告五人 [在這裡 @century] 世界巡迴演唱會",
+    "artist": "告五人",
+    "venue": "台北小巨蛋",
+    "address": "台北市松山區南京東路四段2號",
     "time": "2026-11-07 00:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9272,6 +10227,9 @@
   {
     "id": 356,
     "name": "2026 小宇 宋念宇《不，完美的人》演唱會",
+    "artist": "小宇 宋念宇",
+    "venue": "",
+    "address": "",
     "time": "2026-11-07 19:30:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9298,6 +10256,9 @@
   {
     "id": 384,
     "name": "Pami in Taipei 2026",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-11-07 20:00:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9324,6 +10285,9 @@
   {
     "id": 415,
     "name": "YOASOBI ASIA TOUR 2026@愛知",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "愛知",
     "time": "2026-11-07 12:00",
     "date": "2026-11-07",
     "year": "2026",
@@ -9350,6 +10314,9 @@
   {
     "id": 296,
     "name": "2026 FNC BAND KINGDOM IN TAIPEI (2026 FNC BAND KINGDOM IN TAIPEI（11/8場次）)",
+    "artist": "FTISLAND",
+    "venue": "國立體育大學綜合體育館",
+    "address": "桃園市龜山區文化一路250號",
     "time": "2026-11-08 14:30:00",
     "date": "2026-11-08",
     "year": "2026",
@@ -9376,6 +10343,9 @@
   {
     "id": 416,
     "name": "YOASOBI ASIA TOUR 2026@愛知",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "愛知",
     "time": "2026-11-08 12:00",
     "date": "2026-11-08",
     "year": "2026",
@@ -9402,6 +10372,9 @@
   {
     "id": 322,
     "name": "yung kai - stay with the ocean， i’ll find you： asia tour 2026",
+    "artist": "yung kai",
+    "venue": "Zepp New Taipei",
+    "address": "",
     "time": "2026-11-11 00:00:00",
     "date": "2026-11-11",
     "year": "2026",
@@ -9428,6 +10401,9 @@
   {
     "id": 238,
     "name": "「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 登記抽選 (「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 台灣在住登記抽選（11/13場次）)",
+    "artist": "TAKUYA KIMURA",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-13 19:00:00",
     "date": "2026-11-13",
     "year": "2026",
@@ -9454,6 +10430,9 @@
   {
     "id": 240,
     "name": "「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 登記抽選 (「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 全球登記抽選（11/13場次）)",
+    "artist": "TAKUYA KIMURA",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-13 19:00:00",
     "date": "2026-11-13",
     "year": "2026",
@@ -9480,6 +10459,9 @@
   {
     "id": 153,
     "name": "【[加場]14:00場】山下智久 2026 巡迴演唱會 DREAMING 高雄場",
+    "artist": "山下智久",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-11-14 14:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9506,6 +10488,9 @@
   {
     "id": 154,
     "name": "山下智久 2026 巡迴演唱會 DREAMING 高雄場",
+    "artist": "山下智久",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-11-14 14:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9532,6 +10517,9 @@
   {
     "id": 155,
     "name": "【19:00場】山下智久 2026 巡迴演唱會 DREAMING 高雄場",
+    "artist": "山下智久",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-11-14 19:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9558,6 +10546,9 @@
   {
     "id": 156,
     "name": "AKANE YONEZAWA \"Black Pasta\" TOUR 2026 IN TAIPEI",
+    "artist": "米澤茜",
+    "venue": "MOONDOG",
+    "address": "臺北市松山區復興南路一段39號9F",
     "time": "2026-11-14 19:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9584,6 +10575,9 @@
   {
     "id": 239,
     "name": "「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 登記抽選 (「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 台灣在住登記抽選（11/14場次）)",
+    "artist": "TAKUYA KIMURA",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-14 18:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9610,6 +10604,9 @@
   {
     "id": 241,
     "name": "「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 登記抽選 (「TAKUYA KIMURA Live Tour 2026 Checkpoint」 in TAIPEI 全球登記抽選（11/14場次）)",
+    "artist": "TAKUYA KIMURA",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-14 18:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9636,6 +10633,9 @@
   {
     "id": 258,
     "name": "ASCA LIVE TOUR 2026 -Remedy- 台北公演",
+    "artist": "ASCA",
+    "venue": "NUZONE 展演空間",
+    "address": "台北市市民大道三段198號2樓",
     "time": "2026-11-14 17:30:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9662,6 +10662,9 @@
   {
     "id": 279,
     "name": "風間俊介 KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇- (【第一部】風間俊介KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇-)",
+    "artist": "風間俊介",
+    "venue": "",
+    "address": "台北市中正區市民大道三段2號5F",
     "time": "2026-11-14 13:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9688,6 +10691,9 @@
   {
     "id": 280,
     "name": "風間俊介 KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇- (【第二部】風間俊介KAZAMA SHUNSUKE meets TAIPEI -初・海外出差篇-)",
+    "artist": "風間俊介",
+    "venue": "",
+    "address": "台北市中正區市民大道三段2號5F",
     "time": "2026-11-14 17:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9714,6 +10720,9 @@
   {
     "id": 320,
     "name": "2026 FIREBALL Fest. 火球祭",
+    "artist": "",
+    "venue": "樂天桃園棒球場",
+    "address": "",
     "time": "2026-11-14 00:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9740,6 +10749,9 @@
   {
     "id": 321,
     "name": "2026 LE SSERAFIM TOUR ‘PUREFLOW’ IN TAIPEI",
+    "artist": "LE SSERAFIM",
+    "venue": "國立體育大學綜合體育館",
+    "address": "",
     "time": "2026-11-14 00:00:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9766,6 +10778,9 @@
   {
     "id": 417,
     "name": "YOASOBI ASIA TOUR 2026@北海道",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "北海道",
     "time": "2026-11-14 12:00",
     "date": "2026-11-14",
     "year": "2026",
@@ -9792,6 +10807,9 @@
   {
     "id": 157,
     "name": "AIMI ASIA TOUR 2026 STAR RISING in Hong Kong",
+    "artist": "愛美",
+    "venue": "TIDES",
+    "address": "九龍紅磡德安街1號黃埔天地黃埔號（第6期）",
     "time": "2026-11-15 17:00:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9818,6 +10836,9 @@
   {
     "id": 318,
     "name": "BINI：SIGNALS WORLD TOUR 2026 TAIPEI",
+    "artist": "BINI",
+    "venue": "新北市工商展覽中心",
+    "address": "",
     "time": "2026-11-15 00:00:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9844,6 +10865,9 @@
   {
     "id": 319,
     "name": "【加購福利-Add on Benefit】BINI：SIGNALS WORLD TOUR 2026 TAIPEI",
+    "artist": "BINI",
+    "venue": "新北市工商展覽中心",
+    "address": "",
     "time": "2026-11-15 00:00:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9870,6 +10894,9 @@
   {
     "id": 406,
     "name": "2026 KANA–BOON「CRITICAL HIT PARADE in TAIPEI」",
+    "artist": "KANA-BOON",
+    "venue": "Legacy Taipei",
+    "address": "台北市中正區八德路一段1號",
     "time": "2026-11-15 18:00:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9896,6 +10923,9 @@
   {
     "id": 418,
     "name": "YOASOBI ASIA TOUR 2026@北海道",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "北海道",
     "time": "2026-11-15 12:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9922,6 +10952,9 @@
   {
     "id": 423,
     "name": "HIT PARADE in TAIPEI",
+    "artist": "翁倩玉",
+    "venue": "台北國際會議中心 TICC、台中中興大學惠蓀堂",
+    "address": "台北市信義區信義路五段1號、台中市南區興大路145號",
     "time": "2026-11-15 18:00:00",
     "date": "2026-11-15",
     "year": "2026",
@@ -9948,6 +10981,9 @@
   {
     "id": 317,
     "name": "BTS WORLD TOUR ’ARIRANG’ IN KAOHSIUNG",
+    "artist": "BTS",
+    "venue": "高雄國家體育場",
+    "address": "",
     "time": "2026-11-19 00:00:00",
     "date": "2026-11-19",
     "year": "2026",
@@ -9974,6 +11010,9 @@
   {
     "id": 158,
     "name": "【第一場】伊波杏樹 ASIA FAN MEETING TOUR 台北站",
+    "artist": "伊波杏樹",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-21 14:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10000,6 +11039,9 @@
   {
     "id": 159,
     "name": "伊波杏樹 ASIA FAN MEETING TOUR 台北站",
+    "artist": "伊波杏樹",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-21 14:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10026,6 +11068,9 @@
   {
     "id": 160,
     "name": "【第二場】伊波杏樹 ASIA FAN MEETING TOUR 台北站",
+    "artist": "伊波杏樹",
+    "venue": "Clapper Studio",
+    "address": "台北市中正區市民大道三段2號5樓",
     "time": "2026-11-21 18:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10052,6 +11097,9 @@
   {
     "id": 161,
     "name": "2026 SUPER JUNIOR-83z FANCON TOUR [1983] in TAIPEI",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "桃園巨蛋",
+    "address": "桃園市桃園區三民路一段1號",
     "time": "2026-11-21 18:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10078,6 +11126,9 @@
   {
     "id": 162,
     "name": "【會員優先購、全面啟售】2026 SUPER JUNIOR-83z FANCON TOUR [1983] in TAIPEI",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "桃園巨蛋",
+    "address": "桃園市桃園區三民路一段1號",
     "time": "2026-11-21 18:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10104,6 +11155,9 @@
   {
     "id": 163,
     "name": "【信用卡優先購】2026 SUPER JUNIOR-83z FANCON TOUR [1983] in TAIPEI",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "桃園巨蛋",
+    "address": "桃園市桃園區三民路一段1號",
     "time": "2026-11-21 18:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10130,6 +11184,9 @@
   {
     "id": 164,
     "name": "2026 金琳 CONCERT 《From +82 한국에서 왔어요》 in TAIPEI",
+    "artist": "金琳",
+    "venue": "WESTAR",
+    "address": "台北市萬華區漢中街116號8樓",
     "time": "2026-11-21 19:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10156,6 +11213,9 @@
   {
     "id": 281,
     "name": "UVERworld LIVE TOUR 2026 in TAIPEI",
+    "artist": "UVERworld",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段 3 號 8 樓",
     "time": "2026-11-21 19:00:00",
     "date": "2026-11-21",
     "year": "2026",
@@ -10182,6 +11242,9 @@
   {
     "id": 165,
     "name": "【11/22 加場】2026 SUPER JUNIOR-83z FANCON TOUR [1983] in TAIPEI",
+    "artist": "SUPER JUNIOR-83z",
+    "venue": "桃園巨蛋",
+    "address": "桃園市桃園區三民路一段1號",
     "time": "2026-11-22 18:00:00",
     "date": "2026-11-22",
     "year": "2026",
@@ -10208,6 +11271,9 @@
   {
     "id": 251,
     "name": "音田雅則 One Man Tour 2026 “Hiraeth” in Taipei 登記抽選",
+    "artist": "音田雅則",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-22 18:30:00",
     "date": "2026-11-22",
     "year": "2026",
@@ -10234,6 +11300,9 @@
   {
     "id": 252,
     "name": "音田雅則 One Man Tour 2026 “Hiraeth” in Taipei",
+    "artist": "音田雅則",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-22 18:30:00",
     "date": "2026-11-22",
     "year": "2026",
@@ -10260,6 +11329,9 @@
   {
     "id": 253,
     "name": "音田雅則 One Man Tour 2026 “Hiraeth” in Taipei VIP PASS加購 登記抽選",
+    "artist": "音田雅則",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-22 18:30:00",
     "date": "2026-11-22",
     "year": "2026",
@@ -10286,6 +11358,9 @@
   {
     "id": 254,
     "name": "音田雅則 One Man Tour 2026 “Hiraeth” in Taipei VIP PASS加購",
+    "artist": "音田雅則",
+    "venue": "",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-22 18:30:00",
     "date": "2026-11-22",
     "year": "2026",
@@ -10312,6 +11387,9 @@
   {
     "id": 166,
     "name": "Cö shu Nie Live in Hong Kong ~SATURATED IN MONOCHROME~",
+    "artist": "Cö shu Nie",
+    "venue": "PORTAL",
+    "address": "新蒲崗彩虹道212號THE BURROW 1樓",
     "time": "2026-11-25 20:00:00",
     "date": "2026-11-25",
     "year": "2026",
@@ -10338,6 +11416,9 @@
   {
     "id": 315,
     "name": "5 SECONDS OF SUMMER：EVERYONE’S A STAR! WORLD TOUR",
+    "artist": "5 SECONDS OF SUMMER",
+    "venue": "台北流行音樂中心表演廳",
+    "address": "",
     "time": "2026-11-25 00:00:00",
     "date": "2026-11-25",
     "year": "2026",
@@ -10364,6 +11445,9 @@
   {
     "id": 316,
     "name": "【VIP Upgrade/升級VIP】5 SECONDS OF SUMMER：EVERYONE’S A STAR! WORLD TOUR",
+    "artist": "5 SECONDS OF SUMMER",
+    "venue": "台北流行音樂中心表演廳",
+    "address": "",
     "time": "2026-11-25 00:00:00",
     "date": "2026-11-25",
     "year": "2026",
@@ -10390,6 +11474,9 @@
   {
     "id": 167,
     "name": "搖擺不設限．致敬大師風範",
+    "artist": "",
+    "venue": "陽明交大演藝廳（光復校區）",
+    "address": "新竹市東區大學路1001號 (學生活動中心2樓)",
     "time": "2026-11-26 19:30:00",
     "date": "2026-11-26",
     "year": "2026",
@@ -10416,6 +11503,9 @@
   {
     "id": 168,
     "name": "5 Seconds of Summer: EVERYONE'S A STAR! World Tour 2026 - Live in Hong Kong",
+    "artist": "5 Seconds of Summer",
+    "venue": "AXA WONDERLAND, WestK",
+    "address": "西九文化區安盛竹翠公園",
     "time": "2026-11-27 20:00:00",
     "date": "2026-11-27",
     "year": "2026",
@@ -10442,6 +11532,9 @@
   {
     "id": 288,
     "name": "skipskipbenben＆ 蔡元彰《到處存在場所 到 不存在的我》",
+    "artist": "skipskipbenben、蔡元彰",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-11-27 19:30:00",
     "date": "2026-11-27",
     "year": "2026",
@@ -10468,6 +11561,9 @@
   {
     "id": 313,
     "name": "JOJI SOLARIS",
+    "artist": "JOJI",
+    "venue": "高雄巨蛋",
+    "address": "",
     "time": "2026-11-27 00:00:00",
     "date": "2026-11-27",
     "year": "2026",
@@ -10494,6 +11590,9 @@
   {
     "id": 314,
     "name": "【Mastercard專區】JOJI SOLARIS",
+    "artist": "JOJI",
+    "venue": "高雄巨蛋",
+    "address": "",
     "time": "2026-11-27 00:00:00",
     "date": "2026-11-27",
     "year": "2026",
@@ -10520,6 +11619,9 @@
   {
     "id": 169,
     "name": "名譽傳說 1st ONEMAN TOUR 2026",
+    "artist": "名譽傳說",
+    "venue": "The Wall Live House",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-11-28 18:00:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10546,6 +11648,9 @@
   {
     "id": 170,
     "name": "【VIP套組】<𝗢𝗡𝗟𝗬 𝗢𝗡𝗘> 𝗡𝗘𝗟𝗟 𝗟𝗜𝗩𝗘 𝗜𝗡 𝗧𝗔𝗜𝗣𝗘𝗜",
+    "artist": "NELL",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-28 18:30:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10572,6 +11677,9 @@
   {
     "id": 171,
     "name": "【GA、愛心票】<𝗢𝗡𝗟𝗬 𝗢𝗡𝗘> 𝗡𝗘𝗟𝗟 𝗟𝗜𝗩𝗘 𝗜𝗡 𝗧𝗔𝗜𝗣𝗘𝗜",
+    "artist": "NELL",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-28 18:30:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10598,6 +11706,9 @@
   {
     "id": 172,
     "name": "<𝗢𝗡𝗟𝗬 𝗢𝗡𝗘> 𝗡𝗘𝗟𝗟 𝗟𝗜𝗩𝗘 𝗜𝗡 𝗧𝗔𝗜𝗣𝗘𝗜",
+    "artist": "NELL",
+    "venue": "SUB LIVE",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-11-28 18:30:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10624,6 +11735,9 @@
   {
     "id": 292,
     "name": "魏妙如 X 謝紫若 《三千兩百公里》",
+    "artist": "魏妙如 X 謝紫若",
+    "venue": "",
+    "address": "台北市新生南路三段56巷7號1樓",
     "time": "2026-11-28 19:30:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10650,6 +11764,9 @@
   {
     "id": 301,
     "name": "AKASAKI 1st WORLD TOUR \"ONIGIRI\" 登記抽選",
+    "artist": "AKASAKI",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-11-28 18:00:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10676,6 +11793,9 @@
   {
     "id": 302,
     "name": "AKASAKI 1st WORLD TOUR \"ONIGIRI\" VIP PASS限量加購 登記抽選",
+    "artist": "AKASAKI",
+    "venue": "",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-11-28 18:00:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10702,6 +11822,9 @@
   {
     "id": 312,
     "name": "Young K Solo Tour ＜YOUNGEST＞ in TAIPEI",
+    "artist": "Young K",
+    "venue": "台北國際會議中心TICC",
+    "address": "",
     "time": "2026-11-28 00:00:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10728,6 +11851,9 @@
   {
     "id": 419,
     "name": "YOASOBI ASIA TOUR 2026@福岡",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "福岡",
     "time": "2026-11-28 12:00",
     "date": "2026-11-28",
     "year": "2026",
@@ -10754,6 +11880,9 @@
   {
     "id": 173,
     "name": "2026 YESUNG 10TH ANNIVERSARY TOUR – ABOUT THE THINGS WE CALLED ORDINARY IN KAOHSIUNG",
+    "artist": "YESUNG",
+    "venue": "高雄流行音樂中心 海音館",
+    "address": "高雄市鹽埕區真愛路1號",
     "time": "2026-11-29 17:00:00",
     "date": "2026-11-29",
     "year": "2026",
@@ -10780,6 +11909,9 @@
   {
     "id": 174,
     "name": "HITORI-ESCAPE ASIA TOUR 2026 【TAIPEI】",
+    "artist": "HITORIE",
+    "venue": "The Wall Live House",
+    "address": "台北市羅斯福路四段200號B1",
     "time": "2026-11-29 18:00:00",
     "date": "2026-11-29",
     "year": "2026",
@@ -10806,6 +11938,9 @@
   {
     "id": 268,
     "name": "Chevon pre.Yoshinani 〜Nomadic Edition〜 in Taipei",
+    "artist": "Chevon",
+    "venue": "華山 1914 創意文化園區中 5A 館",
+    "address": "台北市中正區八德路一段 1 號",
     "time": "2026-11-29 18:00:00",
     "date": "2026-11-29",
     "year": "2026",
@@ -10832,6 +11967,9 @@
   {
     "id": 420,
     "name": "YOASOBI ASIA TOUR 2026@福岡",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "福岡",
     "time": "2026-11-29 12:00",
     "date": "2026-11-29",
     "year": "2026",
@@ -10858,6 +11996,9 @@
   {
     "id": 175,
     "name": "Simple Plan - The Bigger Than You Think! Tour - Live in Hong Kong",
+    "artist": "Simple Plan",
+    "venue": "AXA WONDERLAND, WestK",
+    "address": "西九文化區安盛竹翠公園",
     "time": "2026-12-01 20:30:00",
     "date": "2026-12-01",
     "year": "2026",
@@ -10884,6 +12025,9 @@
   {
     "id": 176,
     "name": "魯特琴與歌曲，紀念道蘭逝世400週年",
+    "artist": "",
+    "venue": "陽明交大演藝廳（光復校區）",
+    "address": "300台灣新竹市東區大學路1001號 (學生活動中心2樓)",
     "time": "2026-12-02 19:30:00",
     "date": "2026-12-02",
     "year": "2026",
@@ -10910,6 +12054,9 @@
   {
     "id": 311,
     "name": "DOMi ＆ JD BECK - WHO ASKED? Tour",
+    "artist": "DOMi & JD BECK",
+    "venue": "Clapper Studio",
+    "address": "",
     "time": "2026-12-04 00:00:00",
     "date": "2026-12-04",
     "year": "2026",
@@ -10936,6 +12083,9 @@
   {
     "id": 177,
     "name": "AIMI ASIA TOUR 2026 STAR RISING in Taipei",
+    "artist": "愛美",
+    "venue": "MOONDOG",
+    "address": "臺北市松山區復興南路一段39號9F",
     "time": "2026-12-05 17:00:00",
     "date": "2026-12-05",
     "year": "2026",
@@ -10962,6 +12112,9 @@
   {
     "id": 309,
     "name": "2026 Asia Artist Awards in Kaohsiung",
+    "artist": "",
+    "venue": "高雄國家體育場(世運主場館)",
+    "address": "",
     "time": "2026-12-05 00:00:00",
     "date": "2026-12-05",
     "year": "2026",
@@ -10988,6 +12141,9 @@
   {
     "id": 310,
     "name": "brb. “half/lives” Tour in Taipei",
+    "artist": "brb.",
+    "venue": "Clapper Studio",
+    "address": "",
     "time": "2026-12-05 00:00:00",
     "date": "2026-12-05",
     "year": "2026",
@@ -11014,6 +12170,9 @@
   {
     "id": 407,
     "name": "時速36公里首度海外公演 “市民薄明” Tour 追加 台北站",
+    "artist": "時速36公里",
+    "venue": "PIPE Live Music",
+    "address": "台北市中正區思源街1號",
     "time": "2026-12-05 19:30:00",
     "date": "2026-12-05",
     "year": "2026",
@@ -11040,6 +12199,9 @@
   {
     "id": 421,
     "name": "YOASOBI ASIA TOUR 2026@東京",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "東京",
     "time": "2026-12-05 12:00",
     "date": "2026-12-05",
     "year": "2026",
@@ -11066,6 +12228,9 @@
   {
     "id": 422,
     "name": "YOASOBI ASIA TOUR 2026@東京",
+    "artist": "YOASOBI",
+    "venue": "",
+    "address": "東京",
     "time": "2026-12-06 12:00",
     "date": "2026-12-06",
     "year": "2026",
@@ -11092,6 +12257,9 @@
   {
     "id": 308,
     "name": "Khalid： It’s Always Summer Somewhere Tour in Taipei",
+    "artist": "Khalid",
+    "venue": "台北國際會議中心TICC",
+    "address": "",
     "time": "2026-12-07 00:00:00",
     "date": "2026-12-07",
     "year": "2026",
@@ -11118,6 +12286,9 @@
   {
     "id": 178,
     "name": "蔡宇歆鋼琴演奏會",
+    "artist": "蔡宇歆",
+    "venue": "陽明交大演藝廳（光復校區）",
+    "address": "300台灣新竹市東區大學路1001號 (學生活動中心2樓)",
     "time": "2026-12-10 19:30:00",
     "date": "2026-12-10",
     "year": "2026",
@@ -11144,6 +12315,9 @@
   {
     "id": 307,
     "name": "Slowdive 2026 Live in Taipei",
+    "artist": "Slowdive",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段 3 號 8 樓（宏匯廣場）",
     "time": "2026-12-10 00:00:00",
     "date": "2026-12-10",
     "year": "2026",
@@ -11170,6 +12344,9 @@
   {
     "id": 179,
     "name": "my little airport live 2026 你一定覺得我是飲醉酒",
+    "artist": "my little airport",
+    "venue": "AXA WONDERLAND, WestK",
+    "address": "西九文化區安盛竹翠公園",
     "time": "2026-12-11 20:00:00",
     "date": "2026-12-11",
     "year": "2026",
@@ -11196,6 +12373,9 @@
   {
     "id": 180,
     "name": "92914 3rd Solo Concert in Taipei \"papA, LoOK!\"",
+    "artist": "92914",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2026-12-12 18:00:00",
     "date": "2026-12-12",
     "year": "2026",
@@ -11222,6 +12402,9 @@
   {
     "id": 181,
     "name": "【12/12】ON FIRE DAY 2026 滅火器高雄巨蛋演唱會",
+    "artist": "滅火器",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區新下里博愛二路757號",
     "time": "2026-12-12 19:30:00",
     "date": "2026-12-12",
     "year": "2026",
@@ -11248,6 +12431,9 @@
   {
     "id": 182,
     "name": "ON FIRE DAY 2026 滅火器高雄巨蛋演唱會",
+    "artist": "滅火器",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區新下里博愛二路757號",
     "time": "2026-12-12 19:30:00",
     "date": "2026-12-12",
     "year": "2026",
@@ -11274,6 +12460,9 @@
   {
     "id": 400,
     "name": "魔獸世界 World of Warcraft：20 Years of Music",
+    "artist": "",
+    "venue": "",
+    "address": "",
     "time": "2026-12-12 14:30:00",
     "date": "2026-12-12",
     "year": "2026",
@@ -11300,6 +12489,9 @@
   {
     "id": 183,
     "name": "【12/13】ON FIRE DAY 2026 滅火器高雄巨蛋演唱會",
+    "artist": "滅火器",
+    "venue": "高雄巨蛋",
+    "address": "高雄市左營區新下里博愛二路757號",
     "time": "2026-12-13 17:30:00",
     "date": "2026-12-13",
     "year": "2026",
@@ -11326,6 +12518,9 @@
   {
     "id": 184,
     "name": "go!go!vanillas Asia Tour 2026 in Taipei",
+    "artist": "go!go!vanillas",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-12-14 20:00:00",
     "date": "2026-12-14",
     "year": "2026",
@@ -11352,6 +12547,9 @@
   {
     "id": 185,
     "name": "VOOID 2026 線下P2P超慢速低傳真  & 洪申豪 Solo 專場演唱會",
+    "artist": "VOOID",
+    "venue": "THE WALL LIVE HOUSE",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2026-12-18 20:30:00",
     "date": "2026-12-18",
     "year": "2026",
@@ -11378,6 +12576,9 @@
   {
     "id": 186,
     "name": "Atarayo ASIA TOUR 2026『夕立が去ったその後で』in TAIPEI",
+    "artist": "Atarayo",
+    "venue": "台北流行音樂中心・表演廳",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-12-19 19:00:00",
     "date": "2026-12-19",
     "year": "2026",
@@ -11404,6 +12605,9 @@
   {
     "id": 187,
     "name": "【限量VIP Upgrade加購】Atarayo ASIA TOUR 2026『夕立が去ったその後で』in TAIPEI",
+    "artist": "Atarayo",
+    "venue": "台北流行音樂中心・表演廳",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-12-19 19:00:00",
     "date": "2026-12-19",
     "year": "2026",
@@ -11430,6 +12634,9 @@
   {
     "id": 188,
     "name": "【演唱會】Atarayo ASIA TOUR 2026『夕立が去ったその後で』in TAIPEI",
+    "artist": "Atarayo",
+    "venue": "台北流行音樂中心・表演廳",
+    "address": "台北市南港區市民大道八段99號",
     "time": "2026-12-19 19:00:00",
     "date": "2026-12-19",
     "year": "2026",
@@ -11456,6 +12663,9 @@
   {
     "id": 189,
     "name": "XinU LIVE IN TAIPEI 2026",
+    "artist": "XinU",
+    "venue": "The Wall Live House",
+    "address": "臺北市文山區羅斯福路四段200號",
     "time": "2026-12-26 18:30:00",
     "date": "2026-12-26",
     "year": "2026",
@@ -11482,6 +12692,9 @@
   {
     "id": 380,
     "name": "2026蔡義德【聲聲不息】演唱會",
+    "artist": "蔡義德",
+    "venue": "中興大學惠蓀堂",
+    "address": "台中市",
     "time": "2026-12-26 18:00:00",
     "date": "2026-12-26",
     "year": "2026",
@@ -11508,6 +12721,9 @@
   {
     "id": 190,
     "name": "MONO NO AWARE PASSION TOUR 2027 in Taipei",
+    "artist": "MONO NO AWARE",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2027-01-15 20:00:00",
     "date": "2027-01-15",
     "year": "2027",
@@ -11534,6 +12750,9 @@
   {
     "id": 306,
     "name": "AGAINST THE CURRENT：TILL DEATH＆BACK TOUR IN TAIPEI",
+    "artist": "AGAINST THE CURRENT",
+    "venue": "台北國際會議中心TICC",
+    "address": "台北市",
     "time": "2027-01-15 00:00:00",
     "date": "2027-01-15",
     "year": "2027",
@@ -11560,6 +12779,9 @@
   {
     "id": 191,
     "name": "葛瑞蓋斯 Gareth Gates 25週年演唱會臺北站",
+    "artist": "葛瑞蓋斯 Gareth Gates",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-01-24 18:00:00",
     "date": "2027-01-24",
     "year": "2027",
@@ -11586,6 +12808,9 @@
   {
     "id": 192,
     "name": "【福利加購】葛瑞蓋斯 Gareth Gates 25週年演唱會臺北站",
+    "artist": "葛瑞蓋斯 Gareth Gates",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-01-24 18:00:00",
     "date": "2027-01-24",
     "year": "2027",
@@ -11612,6 +12837,9 @@
   {
     "id": 193,
     "name": "【門票】葛瑞蓋斯 Gareth Gates 25週年演唱會臺北站",
+    "artist": "葛瑞蓋斯 Gareth Gates",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-01-24 18:00:00",
     "date": "2027-01-24",
     "year": "2027",
@@ -11638,6 +12866,9 @@
   {
     "id": 305,
     "name": "Maroon 5 Asia 2027 in Kaohsiung",
+    "artist": "Maroon 5",
+    "venue": "",
+    "address": "高雄市",
     "time": "2027-01-24 00:00:00",
     "date": "2027-01-24",
     "year": "2027",
@@ -11664,6 +12895,9 @@
   {
     "id": 257,
     "name": "EMI NODA Live Tour \"film\" in Taipei",
+    "artist": "EMI NODA",
+    "venue": "The Wall Live House",
+    "address": "台北市文山區羅斯福路四段200號B1",
     "time": "2027-01-30 18:00:00",
     "date": "2027-01-30",
     "year": "2027",
@@ -11690,6 +12924,9 @@
   {
     "id": 304,
     "name": "WESTLIFE 25：THE ANNIVERSARY WORLD TOUR",
+    "artist": "WESTLIFE",
+    "venue": "",
+    "address": "",
     "time": "2027-01-30 00:00:00",
     "date": "2027-01-30",
     "year": "2027",
@@ -11716,6 +12953,9 @@
   {
     "id": 352,
     "name": "【2/27場次】BIGBANG 2026-2027 WORLD TOUR〈 XX：COSMOS 〉IN KAOHSIUNG",
+    "artist": "BIGBANG",
+    "venue": "",
+    "address": "高雄市",
     "time": "2027-02-13 00:00:00",
     "date": "2027-02-13",
     "year": "2027",
@@ -11742,6 +12982,9 @@
   {
     "id": 353,
     "name": "【2/28場次】BIGBANG 2026-2027 WORLD TOUR〈 XX：COSMOS 〉IN KAOHSIUNG",
+    "artist": "BIGBANG",
+    "venue": "",
+    "address": "高雄市",
     "time": "2027-02-13 00:00:00",
     "date": "2027-02-13",
     "year": "2027",
@@ -11768,6 +13011,9 @@
   {
     "id": 194,
     "name": "奇蹟 MIRACLE FESTIVAL 2027",
+    "artist": "",
+    "venue": "金滿山露營山莊",
+    "address": "苗栗縣公館鄉仁安村仁安219-1號",
     "time": "2027-03-12 15:00:00",
     "date": "2027-03-12",
     "year": "2027",
@@ -11794,6 +13040,9 @@
   {
     "id": 208,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei 登記抽選 (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei 登記抽選(3/27場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-27 18:00:00",
     "date": "2027-03-27",
     "year": "2027",
@@ -11820,6 +13069,9 @@
   {
     "id": 210,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei(3/27場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-27 18:00:00",
     "date": "2027-03-27",
     "year": "2027",
@@ -11846,6 +13098,9 @@
   {
     "id": 212,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei VIP PASS限量加購 登記抽選 (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei VIP PASS限量加購 登記抽選(3/27場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-27 18:00:00",
     "date": "2027-03-27",
     "year": "2027",
@@ -11872,6 +13127,9 @@
   {
     "id": 209,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei 登記抽選 (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei 登記抽選(3/28場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-28 15:00:00",
     "date": "2027-03-28",
     "year": "2027",
@@ -11898,6 +13156,9 @@
   {
     "id": 211,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei(3/28場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-28 15:00:00",
     "date": "2027-03-28",
     "year": "2027",
@@ -11924,6 +13185,9 @@
   {
     "id": 213,
     "name": "MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei VIP PASS限量加購 登記抽選 (MAHIRU ONE-MAN LIVE 2027 in Zepp New Taipei VIP PASS限量加購 登記抽選(3/28場次))",
+    "artist": "MAHIRU",
+    "venue": "Zepp New Taipei",
+    "address": "新北市新莊區新北大道四段3號8樓",
     "time": "2027-03-28 15:00:00",
     "date": "2027-03-28",
     "year": "2027",
@@ -11950,6 +13214,9 @@
   {
     "id": 303,
     "name": "Bruno Mars - The Romantic Tour",
+    "artist": "Bruno Mars",
+    "venue": "",
+    "address": "",
     "time": "2027-05-01 00:00:00",
     "date": "2027-05-01",
     "year": "2027",
@@ -11976,6 +13243,9 @@
   {
     "id": 367,
     "name": "【演出取消Cancellation】WILD WILD 2026 1ST FAN LIVE in Taipei : AFTER HOURS",
+    "artist": "WILD WILD",
+    "venue": "",
+    "address": "台北市",
     "time": "N/A",
     "date": "",
     "year": "",
@@ -12002,6 +13272,9 @@
   {
     "id": 368,
     "name": "【演出取消Cancellation】VOICE UP presents Little Glee Monster Taipei Special Live 2026",
+    "artist": "Little Glee Monster",
+    "venue": "",
+    "address": "台北市",
     "time": "N/A",
     "date": "",
     "year": "",
@@ -12026,19 +13299,17 @@
     "chip_text": "#3d1a04"
   }
 ];
-    let currentMode = 'auto'; // 'mobile' or 'desktop'
+    let currentMode = 'auto';
     let currentSource = 'all';
     let searchKeyword = '';
     let currentCalDate = new Date();
     const todayStr = new Date().toISOString().split('T')[0];
 
-    // Find first relevant date
     const future = RAW_EVENTS.find(e => (e.date >= todayStr || e.sale_date >= todayStr));
     if (future && future.date) {
       currentCalDate = new Date(future.date);
     }
 
-    // Auto-detect mode & load preference
     function initLayoutMode() {
       const savedMode = localStorage.getItem('user_calendar_mode');
       if (savedMode === 'mobile' || savedMode === 'desktop') {
@@ -12081,9 +13352,12 @@
         if (searchKeyword) {
           const kw = searchKeyword.toLowerCase();
           const matchName = (e.name || '').toLowerCase().includes(kw);
+          const matchArtist = (e.artist || '').toLowerCase().includes(kw);
+          const matchVenue = (e.venue || '').toLowerCase().includes(kw);
+          const matchAddress = (e.address || '').toLowerCase().includes(kw);
           const matchSource = (e.source_name || '').toLowerCase().includes(kw);
           const matchDate = (e.date || '').includes(kw) || (e.sale_date || '').includes(kw);
-          if (!matchName && !matchSource && !matchDate) return false;
+          if (!matchName && !matchArtist && !matchVenue && !matchAddress && !matchSource && !matchDate) return false;
         }
         return true;
       });
@@ -12095,7 +13369,6 @@
       const month = currentCalDate.getMonth();
       document.getElementById('mMainMonthTitle').textContent = `${year}年 ${month + 1}月`;
 
-      // Month Pills
       const monthSet = new Set();
       RAW_EVENTS.forEach(e => { if (e.month) monthSet.add(e.month); if (e.sale_month) monthSet.add(e.sale_month); });
       const sortedMonths = Array.from(monthSet).sort();
@@ -12115,7 +13388,6 @@
         pillsBar.appendChild(btn);
       });
 
-      // Days Grid
       const filtered = getFilteredEvents();
       const daysGrid = document.getElementById('mDaysGrid');
       daysGrid.innerHTML = '';
@@ -12186,7 +13458,6 @@
       const month = currentCalDate.getMonth();
       document.getElementById('dCalMonthTitle').textContent = `${year}年 ${month + 1}月`;
 
-      // Stats
       const now = new Date();
       let upcoming = 0, newT = 0;
       RAW_EVENTS.forEach(e => {
@@ -12199,7 +13470,6 @@
       document.getElementById('dStatUpcoming').textContent = upcoming;
       document.getElementById('dStatNew').textContent = newT;
 
-      // Month Pills
       const monthSet = new Set();
       RAW_EVENTS.forEach(e => { if (e.month) monthSet.add(e.month); if (e.sale_month) monthSet.add(e.sale_month); });
       const sortedMonths = Array.from(monthSet).sort();
@@ -12221,7 +13491,6 @@
         pContainer.appendChild(btn);
       });
 
-      // Grid
       const filtered = getFilteredEvents();
       const grid = document.getElementById('dCalDaysGrid');
       grid.innerHTML = '';
@@ -12251,6 +13520,7 @@
             <div class="cal-d-item sale" onclick="openModal(${e.id})">
               <span style="color:var(--secondary-accent); font-weight:700; font-size:0.7rem;">🔥 開賣 ${e.sale_time_str || ''}</span>
               <strong style="color:#fff;">${e.name}</strong>
+              ${e.venue ? '<span style="color:var(--text-muted); font-size:0.68rem;">📍 ' + e.venue + '</span>' : ''}
             </div>
           `;
         });
@@ -12259,6 +13529,8 @@
             <div class="cal-d-item" style="border-left-color:${e.source_color};" onclick="openModal(${e.id})">
               <span style="color:${e.source_color}; font-weight:700; font-size:0.7rem;">${e.source_icon} ${e.source_name} ${e.time_str || ''}</span>
               <strong style="color:#fff;">${e.name}</strong>
+              ${e.artist ? '<span style="color:#74b9ff; font-size:0.68rem;">🎤 ' + e.artist + '</span>' : ''}
+              ${e.venue ? '<span style="color:var(--text-muted); font-size:0.68rem;">📍 ' + e.venue + '</span>' : ''}
             </div>
           `;
         });
@@ -12276,7 +13548,7 @@
         grid.appendChild(cell);
       }
 
-      // Desktop Table
+      // Desktop Table View
       const tbody = document.getElementById('dTimetableBody');
       tbody.innerHTML = '';
       filtered.forEach((e, i) => {
@@ -12284,9 +13556,10 @@
         tr.innerHTML = `
           <td style="color:var(--text-muted);">${i + 1}</td>
           <td style="color:${e.source_color}; font-weight:700;">${e.source_icon} ${e.source_name}</td>
+          <td style="color:#74b9ff; font-weight:600;">${e.artist || '-'}</td>
           <td style="font-weight:700; color:#fff; cursor:pointer;" onclick="openModal(${e.id})">${e.name}</td>
+          <td style="color:var(--text-sub);">${e.venue || '-'}</td>
           <td style="color:var(--highlight-blue); font-family:var(--font-mono);">${e.date} ${e.time_str}</td>
-          <td>${e.weekday}</td>
           <td style="color:var(--secondary-accent); font-family:var(--font-mono);">${e.sale_time || '-'}</td>
           <td><a href="${e.link || '#'}" target="_blank" class="btn" style="padding:2px 8px; font-size:0.72rem;">購票</a></td>
         `;
@@ -12310,6 +13583,9 @@
       selectedEvent = e;
       document.getElementById('modalTitle').textContent = e.name;
       document.getElementById('modalPlatform').textContent = `${e.source_icon} ${e.source_name}`;
+      document.getElementById('modalArtist').textContent = e.artist || '無特定歌手 / 藝文展演';
+      document.getElementById('modalVenue').textContent = e.venue || '尚未公佈 / 未定';
+      document.getElementById('modalAddress').textContent = e.address || '尚未公佈 / 未定';
       document.getElementById('modalEventTime').textContent = e.time || '未定';
       document.getElementById('modalSaleTime').textContent = e.sale_time || '尚未公佈';
       document.getElementById('modalPubTime').textContent = e.published_time || 'N/A';
@@ -12336,10 +13612,15 @@
         item.style.alignItems = 'center';
         item.style.gap = '8px';
 
+        const artistText = e.artist ? (' • 🎤 ' + e.artist) : '';
+        const venueText = e.venue ? (' • 📍 ' + e.venue) : '';
+
         item.innerHTML = `
           <div>
             <div style="font-size:0.75rem; color:${isSale ? 'var(--sale-border-color)' : e.source_color}; font-weight:700;">
               ${isSale ? '🔴 售票開賣: ' + (e.sale_time_str || e.sale_time) : e.source_icon + ' ' + e.source_name + ' • 演出: ' + (e.time_str || e.time)}
+              ${artistText}
+              ${venueText}
             </div>
             <div style="font-size:0.9rem; font-weight:700; color:#fff; margin-top:2px;">${e.name}</div>
           </div>
@@ -12359,18 +13640,16 @@
 
     document.getElementById('modalCopyBtn').addEventListener('click', () => {
       if (selectedEvent) {
-        const text = `活動：${selectedEvent.name}\n平台：${selectedEvent.source_name}\n演出時間：${selectedEvent.time}\n開賣時間：${selectedEvent.sale_time || '無'}\n連結：${selectedEvent.link}`;
+        const text = `活動：${selectedEvent.name}\n歌手：${selectedEvent.artist || '無'}\n場館：${selectedEvent.venue || '無'}\n地址：${selectedEvent.address || '無'}\n平台：${selectedEvent.source_name}\n演出時間：${selectedEvent.time}\n開賣時間：${selectedEvent.sale_time || '無'}\n連結：${selectedEvent.link}`;
         navigator.clipboard.writeText(text).then(() => alert('已複製活動資訊！'));
       }
     });
 
-    // Mobile jump today
     document.getElementById('mJumpTodayBtn').addEventListener('click', () => {
       currentCalDate = new Date();
       renderAll();
     });
 
-    // Desktop month buttons
     document.getElementById('dPrevMonthBtn').addEventListener('click', () => {
       currentCalDate.setMonth(currentCalDate.getMonth() - 1);
       renderAll();
@@ -12380,7 +13659,6 @@
       renderAll();
     });
 
-    // Desktop view toggle
     document.getElementById('dViewCalBtn').addEventListener('click', () => {
       document.getElementById('dViewCalBtn').classList.add('active');
       document.getElementById('dViewTableBtn').classList.remove('active');
@@ -12394,7 +13672,6 @@
       document.getElementById('dTableContainer').style.display = 'block';
     });
 
-    // Search filters
     document.getElementById('mSearchInput').addEventListener('input', (e) => {
       searchKeyword = e.target.value.trim();
       renderAll();
@@ -12404,7 +13681,6 @@
       renderAll();
     });
 
-    // Platform tabs
     document.querySelectorAll('#mPlatformFilterBar .filter-chip-m').forEach(chip => {
       chip.addEventListener('click', () => {
         document.querySelectorAll('#mPlatformFilterBar .filter-chip-m').forEach(c => c.classList.remove('active'));
@@ -12422,13 +13698,12 @@
       });
     });
 
-    // CSV Export
     document.getElementById('dExportCsvBtn').addEventListener('click', () => {
       const filtered = getFilteredEvents();
       let csvContent = 'data:text/csv;charset=utf-8,\uFEFF';
-      csvContent += '名稱,演出時間,開賣時間,平台,連結,上架時間\n';
+      csvContent += '名稱,歌手,場館,地址,演出時間,開賣時間,平台,連結,上架時間\n';
       filtered.forEach(e => {
-        csvContent += `"${(e.name||'').replace(/"/g, '""')}","${e.time}","${e.sale_time}","${e.source_name}","${e.link}","${e.published_time}"\n`;
+        csvContent += `"${(e.name||'').replace(/"/g, '""')}","${(e.artist||'').replace(/"/g, '""')}","${(e.venue||'').replace(/"/g, '""')}","${(e.address||'').replace(/"/g, '""')}","${e.time}","${e.sale_time}","${e.source_name}","${e.link}","${e.published_time}"\n`;
       });
       const encodedUri = encodeURI(csvContent);
       const link = document.createElement('a');
@@ -12439,7 +13714,6 @@
       document.body.removeChild(link);
     });
 
-    // Init
     initLayoutMode();
   </script>
 </body>
