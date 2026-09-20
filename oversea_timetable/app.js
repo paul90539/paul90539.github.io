@@ -16,27 +16,27 @@ const DEFAULT_TOURS = [
     "rawText": "2027年01月30日（土） 東京・TOYOTA ARENA TOKYO OPEN --:-- / START --:--\n2027年02月28日（日） 愛知・愛知県芸術劇場 大ホール OPEN --:-- / START --:--\n2027年03月14日（日） 宮城・仙台サンプラザホール OPEN --:-- / START --:--\n2027年04月25日（日） 福岡・福岡サンパレス OPEN --:-- / START --:--"
   },
   {
-  "id": "tour_1787736925601",
-  "name": "YOASOBI",
-  "tourTitle": "YOASOBI ASIA 10-CITY DOME & STADIUM TOUR 2026-2027",
-  "subtitle": "国内公演概要",
-  "period": "2026年10月24日(土) 〜 2026年12月6日(日)",
-  "color": "#be2edd",
-  "icon": "🎤",
-  "badgeClass": "custom",
-  "rawText": "2026/10/24 (土) 大阪・京セラドーム大阪 OPEN 15:30 / START 18:00\n2026/10/25 (日) 大阪・京セラドーム大阪 OPEN 14:30 / START 17:00\n2026/11/07 (土) 愛知・バンテリンドーム ナゴヤ OPEN 15:30 / START 18:00\n2026/11/08 (日) 愛知・バンテリンドーム ナゴヤ OPEN 14:30 / START 17:00\n2026/11/14 (土) 北海道・大和ハウス プレミストドーム OPEN 15:30 / START 18:00\n2026/11/15 (日) 北海道・大和ハウス プレミストドーム OPEN 14:30 / START 17:00\n2026/11/28 (土) 福岡・みずほPayPayドーム福岡 OPEN 15:30 / START 18:00\n2026/11/29 (日) 福岡・みずほPayPayドーム福岡 OPEN 14:30 / START 17:00\n2026/12/05 (土) 東京・東京ドーム OPEN 15:30 / START 18:00\n2026/12/06 (日) 東京・東京ドーム OPEN 14:30 / START 17:00"
-},
+    "id": "tour_1787736925601",
+    "name": "YOASOBI",
+    "tourTitle": "YOASOBI ASIA 10-CITY DOME & STADIUM TOUR 2026-2027",
+    "subtitle": "国内公演概要",
+    "period": "2026年10月24日(土) 〜 2026年12月6日(日)",
+    "color": "#be2edd",
+    "icon": "🎤",
+    "badgeClass": "custom",
+    "rawText": "2026/10/24 (土) 大阪・京セラドーム大阪 OPEN 15:30 / START 18:00\n2026/10/25 (日) 大阪・京セラドーム大阪 OPEN 14:30 / START 17:00\n2026/11/07 (土) 愛知・バンテリンドーム ナゴヤ OPEN 15:30 / START 18:00\n2026/11/08 (日) 愛知・バンテリンドーム ナゴヤ OPEN 14:30 / START 17:00\n2026/11/14 (土) 北海道・大和ハウス プレミストドーム OPEN 15:30 / START 18:00\n2026/11/15 (日) 北海道・大和ハウス プレミストドーム OPEN 14:30 / START 17:00\n2026/11/28 (土) 福岡・みずほPayPayドーム福岡 OPEN 15:30 / START 18:00\n2026/11/29 (日) 福岡・みずほPayPayドーム福岡 OPEN 14:30 / START 17:00\n2026/12/05 (土) 東京・東京ドーム OPEN 15:30 / START 18:00\n2026/12/06 (日) 東京・東京ドーム OPEN 14:30 / START 17:00"
+  },
   {
-  "id": "tour_1787736094569",
-  "name": "MYTH & ROID",
-  "tourTitle": "MYTH & ROID Tour 2026-2027 “I know your fire”",
-  "subtitle": "全13公演",
-  "period": "2026年7月17日(金) 〜 2027年2月6日(土)",
-  "color": "#ff7979",
-  "icon": "🎤",
-  "badgeClass": "custom",
-  "rawText": "2026/07/17 (金) 東京・BLAZE GOTANDA OPEN 18:15 / START 19:00\n2026/08/09 (日) 群馬・Club JAMMERS OPEN 17:00 / START 17:30\n2026/08/11 (火) 栃木・HEAVEN'S ROCK UTSUNOMIYA VJ-2 OPEN 17:00 / START 17:30\n2026/09/21 (月) 岡山・YEBISU YA PRO OPEN 17:00 / START 17:30\n2026/09/22 (火) 福岡・INSA OPEN 17:00 / START 17:30\n2026/10/04 (日) 大阪・Banana Hall OPEN 17:00 / START 17:30\n2026/10/12 (月) 埼玉・HEAVEN'S ROCK KUMAGAYA VJ-1 OPEN 17:00 / START 17:30\n2026/11/01 (日) 静岡・LIVE ROXY SHIZUOKA OPEN 17:00 / START 17:30\n2026/11/03 (火) 愛知・THE Bottom Line OPEN 17:00 / START 17:30\n2026/12/25 (金) 韓国・KT&G Sangsangmadang Hongdae OPEN --:-- / START --:--\n2027/01/14 (木) 香港・PORTAL OPEN --:-- / START --:--\n2027/01/23 (土) 台湾・Clapper Studio OPEN --:-- / START --:--\n2027/02/06 (土) 神奈川・KT Zepp Yokohama OPEN 17:30 / START 18:30"
-},
+    "id": "tour_1787736094569",
+    "name": "MYTH & ROID",
+    "tourTitle": "MYTH & ROID Tour 2026-2027 “I know your fire”",
+    "subtitle": "全13公演",
+    "period": "2026年7月17日(金) 〜 2027年2月6日(土)",
+    "color": "#ff7979",
+    "icon": "🎤",
+    "badgeClass": "custom",
+    "rawText": "2026/07/17 (金) 東京・BLAZE GOTANDA OPEN 18:15 / START 19:00\n2026/08/09 (日) 群馬・Club JAMMERS OPEN 17:00 / START 17:30\n2026/08/11 (火) 栃木・HEAVEN'S ROCK UTSUNOMIYA VJ-2 OPEN 17:00 / START 17:30\n2026/09/21 (月) 岡山・YEBISU YA PRO OPEN 17:00 / START 17:30\n2026/09/22 (火) 福岡・INSA OPEN 17:00 / START 17:30\n2026/10/04 (日) 大阪・Banana Hall OPEN 17:00 / START 17:30\n2026/10/12 (月) 埼玉・HEAVEN'S ROCK KUMAGAYA VJ-1 OPEN 17:00 / START 17:30\n2026/11/01 (日) 静岡・LIVE ROXY SHIZUOKA OPEN 17:00 / START 17:30\n2026/11/03 (火) 愛知・THE Bottom Line OPEN 17:00 / START 17:30\n2026/12/25 (金) 韓国・KT&G Sangsangmadang Hongdae OPEN --:-- / START --:--\n2027/01/14 (木) 香港・PORTAL OPEN --:-- / START --:--\n2027/01/23 (土) 台湾・Clapper Studio OPEN --:-- / START --:--\n2027/02/06 (土) 神奈川・KT Zepp Yokohama OPEN 17:30 / START 18:30"
+  },
   {
     "id": "scandal",
     "name": "SCANDAL",
@@ -46,7 +46,7 @@ const DEFAULT_TOURS = [
     "color": "#ff4757",
     "icon": "🎸",
     "badgeClass": "scandal",
-    "rawText": "2026年10月22日（木） 東京・恵比寿 LIQUIDROOM OPEN：18:00 / START：19:00\n2026年10月24日（土） 青森・青森 Quarter OPEN：17:00 / START：17:30\n2026年10月25日（日） 秋田・秋田 Club SWIFT OPEN：16:30 / START：17:00\n2026年10月27日（火） 岩手・盛岡 CLUB CHANGE WAVE OPEN：18:00 / START：18:30\n2026年10月29日（木） 宮城・仙台 RENSA OPEN：18:00 / START：18:30\n2026年10月31日（土） 山形・山形 ミュージック昭和Session OPEN：16:30 / START：17:00\n2026年11月01日（日） 福島・郡山 HIPSHOT JAPAN OPEN：16:30 / START：17:00\n2026年11月06日（金） 山梨・甲府 CONVICTION OPEN：18:00 / START：18:30\n2026年11月07日（土） 長野・長野 CLUB JUNK BOX OPEN：17:00 / START：17:30\n2026年11月08日（日） 新潟・新潟 LOTS OPEN：16:30 / START：17:00\n2026年11月14日（土） 富山・富山 MAIRO OPEN：17:00 / START：17:30\n2026年11月15日（日） 石川・金沢 EIGHT HALL OPEN：16:30 / START：17:00\n2026年11月17日（火） 福井・福井 CHOP OPEN：18:00 / START：18:30\n2026年11月21日（土） 岐阜・岐阜 club-G OPEN：17:00 / START：17:30\n2026年11月23日（月・祝） 三重・四日市 CLUB ROOTS OPEN：16:30 / START：17:00\n2026年11月28日（土） 静岡・LIVE ROXY SHIZUOKA OPEN：17:00 / START：17:30\n2026年11月29日（日） 愛知・名古屋 ダイアモンドホール OPEN：16:00 / START：17:00\n2026年12月05日（土） 滋賀・滋賀 U☆STONE OPEN：17:00 / START：17:30\n2026年12月06日（日） 京都・京都 FANJ OPEN：16:30 / START：17:00\n2026年12月08日（火） 奈良・奈良 EVANS CASTLE HALL OPEN：18:00 / START：18:30\n2026年12月10日（木） 和歌山・和歌山 CLUB GATE OPEN：18:00 / START：18:30\n2026年12月12日（土） 兵庫・神戸 Harbor Studio OPEN：17:00 / START：17:30\n2026年12月13日（日） 大阪・心斎橋 BIGCAT OPEN：16:00 / START：17:00\n2026年12月19日（土） 茨城・水戸 LIGHT HOUSE OPEN：17:00 / START：17:30\n2026年12月20日（日） 栃木・HEAVEN'S ROCK 宇都宮 VJ-2 OPEN：16:30 / START：17:00\n2026年12月23日（水） 群馬・高崎 club FLEEZ OPEN：18:00 / START：18:30\n2026年12月26日（土） 埼玉・HEAVEN'S ROCK さいたま新都心 VJ-3 OPEN：17:00 / START：17:30\n2026年12月27日（日） 千葉・柏 PALOOZA OPEN：16:30 / START：17:00\n2027年01月09日（土） 神奈川・川崎 CLUB CITTA' OPEN：16:30 / START：17:30\n2027年01月16日（土） 鳥取・米子 AZTiC laughs OPEN：17:00 / START：17:30\n2027年01月17日（日） 島根・出雲 APOLLO OPEN：16:30 / START：17:00\n2027年01月23日（土） 岡山・岡山 CRAZYMAMA KINGDOM OPEN：16:30 / START：17:30\n2027年01月24日（日） 広島・広島 CLUB QUATTRO OPEN：16:00 / START：17:00\n2027年01月30日（土） 山口・周南 RISING HALL OPEN：16:45 / START：17:30\n2027年02月06日（土） 徳島・徳島 club GRINDHOUSE OPEN：17:00 / START：17:30\n2027年02月07日（日） 高知・高知 CARAVAN SARY OPEN：16:30 / START：17:00\n2027年02月11日（木・祝） 香川・高松 MONSTER OPEN：16:30 / START：17:00\n2027年02月13日（土） 愛媛・松山 WstudioRED OPEN：16:45 / START：17:30\n2027年02月20日（土） 福岡・福岡 DRUM LOGOS OPEN：16:30 / START：17:30\n2027年02月21日（日） 佐賀・佐賀 GEILS OPEN：16:30 / START：17:00\n2027年02月23日（火・祝） 長崎・長崎 DRUM Be-7 OPEN：16:30 / START：17:00\n2027年02月27日（土） 熊本・熊本 B.9 V1 OPEN：16:30 / START：17:30\n2027年02月28日（日） 大分・大分 DRUM Be-0 OPEN：16:30 / START：17:00\n2027年03月06日（土） 宮崎・宮崎 LAZARUS OPEN：17:00 / START：17:30\n2027年03月07日（日） 鹿児島・鹿児島 CAPARVO HALL OPEN：16:30 / START：17:00\n2027年03月13日（土） 沖縄・桜坂 セントラル OPEN：17:00 / START：17:30\n2027年03月20日（土） 北海道・函館 club COCOA OPEN：17:00 / START：17:30\n2027年03月21日（日） 北海道・札幌 PENNY LANE 24 OPEN：16:30 / START：17:00\n2027年03月23日（火） 北海道・旭川 CASINO DRIVE OPEN：18:00 / START：18:30\n2027年03月25日（木） 北海道・帯広 MEGA STONE OPEN：18:00 / START：18:30\n2027年03月27日（土） 北海道・小樽 GOLDSTONE OPEN：17:00 / START：17:30\n2027年05月01日（土） 東京・日比谷野外大音楽堂 OPEN：16:30 / START：17:30"
+    "rawText": "2026年10月22日（木） 東京・恵比寿 LIQUIDROOM OPEN：18:00 / START：19:00\n2026年10月24日（土） 青森・青森 Quarter OPEN：17:00 / START：17:30\n2026年10月25日（日） 秋田・秋田 SWINDLE OPEN：17:00 / START：17:30\n2026年10月27日（火） 岩手・盛岡 Change WAVE OPEN：18:30 / START：19:00\n2026年10月28日（水） 宮城・仙台 RENSA OPEN：18:00 / START：19:00\n2026年11月1日（日） 山形・山形 セッション昭和 OPEN：17:00 / START：17:30\n2026年11月2日（月） 福島・郡山 Hip-Shot JAPAN OPEN：18:00 / START：19:00\n2026年11月5日（木） 北海道・小樽 GOLD STONE OPEN：18:30 / START：19:00\n2026年11月7日（土） 北海道・帯広 MEGA STONE OPEN：17:00 / START：17:30\n2026年11月8日（日） 北海道・旭川 CASINO DRIVE OPEN：17:00 / START：17:30\n2026年11月14日（土） 富山・富山 SOUL POWER OPEN：17:00 / START：17:30\n2026年11月15日（日） 新潟・新潟 LOTS OPEN：16:30 / START：17:30\n2026年11月19日（木） 鳥取・米子 AZTiC Laughs OPEN：18:30 / START：19:00\n2026年11月21日（土） 島根・松江 AZTiC canova OPEN：17:00 / START：17:30\n2026年11月22日（日） 山口・周南 RISING HALL OPEN：17:00 / START：17:30\n2026年11月24日（火） 京都・京都 KYOTO MUSE OPEN：18:30 / START：19:00\n2026年11月25日（水） 滋賀・滋賀 U★STONE OPEN：18:30 / START：19:00\n2026年11月28日（土） 静岡・静岡 SOUND SHOWER ark OPEN：16:30 / START：17:30\n2026年12月2日（水） 千葉・柏 PALOOZA OPEN：18:00 / START：19:00\n2026年12月3日（木） 埼玉・埼玉 HEAVEN’S ROCK さいたま新都心 VJ-3 OPEN：18:30 / START：19:00\n2026年12月5日（土） 石川・金沢 EIGHT HALL OPEN：17:00 / START：17:30\n2026年12月6日（日） 長野・長野CLUB JUNK BOX OPEN：17:00 / START：17:30\n2026年12月12日（土） 岡山・岡山 YEBISU YA PRO OPEN：17:00 / START：17:30\n2026年12月13日（日） 広島・広島 CLUB QUATTRO OPEN：16:30 / START：17:30\n2027年1月16日（土） 徳島・徳島 club GRINDHOUSE OPEN：17:00 / START：17:30\n2027年1月17日（日） 香川・高松 festhalle OPEN：16:30 / START：17:30\n2027年1月19日（火） 高知・高知 CARAVAN SARY OPEN：18:30 / START：19:00\n2027年1月20日（水） 愛媛・松山 Wstudio RED OPEN：18:30 / START：19:00\n2027年1月22日（金） 宮崎・宮崎 LAZARUS OPEN：18:30 / START：19:00\n2027年1月23日（土） 鹿児島・鹿児島 CAPARVO HALL OPEN：16:30 / START：17:30\n2027年1月28日（木） 和歌山・和歌山 CLUB GATE OPEN：18:30 / START：19:00\n2027年1月29日（金） 三重・四日市 CLUB ROOTS OPEN：18:30 / START：19:00\n2027年1月31日（日） 岐阜・岐阜 CLUB ROOTS OPEN：17:00 / START：17:30\n2027年2月6日（土） 茨城・水戸 LIGHT HOUSE OPEN：17:00 / START：17:30\n2027年2月16日（火） 長崎・長崎 DRUM Be-7 OPEN：18:30 / START：19:00\n2027年2月17日（水） 佐賀・佐賀 GEILS OPEN：18:30 / START：19:00\n2027年2月19日（金） 大分・大分 DRUM Be-0 OPEN：18:30 / START：19:00\n2027年2月20日（土） 熊本・熊本 B.9 V1 OPEN：16:30 / START：17:30\n2027年2月23日（火・祝） 沖縄・桜坂セントラル OPEN：17:00 / START：17:30\n2027年2月27日（土） 福井・敦賀市民文化センター 大ホール OPEN：17:00 / START：18:00\n2027年3月7日（日） 群馬・メガネのイタガキ文化ホール伊勢崎 大ホール OPEN：17:00 / START：18:00\n2027年3月13日（土） 栃木・栃木総合文化センター メインホール OPEN：17:00 / START：18:00\n2027年3月21日（日・祝） 兵庫・SHOWAグループ市民会館（加古川市民会館）大ホール OPEN：17:00 / START：18:00\n2027年3月22日(月・祝) 奈良・なら100年会館 大ホール OPEN：17:00 / START：18:00\n2027年3月27日(土) 山梨・東京エレクトロン韮崎文化ホール 大ホール OPEN：17:00 / START：18:00\n2027年4月4日(日) 北海道・Zepp Sapporo OPEN：16:30 / START：17:30\n2027年4月10日(土) 愛知・Zepp Nagoya OPEN：16:30 / START：17:30\n2027年4月11日(日) 大阪・Zepp Osaka Bayside OPEN：16:30 / START：17:30\n2027年4月18日(日) 福岡・Zepp Fukuoka OPEN：16:30 / START：17:30\n2027年4月24日(土) 神奈川・川崎 CLUB CITTA’ OPEN：16:30 / START：17:30\n2027年4月30日(金) 東京・Zepp DiverCity（TOKYO） OPEN：18:00 / START：19:00\n2027年5月1日(土) 東京・Zepp DiverCity（TOKYO） OPEN：16:30 / START：17:30"
   },
   {
     "id": "reona",
@@ -75,11 +75,11 @@ const DEFAULT_TOURS = [
     "name": "tuki.",
     "tourTitle": "秋の修学旅行〜天体観測〜",
     "subtitle": "東名阪・仙台・福岡ツアー (全6公演)",
-    "period": "2026年10月11日(日) 〜 2026年12月6日(日)",
+    "period": "2026年10月11日(日) 〜 2026年12月2日(水)",
     "color": "#fdcb6e",
     "icon": "🌙",
     "badgeClass": "tuki",
-    "rawText": "■2026年10月11日（日） 東京・SGCホール有明 17:00 OPEN / 18:00 START\n■2026年10月18日（日） 愛知・Niterra日本特殊陶業市民会館 フォレストホール 16:30 OPEN / 17:30 START\n■2026年11月03日（火・祝） 宮城・仙台サンプラザホール 16:30 OPEN / 17:30 START\n■2026年11月08日（日） 福岡・福岡サンパレス 16:30 OPEN / 17:30 START\n■2026年11月22日（日） 大阪・グランキューブ大阪（大阪府立国際会議場）メインホール 16:30 OPEN / 17:30 START\n■2026年12月06日（日） 東京・LINE CUBE SHIBUYA 16:30 OPEN / 17:30 START"
+    "rawText": "2026/10/11 (日) 東京・SGCホール有明 OPEN 17:00 / START 18:00\n2026/10/12 (月・祝) 東京・SGCホール有明 OPEN 16:00 / START 17:00\n2026/11/03 (火・祝) 宮城・仙台サンプラザホール OPEN 17:00 / START 18:00\n2026/11/22 (日) 福岡・福岡市民ホール 大ホール OPEN 17:00 / START 18:00\n2026/11/26 (木) 大阪・フェスティバルホール OPEN 18:00 / START 19:00\n2026/12/02 (水) 愛知・Niterra日本特殊陶業市民会館 フォレストホール OPEN 18:00 / START 19:00"
   },
   {
     "id": "sid",
@@ -90,29 +90,29 @@ const DEFAULT_TOURS = [
     "color": "#eb3b5a",
     "icon": "🌹",
     "badgeClass": "sid",
-    "rawText": "2026年10月17日（土） 神奈川・厚木市文化会館 OPEN 16:00 / START 17:00\n2026年10月31日（土） 愛知・岡谷鋼機名古屋公会堂 OPEN 17:00 / START 18:00\n2026年11月14日（土） 大阪・オリックス劇場 OPEN 17:00 / START 18:00\n2026年11月21日（土） 福岡・久留米シティプラザ ザ・グランドホール OPEN 16:00 / START 17:00\n2026年11月23日（月・祝） 広島・広島文化学園HBGホール OPEN 16:00 / START 17:00\n2026年11月28日（土） 宮城・仙台サンプラザホール OPEN 16:00 / START 17:00\n2026年11月29日（日） 東京・LINE CUBE SHIBUYA OPEN 16:00 / START 17:00"
+    "rawText": "2026年10月17日（土） 神奈川・厚木市文化会館 OPEN 16:00 / START 17:00\n2026年10月31日（土） 愛知・岡谷鋼機名古屋公会堂 OPEN 17:00 / START 18:00\n2026年11月14日（土） 大阪・オリックス劇場 OPEN 17:00 / START 18:00\n2026年11月21日（土） 福岡・久留米シティプラザ ザ・グランドホール OPEN 16:00 / START 17:00\n2026年11月23日（月・祝） 千葉・市川市文化会館 OPEN 16:00 / START 17:00\n2026年11月28日（土） 東京・Shibuya LOVEZ OPEN 17:00 / START 18:00\n2026年11月29日（日） 東京・Shibuya LOVEZ OPEN 16:00 / START 17:00"
   },
   {
     "id": "lisa",
     "name": "LiSA",
     "tourTitle": "LiVE is Smile Always～LACE UP～",
     "subtitle": "全国ホール＆アリーナ (全19公演)",
-    "period": "2026年10月18日(日) 〜 2027年1月31日(日)",
+    "period": "2026年10月18日(日) 〜 2027年1月30日(土)",
     "color": "#ff2a70",
     "icon": "⚡",
     "badgeClass": "lisa",
-    "rawText": "【2026】\n10/18(日)…ＹＣＣ県民文化ホール(山梨県立県民文化ホール)(開場14:45/開演15:30)\n10/24(土)…大宮ソニックシティ 大ホール(開場17:00/開演18:00)\n10/25(日)…大宮ソニックシティ 大ホール(開場16:00/開演17:00)\n10/31(土)…長良川国際会議場(開場17:00/開演18:00)\n11/1(日)…松山市民会館 大ホール(開場17:00/開演18:00)\n11/7(土)…新潟県民会館(開場17:00/開演18:00)\n11/8(日)...富山県民会館(開場17:00/開演18:00)\n11/14(土)…広島文化学園HBGホール(開場17:00/開演18:00)\n11/15(日)...岡山芸術創造劇場 ハレノワ 大劇場(開場17:00/開演18:00)\n11/20(金)…トークネットホール仙台(仙台市民会館)(開場17:30/開演18:30)\n11/21(土)…あきた芸術劇場ミルハス(開場17:00/開演18:00)\n11/27(金)…福岡サンパレス(開場17:30/開演18:30)\n11/28(土)…福岡サンパレス(開場16:00/開演17:00)\n12/4(金)…札幌文化芸術劇場 hitaru(開場17:30/開演18:30)\n12/5(土)…札幌文化芸術劇場 hitaru(開場16:00/開演17:00)\n12/12(土)…カルッツかわさき(開場17:00/開演18:00)\n12/13(日)…カルッツかわさき(開場16:00/開演17:00)\n【2027】\n1/30(土)…ポートメッセなごや 第1展示館(開場16:00/開演17:30)\n1/31(日)…ポートメッセなごや 第1展示館(開場14:30/開演16:00)"
+    "rawText": "【2026】\n10/18(日)…ＹＣＣ県民文化ホール(山梨県立県民文化ホール)(開場14:45/開演15:30)\n10/24(土)…グランキューブ大阪(開場17:00/開演18:00)\n10/25(日)…グランキューブ大阪(開場16:00/開演17:00)\n11/1(日)…福岡サンパレスホテル&ホール(開場17:00/開演17:45)\n11/3(火祝)…iichikoグランシアタ(大分)(開場17:00/開演17:45)\n11/13(金)…帯広市民文化ホール(北海道)(開場17:45/開演18:30)\n11/15(日)…札幌文化芸術劇場 hitaru(北海道)(開場17:00/開演17:45)\n11/21(土)…レクザムホール(香川県県民ホール)(開場17:00/開演17:45)\n11/23(月祝)…松山市民会館(愛媛)(開場17:00/開演17:45)\n12/12(土)…砺波市文化会館(富山)(開場17:00/開演17:45)\n12/13(日)…本多の森北電ホール(石川)(開場17:00/開演17:45)\n12/18(金)…広島文化学園HBGホール(開場17:45/開演18:30)\n12/20(日)…米子コンベンションセンター BiG SHiP(鳥取)(開場16:45/開演17:30)\n【2027】\n1/9(土)…TOYOTA ARENA TOKYO(東京)(開場16:00/開演17:00)\n1/10(日)…TOYOTA ARENA TOKYO(東京)(開場15:00/開演16:00)\n1/16(土)…仙台サンプラザホール(宮城)(開場17:00/開演17:45)\n1/17(日)…盛岡市民文化ホール(岩手)(開場17:00/開演17:45)\n1/28(木)…Niterra日本特殊陶業市民会館 フォレストホール(愛知)(開場17:45/開演18:30)\n1/30(土)…長良川国際会議場メインホール(岐阜)(開場17:00/開演17:45)"
   },
   {
     "id": "vaundy",
     "name": "Vaundy",
     "tourTitle": "Vaundy JAPAN ARENA TOUR 2027-2028",
     "subtitle": "全国アリーナツアー (全30公演)",
-    "period": "2027年8月14日(土) 〜 2028年2月13日(日)",
+    "period": "2027年8月14日(土) 〜 2028年2月27日(日)",
     "color": "#fa8231",
     "icon": "🧡",
     "badgeClass": "vaundy",
-    "rawText": "2027年8月14日(土) 大阪・大阪城ホール OPEN 17:00 / START 18:30\n2027年8月15日(日) 大阪・大阪城ホール OPEN 15:30 / START 17:00\n2027年8月28日(土) 福岡・マリンメッセ福岡 A館 OPEN 17:00 / START 18:30\n2027年8月29日(日) 福岡・マリンメッセ福岡 A館 OPEN 15:30 / START 17:00\n2027年9月11日(土) 広島・広島グリーンアリーナ OPEN 17:00 / START 18:30\n2027年9月12日(日) 広島・広島グリーンアリーナ OPEN 15:30 / START 17:00\n2027年9月18日(土) 宮城・ゼビオアリーナ仙台 OPEN 17:00 / START 18:30\n2027年9月19日(日) 宮城・ゼビオアリーナ仙台 OPEN 15:30 / START 17:00\n2027年10月2日(土) 愛知・ポートメッセなごや 第1展示館 OPEN 17:00 / START 18:30\n2027年10月3日(日) 愛知・ポートメッセなごや 第1展示館 OPEN 15:30 / START 17:00\n2027年10月16日(土) 北海道・真駒内セキスイハイムアイスアリーナ OPEN 17:00 / START 18:30\n2027年10月17日(日) 北海道・真駒内セキスイハイムアイスアリーナ OPEN 15:30 / START 17:00\n2027年10月30日(土) 神奈川・K-Arena Yokohama OPEN 17:00 / START 18:30\n2027年10月31日(日) 神奈川・K-Arena Yokohama OPEN 15:30 / START 17:00\n2027年11月13日(土) 埼玉・さいたまスーパーアリーナ OPEN 17:00 / START 18:30\n2027年11月14日(日) 埼玉・さいたまスーパーアリーナ OPEN 15:30 / START 17:00\n2027年11月27日(土) 新潟・朱鷺メッセ・新潟コンベンションセンター OPEN 17:00 / START 18:30\n2027年11月28日(日) 新潟・朱鷺メッセ・新潟コンベンションセンター OPEN 15:30 / START 17:00\n2027年12月11日(土) 静岡・エコパアリーナ OPEN 17:00 / START 18:30\n2027年12月12日(日) 静岡・エコパアリーナ OPEN 15:30 / START 17:00\n2027年12月25日(土) 福井・サンドーム福井 OPEN 17:00 / START 18:30\n2027年12月26日(日) 福井・サンドーム福井 OPEN 15:30 / START 17:00\n2028年1月15日(土) 香川・あなぶきアリーナ香川 OPEN 17:00 / START 18:30\n2028年1月16日(日) 香川・あなぶきアリーナ香川 OPEN 15:30 / START 17:00\n2028年1月22日(土) 徳島・アスティとくしま OPEN 17:00 / START 18:30\n2028年1月23日(日) 徳島・アスティとくしま OPEN 15:30 / START 17:00\n2028年1月29日(土) 兵庫・神戸ワールド記念ホール OPEN 17:00 / START 18:30\n2028年1月30日(日) 兵庫・神戸ワールド記念ホール OPEN 15:30 / START 17:00\n2028年2月12日(土) 東京・有明アリーナ OPEN 17:00 / START 18:30\n2028年2月13日(日) 東京・有明アリーナ OPEN 15:30 / START 17:00"
+    "rawText": "2027/08/14 (土) 兵庫・GLION ARENA KOBE OPEN 17:00 / START 18:00\n2027/08/15 (日) 兵庫・GLION ARENA KOBE OPEN 15:00 / START 16:00\n2027/08/28 (土) 愛知・クロコくんホール(旧 ⽇本ガイシホール) OPEN 17:00 / START 18:00\n2027/08/29 (日) 愛知・クロコくんホール(旧 ⽇本ガイシホール) OPEN 15:00 / START 16:00\n2027/09/19 (日) 福岡・マリンメッセ福岡A館 OPEN 17:00 / START 18:00\n2027/09/20 (月・祝) 福岡・マリンメッセ福岡A館 OPEN 15:00 / START 16:00\n2027/09/25 (土) 北海道・真駒内セキスイハイムアイスアリーナ OPEN 17:00 / START 18:00\n2027/09/26 (日) 北海道・真駒内セキスイハイムアイスアリーナ OPEN 15:00 / START 16:00\n2027/10/02 (土) 大阪・大阪城ホール OPEN 17:00 / START 18:00\n2027/10/03 (日) 大阪・大阪城ホール OPEN 15:00 / START 16:00\n2027/10/16 (土) 広島・広島グリーンアリーナ OPEN 17:00 / START 18:00\n2027/10/17 (日) 広島・広島グリーンアリーナ OPEN 15:00 / START 16:00\n2027/10/23 (土) 新潟・朱鷺メッセ・新潟コンベンションセンター OPEN 17:00 / START 18:00\n2027/10/24 (日) 新潟・朱鷺メッセ・新潟コンベンションセンター OPEN 15:00 / START 16:00\n2027/11/20 (土) 岩手・盛岡タカヤアリーナ(盛岡市総合アリーナ) OPEN 17:00 / START 18:00\n2027/11/21 (日) 岩手・盛岡タカヤアリーナ(盛岡市総合アリーナ) OPEN 15:00 / START 16:00\n2027/11/27 (土) 神奈川・横浜アリーナ OPEN 17:00 / START 18:00\n2027/11/28 (日) 神奈川・横浜アリーナ OPEN 15:00 / START 16:00\n2027/12/11 (土) 福井・サンドーム福井 OPEN 17:00 / START 18:00\n2027/12/12 (日) 福井・サンドーム福井 OPEN 15:00 / START 16:00\n2028/01/09 (日) 大阪・大阪城ホール OPEN 17:00 / START 18:00\n2028/01/10 (月・祝) 大阪・大阪城ホール OPEN 15:00 / START 16:00\n2028/01/15 (土) 愛知・IGアリーナ OPEN 17:00 / START 18:00\n2028/01/16 (日) 愛知・IGアリーナ OPEN 15:00 / START 16:00\n2028/01/22 (土) 熊本・グランメッセ熊本 OPEN 17:00 / START 18:00\n2028/01/23 (日) 熊本・グランメッセ熊本 OPEN 15:00 / START 16:00\n2028/02/05 (土) 香川・あなぶきアリーナ香川 OPEN 17:00 / START 18:00\n2028/02/06 (日) 香川・あなぶきアリーナ香川 OPEN 15:00 / START 16:00\n2028/02/26 (土) 宮城・ゼビオアリーナ仙台 OPEN 17:00 / START 18:00\n2028/02/27 (日) 宮城・ゼビオアリーナ仙台 OPEN 15:00 / START 16:00"
   },
   {
     "id": "yonezu",
