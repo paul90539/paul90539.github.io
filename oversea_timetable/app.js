@@ -1211,7 +1211,98 @@ function updateMapClusterVisibility() {
 let toursData = [];
 let allShowsList = [];
 let activeArtistFilter = 'all';
+let selectedArtistIds = new Set();
+const ARTIST_SELECTION_STORAGE_KEY = 'oversea_selected_artists_v1';
 let activeRegionFilter = 'all';
+
+function isArtistSelected(artistId) {
+  if (activeArtistFilter === 'all' || selectedArtistIds.size === 0) return true;
+  return selectedArtistIds.has(artistId);
+}
+
+function getArtistScopeShows() {
+  if (activeArtistFilter === 'all' || selectedArtistIds.size === 0) return allShowsList;
+  return allShowsList.filter(s => selectedArtistIds.has(s.artistId));
+}
+
+function saveArtistSelection() {
+  try {
+    if (activeArtistFilter === 'all' || selectedArtistIds.size === 0) {
+      localStorage.setItem(ARTIST_SELECTION_STORAGE_KEY, JSON.stringify({ mode: 'all', ids: [] }));
+    } else {
+      localStorage.setItem(ARTIST_SELECTION_STORAGE_KEY, JSON.stringify({
+        mode: 'custom',
+        ids: Array.from(selectedArtistIds)
+      }));
+    }
+  } catch (e) {}
+}
+
+function loadArtistSelection() {
+  try {
+    const raw = localStorage.getItem(ARTIST_SELECTION_STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.mode === 'custom' && Array.isArray(parsed.ids) && parsed.ids.length > 0) {
+      const validIds = parsed.ids.filter(id => toursData.some(t => t.id === id));
+      if (validIds.length > 0) {
+        selectedArtistIds = new Set(validIds);
+        activeArtistFilter = validIds.length === 1 ? validIds[0] : 'multi';
+        return;
+      }
+    }
+  } catch (e) {}
+  activeArtistFilter = 'all';
+  selectedArtistIds.clear();
+}
+
+function ensureValidCalendarMonth() {
+  const scopeShows = getArtistScopeShows();
+  if (scopeShows.length === 0) return;
+  const hasCurrentMonth = scopeShows.some(s => s.year === calendarYear && s.month === calendarMonth);
+  if (!hasCurrentMonth) {
+    const now = new Date();
+    const curYm = now.getFullYear() * 100 + (now.getMonth() + 1);
+    const upcoming = scopeShows.find(s => (s.year * 100 + s.month) >= curYm) || scopeShows[0];
+    if (upcoming) {
+      calendarYear = upcoming.year;
+      calendarMonth = upcoming.month;
+      mSelectedDate = null;
+    }
+  }
+}
+
+function toggleArtistSelection(artistId, forceOnly = false) {
+  if (artistId === 'all') {
+    activeArtistFilter = 'all';
+    selectedArtistIds.clear();
+  } else if (forceOnly || activeArtistFilter === 'all') {
+    selectedArtistIds = new Set([artistId]);
+    activeArtistFilter = artistId;
+  } else {
+    if (selectedArtistIds.has(artistId)) {
+      selectedArtistIds.delete(artistId);
+      if (selectedArtistIds.size === 0) {
+        activeArtistFilter = 'all';
+      } else if (selectedArtistIds.size === 1) {
+        activeArtistFilter = Array.from(selectedArtistIds)[0];
+      } else {
+        activeArtistFilter = 'multi';
+      }
+    } else {
+      selectedArtistIds.add(artistId);
+      activeArtistFilter = selectedArtistIds.size === 1 ? artistId : 'multi';
+    }
+  }
+  saveArtistSelection();
+  ensureValidCalendarMonth();
+  renderArtistNavTabs();
+  updateStats();
+  if (currentLayoutMode === 'mobile') {
+    renderMobile();
+  }
+  updateUI();
+}
 let activeTagFilter = null;
 let currentSort = 'date-asc';
 let currentSearch = '';
@@ -1509,8 +1600,8 @@ function rebuildAllShows() {
  */
 function getFilteredAndSortedShows() {
   return allShowsList.filter(item => {
-    // Artist filter
-    if (activeArtistFilter !== 'all' && item.artistId !== activeArtistFilter) {
+    // Artist filter (supports single & multi-select)
+    if (!isArtistSelected(item.artistId)) {
       return false;
     }
 
@@ -1789,9 +1880,9 @@ function renderCalendar(items) {
     }
   }
 
-  // Get distinct list of months with tour dates from all current tours
+  // Get distinct list of months with tour dates from selected artist tours
   const monthKeyMap = new Map();
-  allShowsList.forEach(s => {
+  getArtistScopeShows().forEach(s => {
     const key = `${s.year}-${s.month}`;
     if (!monthKeyMap.has(key)) {
       monthKeyMap.set(key, { year: s.year, month: s.month });
@@ -1975,23 +2066,21 @@ function updateUI() {
  * Update Header Stats and Filter Counts
  */
 function updateStats() {
-  const currentScopeShows = activeArtistFilter === 'all' 
-    ? allShowsList 
-    : allShowsList.filter(s => s.artistId === activeArtistFilter);
+  const currentScopeShows = getArtistScopeShows();
 
-  // Update Hero Title & Metadata based on selected tour
+  // Update Hero Title & Metadata based on selected tour(s)
   const mainTitleEl = document.querySelector('.main-title');
   const subtitleEl = document.querySelector('.subtitle');
   const tourMetaEl = document.querySelector('.tour-meta');
 
-  if (activeArtistFilter === 'all') {
+  if (activeArtistFilter === 'all' || selectedArtistIds.size === 0) {
     if (mainTitleEl) mainTitleEl.textContent = 'CONCERT TIMETABLE 2026-2027';
-    if (subtitleEl) subtitleEl.textContent = '多歌手日本巡迴演出日程總覽 (全 9 組歌手)';
+    if (subtitleEl) subtitleEl.textContent = `多歌手日本巡迴演出日程總覽 (全 ${toursData.length} 組歌手｜點擊下方標籤可複選特定藝人)`;
     if (tourMetaEl) {
       tourMetaEl.innerHTML = `
         <div class="meta-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-          <span>2026年9月8日 〜 2028年2月13日</span>
+          <span>2026年7月17日 〜 2028年2月27日</span>
         </div>
         <div class="meta-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1999,11 +2088,12 @@ function updateStats() {
         </div>
       `;
     }
-  } else {
-    const curTour = toursData.find(t => t.id === activeArtistFilter);
+  } else if (selectedArtistIds.size === 1) {
+    const singleId = Array.from(selectedArtistIds)[0];
+    const curTour = toursData.find(t => t.id === singleId);
     if (curTour) {
       if (mainTitleEl) mainTitleEl.textContent = curTour.tourTitle;
-      if (subtitleEl) subtitleEl.textContent = curTour.subtitle || curTour.tourTitle;
+      if (subtitleEl) subtitleEl.textContent = `${curTour.subtitle || curTour.tourTitle}（繼續點選其他藝人可同時疊加顯示）`;
       if (tourMetaEl) {
         tourMetaEl.innerHTML = `
           <div class="meta-item">
@@ -2016,6 +2106,25 @@ function updateStats() {
           </div>
         `;
       }
+    }
+  } else {
+    const selectedTours = toursData.filter(t => selectedArtistIds.has(t.id));
+    const names = selectedTours.map(t => t.name).join(' ＋ ');
+    const dates = currentScopeShows.map(s => s.dateIso).filter(Boolean).sort();
+    const periodStr = dates.length > 0 ? `${dates[0].replace(/-/g, '/')} 〜 ${dates[dates.length - 1].replace(/-/g, '/')}` : '2026-2027';
+    if (mainTitleEl) mainTitleEl.textContent = `自選特定藝人行程 (${selectedTours.length} 組藝人)`;
+    if (subtitleEl) subtitleEl.textContent = `顯示中：${names}`;
+    if (tourMetaEl) {
+      tourMetaEl.innerHTML = `
+        <div class="meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+          <span>${periodStr}</span>
+        </div>
+        <div class="meta-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>已勾選 ${selectedTours.length} 組藝人 ｜ 共 ${currentScopeShows.length} 場公演</span>
+        </div>
+      `;
     }
   }
 
@@ -2050,26 +2159,42 @@ function updateStats() {
 }
 
 /**
- * Render Artist Navigation Tabs
+ * Render Artist Navigation Tabs (Supports Multi-Select)
  */
 function renderArtistNavTabs() {
   const nav = document.getElementById('artistNavBar');
   if (!nav) return;
 
+  const isAll = activeArtistFilter === 'all' || selectedArtistIds.size === 0;
+
   let html = `
-    <button class="artist-tab ${activeArtistFilter === 'all' ? 'active' : ''}" data-artist="all">
+    <button class="artist-tab ${isAll ? 'active' : ''}" data-artist="all" title="顯示全部藝人行程">
       <span class="tab-icon">🌟</span>
-      <span class="tab-name">全部行程</span>
+      <span class="tab-name">全部顯示</span>
       <span class="tab-count" id="tabCountAll">${allShowsList.length}</span>
     </button>
   `;
 
+  if (!isAll && selectedArtistIds.size >= 2) {
+    html += `
+      <button class="artist-tab" id="clearMultiArtistBtn" style="border-color:rgba(248,113,113,0.45); color:#fca5a5;" title="清除複選並重新單選">
+        <span class="tab-icon">✕</span>
+        <span class="tab-name">已選 ${selectedArtistIds.size} 組 (點此全選)</span>
+      </button>
+    `;
+  }
+
   toursData.forEach(tour => {
     const count = allShowsList.filter(s => s.artistId === tour.id).length;
+    const isChecked = !isAll && selectedArtistIds.has(tour.id);
+    const activeStyle = isChecked
+      ? `border-color:${tour.color || '#a855f7'}; box-shadow:0 0 12px ${(tour.color || '#a855f7')}55; background:rgba(255,255,255,0.08);`
+      : (!isAll ? 'opacity:0.58;' : '');
+    const checkMark = isChecked ? '<span style="color:#4ade80; font-weight:900; margin-right:2px;">✓</span>' : (!isAll ? '<span style="opacity:0.6; margin-right:2px;">+</span>' : '');
     html += `
-      <button class="artist-tab ${activeArtistFilter === tour.id ? 'active' : ''}" data-artist="${tour.id}">
+      <button class="artist-tab ${isChecked ? 'active' : ''}" data-artist="${tour.id}" style="${activeStyle}" title="點擊切換顯示/隱藏（雙擊僅單選此藝人）">
         <span class="tab-icon">${tour.icon || '🎵'}</span>
-        <span class="tab-name">${tour.name}</span>
+        <span class="tab-name">${checkMark}${tour.name}</span>
         <span class="tab-count" id="tabCount${tour.id.charAt(0).toUpperCase() + tour.id.slice(1)}">${count}</span>
       </button>
     `;
@@ -2084,13 +2209,23 @@ function renderArtistNavTabs() {
 
   nav.innerHTML = html;
 
-  // Bind clicks
-  nav.querySelectorAll('.artist-tab:not(.add-artist-btn)').forEach(btn => {
+  const clearMultiBtn = document.getElementById('clearMultiArtistBtn');
+  if (clearMultiBtn) {
+    clearMultiBtn.addEventListener('click', () => {
+      toggleArtistSelection('all');
+    });
+  }
+
+  // Bind clicks (click toggles in multi-select, double-click forces single artist)
+  nav.querySelectorAll('.artist-tab[data-artist]').forEach(btn => {
     btn.addEventListener('click', () => {
-      activeArtistFilter = btn.dataset.artist;
-      renderArtistNavTabs();
-      updateStats();
-      updateUI();
+      toggleArtistSelection(btn.dataset.artist, false);
+    });
+    btn.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      if (btn.dataset.artist !== 'all') {
+        toggleArtistSelection(btn.dataset.artist, true);
+      }
     });
   });
 
@@ -2211,16 +2346,21 @@ function renderMobile() {
     resultsCount.textContent = `共 ${filtered.length} 場`;
   }
 
+  const isAll = activeArtistFilter === 'all' || selectedArtistIds.size === 0;
+  const scopeShows = getArtistScopeShows();
+
   const totalBadge = document.getElementById('mTotalShowsBadge');
   if (totalBadge) {
-    totalBadge.textContent = `${toursData.length}組歌手・${allShowsList.length}場`;
+    totalBadge.textContent = isAll
+      ? `${toursData.length}組歌手・${allShowsList.length}場`
+      : `已選${selectedArtistIds.size}組・${scopeShows.length}場`;
   }
 
-  // 2. Month Pills Bar
+  // 2. Month Pills Bar (only months for selected artists)
   const monthPillsBar = document.getElementById('mMonthPillsBar');
   if (monthPillsBar) {
     const monthSet = new Set();
-    allShowsList.forEach(s => {
+    scopeShows.forEach(s => {
       if (s.year && s.month) {
         monthSet.add(`${s.year}-${String(s.month).padStart(2, '0')}`);
       }
@@ -2245,34 +2385,49 @@ function renderMobile() {
     });
   }
 
-  // 3. Artist Filter Chips Bar
+  // 3. Artist Filter Chips Bar (Supports Multi-Select)
   const artistChipsBar = document.getElementById('mArtistChipsBar');
   if (artistChipsBar) {
     artistChipsBar.innerHTML = '';
 
     // "All" chip
     const allChip = document.createElement('button');
-    allChip.className = `m-artist-chip ${activeArtistFilter === 'all' ? 'active' : ''}`;
-    allChip.innerHTML = `<span>全部</span> <small style="opacity:0.85;">(${allShowsList.length})</small>`;
+    allChip.className = `m-artist-chip ${isAll ? 'active' : ''}`;
+    allChip.innerHTML = `<span>🌟 全部</span> <small style="opacity:0.85;">(${allShowsList.length})</small>`;
     allChip.addEventListener('click', () => {
-      activeArtistFilter = 'all';
-      renderArtistNavTabs();
-      renderMobile();
-      updateUI();
+      toggleArtistSelection('all');
     });
     artistChipsBar.appendChild(allChip);
+
+    // Quick reset chip when multiple artists are selected
+    if (!isAll && selectedArtistIds.size >= 2) {
+      const clearChip = document.createElement('button');
+      clearChip.className = 'm-artist-chip';
+      clearChip.style.cssText = 'border-color:rgba(248,113,113,0.5); color:#fca5a5; background:rgba(248,113,113,0.12);';
+      clearChip.innerHTML = `<span>✕ 重設 (${selectedArtistIds.size})</span>`;
+      clearChip.addEventListener('click', () => {
+        toggleArtistSelection('all');
+      });
+      artistChipsBar.appendChild(clearChip);
+    }
 
     // Each Artist chip
     toursData.forEach(tour => {
       const count = allShowsList.filter(s => s.artistId === tour.id).length;
+      const isChecked = !isAll && selectedArtistIds.has(tour.id);
       const chip = document.createElement('button');
-      chip.className = `m-artist-chip ${activeArtistFilter === tour.id ? 'active' : ''}`;
-      chip.innerHTML = `<span>${tour.name}</span> <small style="opacity:0.85;">(${count})</small>`;
+      chip.className = `m-artist-chip ${isChecked ? 'active' : ''}`;
+      if (isChecked) {
+        chip.style.cssText = `background:${tour.color || '#7c3aed'}; border-color:${tour.color || '#7c3aed'}; color:#fff; font-weight:700;`;
+        chip.innerHTML = `<span>✓ ${tour.name}</span> <small style="opacity:0.9;">(${count})</small>`;
+      } else if (!isAll) {
+        chip.style.cssText = 'opacity:0.65;';
+        chip.innerHTML = `<span>+ ${tour.name}</span> <small style="opacity:0.75;">(${count})</small>`;
+      } else {
+        chip.innerHTML = `<span>${tour.name}</span> <small style="opacity:0.85;">(${count})</small>`;
+      }
       chip.addEventListener('click', () => {
-        activeArtistFilter = tour.id;
-        renderArtistNavTabs();
-        renderMobile();
-        updateUI();
+        toggleArtistSelection(tour.id, false);
       });
       artistChipsBar.appendChild(chip);
     });
@@ -2834,10 +2989,7 @@ function setupEventListeners() {
     loadDefaultBtn.addEventListener('click', () => {
       toursData = JSON.parse(JSON.stringify(DEFAULT_TOURS));
       rebuildAllShows();
-      activeArtistFilter = 'all';
-      renderArtistNavTabs();
-      updateStats();
-      updateUI();
+      toggleArtistSelection('all');
       if (modal) modal.classList.remove('open');
     });
   }
@@ -2936,10 +3088,7 @@ function setupEventListeners() {
 
       toursData.push(newTour);
       rebuildAllShows();
-      activeArtistFilter = tourId;
-      renderArtistNavTabs();
-      updateStats();
-      updateUI();
+      toggleArtistSelection(tourId, true);
       if (modal) modal.classList.remove('open');
     });
   }
@@ -3088,10 +3237,7 @@ async function fetchAndParseConcertUrl(url, specifiedArtistName = '') {
     }
 
     rebuildAllShows();
-    activeArtistFilter = newTour.id;
-    renderArtistNavTabs();
-    updateStats();
-    updateUI();
+    toggleArtistSelection(newTour.id, true);
 
     setStatus('success', `🎉 <b>AGY (Gemini Pro) 解析成功！</b><br>已收錄【${newTour.name}】共 <b>${data.showCount}</b> 場巡迴演出，並已自動同步至日曆、表格與地圖中！`);
 
@@ -3123,6 +3269,8 @@ async function fetchAndParseConcertUrl(url, specifiedArtistName = '') {
 function init() {
   toursData = JSON.parse(JSON.stringify(DEFAULT_TOURS));
   rebuildAllShows();
+  loadArtistSelection();
+  ensureValidCalendarMonth();
   renderArtistNavTabs();
   updateStats();
   setupEventListeners();
