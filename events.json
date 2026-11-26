@@ -1,0 +1,76 @@
+[
+  {
+    "year": 2026,
+    "date": "2026-10-25",
+    "category": "live",
+    "type": "粉絲見面會",
+    "artist": "小原莉子",
+    "label": "FAN MEETING / TAIPEI",
+    "title": "小原莉子 2026 Taipei Fan Meeting",
+    "description": "小原莉子與台灣粉絲相聚的夜晚，包含訪談、粉絲互動與特別 DJ 演出。",
+    "visual": "stage",
+    "tag": "RIKO KOHARA · TAIPEI",
+    "venue": "MOONDOG（台北微風廣場 9 樓）",
+    "doors": "17:50 入場・18:30 開演",
+    "prices": "VIP NT$3,980／一般票 NT$2,000／愛心票 NT$1,000",
+    "benefits": [
+      "VIP：見面會入場、本人親筆 TO 簽及紀念手燈一支",
+      "一般票：見面會入場"
+    ],
+    "program": [
+      "訪談與粉絲問答",
+      "互動企劃",
+      "特別 DJ 演出",
+      "全場紀念合照",
+      "VIP 簽名會"
+    ],
+    "posts": [
+      "https://x.com/riko_kohara/status/2114365680111988813",
+      "https://x.com/riko_kohara/status/2114876148245295393"
+    ],
+    "source": "https://expo.acgncc.com/2026fmt1025/",
+    "cover": "https://i0.wp.com/expo.acgncc.com/wp-content/uploads/2026/10/2026%E5%B0%8F%E5%8E%9F%E8%8E%89%E5%AD%90%E5%8F%B0%E5%8C%97FMT%E6%AD%A3%E5%BC%8F%E5%9C%96-1-scaled.webp?ssl=1",
+    "credit": "原動漫遊 ACGNCC",
+    "setlist": [
+      "チルノのパーフェクトさんすう教室（琪露諾的完美算術教室／東方Project 同人曲）",
+      "ふわふわ時間（《K-ON! 輕音部》插曲）",
+      "うまぴょい伝説（《賽馬娘 Pretty Derby》主題曲）",
+      "V.I.P MONSTER（RAISE A SUILEN）",
+      "おジャ魔女カーニバル!!（《小魔女DoReMi》OP）",
+      "ハム太郎とっとこうた（《哈姆太郎》OP）",
+      "GO!!!（FLOW／《火影忍者》OP）",
+      "灼熱 Bonfire!（RAISE A SUILEN）",
+      "A DECLARATION OF ×××（RAISE A SUILEN）",
+      "回レ！雪月花（《機巧少女不會受傷》ED）"
+    ]
+  },
+  {
+    "year": 2026,
+    "date": "2026-11-14",
+    "category": "live",
+    "type": "個人演唱會",
+    "artist": "米澤茜",
+    "label": "SOLO LIVE / TAIPEI",
+    "title": "AKANE YONEZAWA \"Black Pasta\" TOUR 2026 IN TAIPEI",
+    "description": "米澤茜帶著個人巡演再次來到台北，以歌聲與鼓聲與樂迷相聚。",
+    "venue": "MOONDOG（台北微風廣場 9 樓）",
+    "doors": "17:30 入場・19:00 開演",
+    "prices": "VIP NT$3,500／GA NT$2,100／GA 愛心票 NT$1,050",
+    "benefits": [
+      "VIP：現場加購 NT$1，享優先入場及購買周邊、紀念 PASS 和親筆簽名 A3 海報",
+      "GA：演唱會入場"
+    ],
+    "source": "https://baodaorecords.kktix.cc/events/14793026",
+    "cover": "https://assets.kktix.io/organization_resource_files/36077/79607/2026-%E7%B1%B3%E6%BE%A4%E8%8C%9C_1080x1350px.png",
+    "credit": "宝島制作委員会／KKTIX",
+    "posts": [
+      "https://x.com/akaney_banu/status/2121608054995329394",
+      "https://x.com/akaney_banu/status/2123024928819835193",
+      "https://x.com/akaney_banu/status/2123030185658446315",
+      "https://x.com/akaney_banu/status/2123271011592540511",
+      "https://x.com/akaney_banu/status/2123772532939743708",
+      "https://x.com/akaney_banu/status/2123922663190175746"
+    ],
+    "setlistLocked": true
+  }
+]
