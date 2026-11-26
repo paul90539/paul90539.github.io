@@ -14,16 +14,18 @@ function render(){
   sizeTimeline();
   closeEventDrawer();
 }
-let lastEventButton;
+let lastEventButton, drawerCloseTimer;
 function closeEventDrawer(){
   const panel=document.querySelector('#eventDetails');
-  panel.hidden=true;
-  document.querySelector('#eventDrawerBackdrop').hidden=true;
-  document.body.classList.remove('event-drawer-open');
-  if(lastEventButton?.isConnected)lastEventButton.focus({preventScroll:true});
+  if(panel.hidden||panel.classList.contains('is-closing'))return;
+  const backdrop=document.querySelector('#eventDrawerBackdrop');
+  panel.classList.add('is-closing');backdrop.classList.add('is-closing');
+  const finish=()=>{panel.hidden=true;backdrop.hidden=true;panel.classList.remove('is-closing');backdrop.classList.remove('is-closing');document.body.classList.remove('event-drawer-open');if(lastEventButton?.isConnected)lastEventButton.focus({preventScroll:true});};
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else drawerCloseTimer=setTimeout(finish,300);
 }
 function showDetails(e){
   const panel=document.querySelector('#eventDetails');
+  clearTimeout(drawerCloseTimer);panel.classList.remove('is-closing');document.querySelector('#eventDrawerBackdrop').classList.remove('is-closing');
   panel.hidden=false;
   document.querySelector('#eventDrawerBackdrop').hidden=false;
   document.body.classList.add('event-drawer-open');
