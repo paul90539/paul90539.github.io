@@ -19,7 +19,8 @@
     "credit": "原訂 7/12 宣傳圖；活動延期至 10/11（圖片：Eventernote）",
     "setlistKind": "Live",
     "setlist": ["Tears Aflame", "Neo-Aspect", "La Luna"],
-    "setlistNote": "依粉絲現場紀錄整理；來源未明確標示午場或晚場。",
+    "setlistSessions": [{"label":"午場","songs":["Tears Aflame","Neo-Aspect","La Luna"]},{"label":"晚場","songs":["Tears Aflame","Neo-Aspect","Once Again"]}],
+    "setlistNote": "依粉絲現場紀錄及歌迷提供的晚場資訊整理；曲目與場次尚未經官方確認。",
     "setlistSource": "https://blog.tachiba.com.tw/shizaki-kanon-taipei-2026/",
     "posts": []
   },
