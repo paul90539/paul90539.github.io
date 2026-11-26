@@ -26,7 +26,7 @@ function showDetails(e){
     const spoiler=panel.querySelector('.setlist');
     spoiler.addEventListener('toggle',()=>{spoiler.querySelector('.spoiler-action').textContent=spoiler.open?'收起歌單':'顯示歌單';});
   }
-  if (e.program?.length) panel.insertAdjacentHTML('beforeend', `<section class="event-program"><span class="eyebrow">EVENT HIGHLIGHTS</span><h3>活動內容</h3><p>依主辦方公開資訊整理，順序不代表實際進行順序。</p><ul>${e.program.map(item=>`<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`);
+  if (e.program?.length) panel.insertAdjacentHTML('beforeend', `<section class="event-program"><span class="eyebrow">EVENT HIGHLIGHTS</span><h3>活動內容</h3><p>${escapeHtml(e.programNote||'依主辦方公開資訊整理，順序不代表實際進行順序。')}</p><ul>${e.program.map(item=>`<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`);
   if (e.posts?.length) {
     panel.insertAdjacentHTML('beforeend', `<section class="event-posts"><span class="eyebrow">FROM THE ARTIST</span><h3>活動回顧</h3><p>${escapeHtml(e.artist)}官方帳號分享的貼文。</p><div class="post-grid">${e.posts.map(url=>`<div class="post-card"><div class="post-embed" data-post-id="${escapeHtml(url.match(/\/status\/(\d+)/)?.[1]||'')}"><p class="post-status">正在載入貼文…</p></div><a class="post-fallback" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">在 X 開啟貼文</a></div>`).join('')}</div></section>`);
     loadPostWidgets(panel);
