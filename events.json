@@ -37,6 +37,8 @@
     "doors": "午場 14:00 入場・14:30 開演／晚場 17:30 入場・18:00 開演",
     "prices": "VIP NT$3,400／一般票 NT$1,800",
     "benefits": ["VIP：物販優先入場、特典手渡會資格、親筆簽名板與特製票券", "一般票：特製票券"],
+    "program": ["粉絲提問 Q&A", "紡木吏佐訪問觀眾", "珍珠奶茶試飲", "台灣伴手禮體驗", "Mini Live（演唱兩首，曲目待確認）", "全場合照", "特典手渡會"],
+    "programNote": "依粉絲現場紀錄整理；場次未標明，各場內容可能不同。特典手渡會依票種參加。",
     "source": "https://resonance-works.kktix.cc/events/tsumugirisa2",
     "cover": "https://pbs.twimg.com/media/HOYMsa0a4AA_FXd.jpg",
     "credit": "鳴音合創／X 活動公告",
