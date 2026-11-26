@@ -21,7 +21,7 @@ function closeEventDrawer(){
   const backdrop=document.querySelector('#eventDrawerBackdrop');
   panel.classList.add('is-closing');backdrop.classList.add('is-closing');
   const finish=()=>{panel.hidden=true;backdrop.hidden=true;panel.classList.remove('is-closing');backdrop.classList.remove('is-closing');document.body.classList.remove('event-drawer-open');if(lastEventButton?.isConnected)lastEventButton.focus({preventScroll:true});};
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else drawerCloseTimer=setTimeout(finish,300);
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else drawerCloseTimer=setTimeout(finish,600);
 }
 function showDetails(e){
   const panel=document.querySelector('#eventDetails');
