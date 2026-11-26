@@ -104,6 +104,13 @@
     "benefits": ["SVIP：指定席、限定曲、親遞簽名明信片；午場私物簽名／晚場雙人合照", "VIP：指定席、限定曲、親遞簽名明信片", "一般票：指定席、散場歡送活動"],
     "program": ["現場演奏", "談話與粉絲互動", "SVIP／VIP 限定曲目", "票種特典活動"],
     "programNote": "依活動事前公開資訊整理，實際演出內容及順序未經現場紀錄確認。",
+    "setlistSummary": "查看午場歌單",
+    "setlistSessions": [
+      {"label":"午場 Main Set","songs":["Carnival of the Fairies ②", "千本櫻", "告白之夜"]},
+      {"label":"加點","prefix":"EX","songs":["Daylight 副歌（歐他媽痛版本）"]},
+      {"label":"VIP 限定","prefix":"VIP","songs":["殘酷天使的行動綱領", "UNSTOPPABLE"]}
+    ],
+    "setlistNote": "依歌迷提供的午場紀錄整理；曲目與順序未經官方確認。",
     "source": "https://ayasa-official.com/contents/1102900",
     "cover": "ayasa-fan-cover.svg",
     "credit": "粉絲製作封面 · 非官方",
