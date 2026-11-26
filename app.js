@@ -12,12 +12,25 @@ function render(){
   const sizeTimeline=()=>{const tallest=Math.max(0,...cards.map(card=>card.offsetHeight));inner.style.setProperty('--timeline-height',`${Math.max(820,2*(tallest+62+24))}px`);};
   if(typeof ResizeObserver!=='undefined'){cardSizeObserver=new ResizeObserver(sizeTimeline);cards.forEach(card=>cardSizeObserver.observe(card));}
   sizeTimeline();
-  document.querySelector('#eventDetails').hidden=true;
+  closeEventDrawer();
+}
+let lastEventButton;
+function closeEventDrawer(){
+  const panel=document.querySelector('#eventDetails');
+  panel.hidden=true;
+  document.querySelector('#eventDrawerBackdrop').hidden=true;
+  document.body.classList.remove('event-drawer-open');
+  if(lastEventButton?.isConnected)lastEventButton.focus({preventScroll:true});
 }
 function showDetails(e){
   const panel=document.querySelector('#eventDetails');
   panel.hidden=false;
+  document.querySelector('#eventDrawerBackdrop').hidden=false;
+  document.body.classList.add('event-drawer-open');
   panel.innerHTML=`<div class="event-intro"><div class="event-intro-copy"><span class="eyebrow">FAN ARCHIVE · 非官方紀錄</span><p class="event-kicker">${escapeHtml(e.type)} · TAIPEI</p><h2>${escapeHtml(e.title)}</h2><p class="event-story">${escapeHtml(e.description)}</p><dl class="event-facts"><div><dt>日期</dt><dd>${escapeHtml(e.date)}</dd></div><div><dt>時間</dt><dd>${escapeHtml(e.doors)}</dd></div><div><dt>會場</dt><dd>${escapeHtml(e.venue)}</dd></div>${e.prices?`<div><dt>票價</dt><dd>${escapeHtml(e.prices)}</dd></div>`:''}${e.benefits?.length?`<div><dt>票種福利</dt><dd>${e.benefits.map(item=>{const [label,...rest]=item.split('：');return `<span class="benefit-line"><span class="benefit-label">${escapeHtml(label)}</span><span class="benefit-colon">：</span><span>${escapeHtml(rest.join('：'))}</span></span>`}).join('')}</dd></div>`:''}</dl><a class="source-link" href="${escapeHtml(e.source)}" target="_blank" rel="noopener noreferrer">查看主辦方活動資訊</a></div><figure class="event-poster"><img src="${escapeHtml(e.cover)}" alt="${escapeHtml(e.title)} 活動宣傳圖" loading="lazy" referrerpolicy="no-referrer"><figcaption>${escapeHtml(e.credit)}</figcaption></figure></div><details class="setlist"><summary>查看 DJ 歌單（${(e.setlist||[]).length} 首）</summary><p>依粉絲分享整理，曲序與名稱未經官方確認。</p><ol>${(e.setlist||[]).map(song=>`<li>${escapeHtml(song)}</li>`).join('')}</ol></details>`;
+  panel.insertAdjacentHTML('afterbegin','<button type="button" class="event-drawer-close" aria-label="關閉活動資訊">✕</button>');
+  panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label',e.title);
+  panel.querySelector('.event-drawer-close').focus({preventScroll:true});
   if (e.setlistLocked) {
     panel.querySelector('.setlist').outerHTML='<div class="setlist-locked"><button type="button" disabled>巡演進行中・歌單暫不公開</button><p>為避免影響其他場次的觀眾，巡演結束後再開放。</p></div>';
   }
@@ -64,7 +77,10 @@ function setupYears(){
 }
 function jump(year){current.textContent=year;slider.value=year;if(matchMedia('(max-width: 720px)').matches){const card=[...document.querySelectorAll('.event')].find(el=>el.querySelector('time')?.textContent===String(year));card?.scrollIntoView({behavior:'smooth',block:'center'});}else track.scrollTo({left:start===end?0:(year-start)/(end-start)*(track.scrollWidth-track.clientWidth),behavior:'smooth'});}
 document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{filter=btn.dataset.filter;document.querySelectorAll('.filter').forEach(b=>{const selected=b===btn;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});render();}));
-eventsEl.addEventListener('click',e=>{const button=e.target.closest('[data-event]');if(button){showDetails(data[Number(button.dataset.event)]);document.querySelector('#eventDetails').scrollIntoView({behavior:'smooth',block:'start'});}});
+eventsEl.addEventListener('click',e=>{const button=e.target.closest('[data-event]');if(button){lastEventButton=button;showDetails(data[Number(button.dataset.event)]);}});
+document.querySelector('#eventDetails').addEventListener('click',e=>{if(e.target.closest('.event-drawer-close'))closeEventDrawer();});
+document.querySelector('#eventDrawerBackdrop').addEventListener('click',closeEventDrawer);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.querySelector('#eventDetails').hidden)closeEventDrawer();});
 slider.addEventListener('input',()=>jump(Number(slider.value)));document.querySelector('#railYears').addEventListener('click',e=>{const b=e.target.closest('button');if(b)jump(Number(b.dataset.year));});
 track.addEventListener('wheel',e=>{if(matchMedia('(max-width: 720px)').matches||Math.abs(e.deltaX)>Math.abs(e.deltaY))return;if(track.scrollWidth>track.clientWidth){e.preventDefault();track.scrollLeft+=e.deltaY;}},{passive:false});track.addEventListener('scroll',()=>{if(matchMedia('(max-width: 720px)').matches)return;const max=track.scrollWidth-track.clientWidth;const year=Math.round(start+(max?track.scrollLeft/max:0)*(end-start));slider.value=year;current.textContent=year;},{passive:true});
 let drag;track.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button===0&&!e.target.closest('button,a,input')){drag={x:e.clientX,left:track.scrollLeft};track.setPointerCapture(e.pointerId);track.classList.add('dragging');}});track.addEventListener('pointermove',e=>{if(drag)track.scrollLeft=drag.left-(e.clientX-drag.x);});function stop(){drag=null;track.classList.remove('dragging');}track.addEventListener('pointerup',stop);track.addEventListener('pointercancel',stop);
