@@ -26,6 +26,9 @@ function showDetails(e){
     const spoiler=panel.querySelector('.setlist');
     spoiler.addEventListener('toggle',()=>{spoiler.querySelector('.spoiler-action').textContent=spoiler.open?'收起歌單':'顯示歌單';});
   }
+  else {
+    panel.querySelector('.setlist').innerHTML=`<summary>查看 DJ 歌單（${e.setlist.length} 首）</summary><div class="setlist-sheet"><h3>2026 DJ Setlist</h3><p class="setlist-subtitle">${escapeHtml(e.venue)} / ${escapeHtml(e.date)}</p><div class="setlist-section"><h4>[ DJ Set ]</h4>${e.setlist.map((song,i)=>`<div class="track-line"><span>M${String(i+1).padStart(2,'0')}.</span><span>${escapeHtml(song)}</span></div>`).join('')}</div><div class="setlist-total">Total: ${e.setlist.length} Tracks</div><p class="setlist-note">依粉絲分享整理，曲序與名稱未經官方確認。</p></div>`;
+  }
   if (e.program?.length) panel.insertAdjacentHTML('beforeend', `<section class="event-program"><span class="eyebrow">EVENT HIGHLIGHTS</span><h3>活動內容</h3><p>${escapeHtml(e.programNote||'依主辦方公開資訊整理，順序不代表實際進行順序。')}</p><ul>${e.program.map(item=>`<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`);
   if (e.posts?.length) {
     panel.insertAdjacentHTML('beforeend', `<section class="event-posts"><span class="eyebrow">FROM THE ARTIST</span><h3>活動回顧</h3><p>${escapeHtml(e.artist)}官方帳號分享的貼文。</p><div class="post-grid">${e.posts.map(url=>`<div class="post-card"><div class="post-embed" data-post-id="${escapeHtml(url.match(/\/status\/(\d+)/)?.[1]||'')}"><p class="post-status">正在載入貼文…</p></div><a class="post-fallback" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">在 X 開啟貼文</a></div>`).join('')}</div></section>`);
