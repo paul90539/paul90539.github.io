@@ -4,6 +4,7 @@ let cardSizeObserver;
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function render(){
   const visible=data.filter(e=>filter==='all'||e.category===filter);
+  inner.style.setProperty('--timeline-width',`${Math.max(900,(visible.length+1)*150)}px`);
   document.querySelector('#empty').hidden=visible.length>0;
   eventsEl.innerHTML=visible.map((e,i)=>`<article class="event ${i%2?'below':'above'}" style="--position:${start===end?(i+1)/(visible.length+1)*100:((Number(e.year)-start)/(end-start))*100}%"><div class="stem"></div><div class="card"><div class="visual stage"><img class="event-cover" src="${escapeHtml(e.cover)}" alt="${escapeHtml(e.title)} 活動宣傳圖" referrerpolicy="no-referrer"><span class="visual-tag">${escapeHtml(e.credit)}</span></div><div class="card-body"><div class="card-meta"><span>${escapeHtml(e.type)}</span><time>${escapeHtml(e.year)}</time></div><h3>${escapeHtml(e.title)}</h3><p>${escapeHtml(e.date)} · ${escapeHtml(e.venue)}</p><button type="button" class="event-detail-button" data-event="${data.indexOf(e)}">${e.setlist?.length ? "查看活動與歌單" : "查看活動"}</button></div></div></article>`).join('');
   cardSizeObserver?.disconnect();
@@ -27,7 +28,8 @@ function showDetails(e){
     spoiler.addEventListener('toggle',()=>{spoiler.querySelector('.spoiler-action').textContent=spoiler.open?'收起歌單':'顯示歌單';});
   }
   else {
-    panel.querySelector('.setlist').innerHTML=`<summary>查看 DJ 歌單（${e.setlist.length} 首）</summary><div class="setlist-sheet"><h3>2026 DJ Setlist</h3><p class="setlist-subtitle">${escapeHtml(e.venue)} / ${escapeHtml(e.date)}</p><div class="setlist-section"><h4>[ DJ Set ]</h4>${e.setlist.map((song,i)=>`<div class="track-line"><span>M${String(i+1).padStart(2,'0')}.</span><span>${escapeHtml(song)}</span></div>`).join('')}</div><div class="setlist-total">Total: ${e.setlist.length} Tracks</div><p class="setlist-note">依粉絲分享整理，曲序與名稱未經官方確認。</p></div>`;
+    const setKind=e.setlistKind==='Live'?'Live':'DJ';
+    panel.querySelector('.setlist').innerHTML=`<summary>查看 ${setKind} 歌單（${e.setlist.length} 首）</summary><div class="setlist-sheet"><h3>2026 ${setKind} Setlist</h3><p class="setlist-subtitle">${escapeHtml(e.venue)} / ${escapeHtml(e.date)}</p><div class="setlist-section"><h4>[ ${setKind==='Live'?'Main Set':'DJ Set'} ]</h4>${e.setlist.map((song,i)=>`<div class="track-line"><span>M${String(i+1).padStart(2,'0')}.</span><span>${escapeHtml(song)}</span></div>`).join('')}</div><div class="setlist-total">Total: ${e.setlist.length} Tracks</div><p class="setlist-note">${escapeHtml(e.setlistNote||'依粉絲分享整理，曲序與名稱未經官方確認。')}</p>${e.setlistSource?`<a class="source-link" href="${escapeHtml(e.setlistSource)}" target="_blank" rel="noopener noreferrer">查看歌單來源</a>`:''}</div>`;
   }
   if (e.program?.length) panel.insertAdjacentHTML('beforeend', `<section class="event-program"><span class="eyebrow">EVENT HIGHLIGHTS</span><h3>活動內容</h3><p>${escapeHtml(e.programNote||'依主辦方公開資訊整理，順序不代表實際進行順序。')}</p><ul>${e.program.map(item=>`<li>${escapeHtml(item)}</li>`).join('')}</ul></section>`);
   if (e.posts?.length) {
