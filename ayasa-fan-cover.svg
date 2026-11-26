@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Ayasa 台北見面會粉絲製作封面</title>
+  <desc id="desc">以紫色舞台燈光、琴弓與琴弦構成的非官方活動封面</desc>
+  <defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101027"/><stop offset=".55" stop-color="#2a1743"/><stop offset="1" stop-color="#0d162c"/></linearGradient><radialGradient id="glow"><stop stop-color="#cd86ed" stop-opacity=".55"/><stop offset="1" stop-color="#cd86ed" stop-opacity="0"/></radialGradient></defs>
+  <rect width="800" height="1000" fill="url(#bg)"/><circle cx="560" cy="400" r="330" fill="url(#glow)"/><path d="M-80 850 Q300 340 910 170 M-65 880 Q300 370 920 200 M-50 910 Q300 400 930 230" fill="none" stroke="#deaaf0" stroke-opacity=".36" stroke-width="3"/><path d="M160 950 L650 75" stroke="#eac9f4" stroke-opacity=".7" stroke-width="3"/><circle cx="650" cy="75" r="8" fill="#f4d3ff"/>
+  <text x="64" y="105" fill="#ddbcf0" font-family="sans-serif" font-size="20" letter-spacing="5">FAN-MADE ARCHIVE</text><text x="64" y="760" fill="#fff" font-family="sans-serif" font-size="112" font-weight="700" letter-spacing="-4">Ayasa</text><text x="68" y="815" fill="#eacaf6" font-family="sans-serif" font-size="27" letter-spacing="3">FIRST FAN MEETING</text><text x="68" y="880" fill="#a5e6f1" font-family="sans-serif" font-size="31" letter-spacing="3">2026.10.31 · TAIPEI</text>
+</svg>
